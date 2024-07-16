@@ -1,0 +1,13 @@
+{
+    "904ae01f-a837-4e4b-87eb-ea6d0aa07662":{
+        "_id":"904ae01f-a837-4e4b-87eb-ea6d0aa07662",
+        "number": 1,
+        "type":"SomeType",
+        "status":"Active",
+        "color": "Yellow",
+        "dateBought": "2023-11-01T07:22:00.358Z",
+        "timesUsedCount":1,
+        "apiaryId":"227d3c1c-1c77-4dc1-9735-2d33ead51b92",
+        "userId":"07f260f4-466c-4607-9a33-f7273b24f1b4"
+    }
+}
