@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
+import apiariesAPI from '../../../api/apiaries-api';
 
 import Accordion from 'react-bootstrap/Accordion';
-import apiariesAPI from '../../../api/apiaries-api';
 
 import ApiaryListItem from './apiary-list-item/ApiaryListItem';
 

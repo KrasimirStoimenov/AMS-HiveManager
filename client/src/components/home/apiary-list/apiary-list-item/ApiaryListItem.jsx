@@ -1,5 +1,5 @@
-import Accordion from 'react-bootstrap/Accordion';
 import Row from 'react-bootstrap/Row';
+import Accordion from 'react-bootstrap/Accordion';
 
 import HiveCard from './hive-card/HiveCard';
 
