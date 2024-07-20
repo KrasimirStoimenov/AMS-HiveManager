@@ -23,6 +23,7 @@ export default function Home() {
                 {apiaries.map((apiary, index) =>
                     <ApiaryListItem
                         key={index}
+                        apiaryId={apiary._id}
                         apiaryName={apiary.name}
                         eventKey={index.toString()}
                     />
