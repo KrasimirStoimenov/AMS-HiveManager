@@ -11,7 +11,8 @@ export default function ApiaryListItem({
         <Accordion.Item eventKey={eventKey}>
             <Accordion.Header>{apiaryName}</Accordion.Header>
             <Accordion.Body>
-                <Row xs={1} md={3} lg={3} className="g-4">
+                <Row xs={1} md={3} lg={4} className="g-4">
+                    <HiveCard />
                     <HiveCard />
                     <HiveCard />
                     <HiveCard />
