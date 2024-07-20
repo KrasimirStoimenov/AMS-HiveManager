@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import apiariesAPI from '../../api/apiaries-api';
 
 import Accordion from 'react-bootstrap/Accordion';
+import Button from 'react-bootstrap/Button';
 
 import ApiaryListItem from './apiary-list-item/ApiaryListItem';
 import Loading from '../loading/Loading';
@@ -22,7 +23,10 @@ export default function Home() {
     return (
         <>
             <h1>AMS-HiveManager</h1>
-            <h4 className='text-start'>Apiaries with hives:</h4>
+            <div className='mb-4' style={{display:'flex', justifyContent:'space-between'}}>
+                <h4 className='text-start'>Apiaries with hives:</h4>
+                <Button variant="outline-secondary">+ Add Apiary</Button>
+            </div>
             {isLoading
                 ? <Loading />
                 : <Accordion defaultActiveKey="0">
