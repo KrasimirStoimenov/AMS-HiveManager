@@ -1,4 +1,4 @@
-# AMS-HiveManager
+# AMS-HiveManager - Client
   
 ## Installation
 
