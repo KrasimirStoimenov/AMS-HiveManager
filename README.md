@@ -41,8 +41,10 @@ To install and run AMS on your local machine, follow these steps:
   - **Run the backend server**
      ```bash
      node server.js
+      ```
+      - **The backend server should now be running on http://localhost:3030/.**
 
-**The backend server should now be running on http://localhost:3030/.**
+      - **More information on how to use the server can be found on this [link](https://github.com/KrasimirStoimenov/AMS-HiveManager/tree/main/server#readme) and on original [Softuni Practice Server page](https://github.com/softuni-practice-server/softuni-practice-server)**
 
  #### 3. Run the application
   - **Navigate to the client directory (in new terminal)**
@@ -56,6 +58,6 @@ To install and run AMS on your local machine, follow these steps:
   - **Run the application**
      ```bash
      npm run dev
-
-**The app should now be running on http://localhost:5173.**
+     ```
+      - **The app should now be running on http://localhost:5173.**
 
