@@ -1,6 +1,6 @@
-# SoftUni Practice Server
-
-## Usage
+# AMS-HiveManager - Server
+## SoftUni Practice Server
+### Usage
 
 This is **REST service**, created for educational purposes. To execute it, open a command prompt and run `node server.js`.
 
@@ -11,22 +11,22 @@ This is **REST service**, created for educational purposes. To execute it, open 
 
 Note that changes to the data **will not be persisted**! All operations happen in memory and will be wiped when the service is restarted.
 
-## Base URL
+### Base URL
 
 The Base URL for the API is: `http://localhost:3030/jsonstore`
 
 The documentation below assumes you are pre-pending the Base URL to the endpoints in order to make requests.
 
-# Endpoints: Todos
+## Endpoints: Todos
 
 - `/todos` -- get todo list/ create todo;
 - `/todos/{todoId}` -- get todo/update todo/ delete todo by provided id;;
 
-## Get todo list
+### Get todo list
 
 Send a `GET` request to `/todos`. The service will respond with an array of todo objects.
 
-### Success Response:
+#### Success Response:
 
 Code: 200 OK
 
