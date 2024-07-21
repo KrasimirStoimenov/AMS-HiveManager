@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
+import styles from './Home.module.css';
 import apiariesAPI from '../../api/apiaries-api';
 
 import Accordion from 'react-bootstrap/Accordion';
@@ -23,8 +24,8 @@ export default function Home() {
     return (
         <>
             <h1>AMS-HiveManager</h1>
-            <div className='mb-4' style={{display:'flex', justifyContent:'space-between'}}>
-                <h4 className='text-start'>Apiaries with hives:</h4>
+            <div className={`${styles.subheader}`}>
+                <h4>Apiaries with hives:</h4>
                 <Button variant="outline-secondary">+ Add Apiary</Button>
             </div>
             {isLoading
