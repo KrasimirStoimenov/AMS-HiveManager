@@ -8,14 +8,12 @@ export default function Header() {
     return (
         <Navbar expand="lg" className="bg-body-tertiary p-2 mb-3">
             <Container>
-                <Navbar.Brand>
-                    <Link to='/'>AMS-HiveManager</Link>
-                </Navbar.Brand>
+                <Navbar.Brand as={Link} to='/'>AMS-HiveManager</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Link to='/hives'>Hives</Link>
-                        <Link to='/beeQueens'>BeeQueens</Link>
+                        <Nav.Link as={Link} to='/hives'>Hives</Nav.Link>
+                        <Nav.Link as={Link} to='/beeQueens'>BeeQueens</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
