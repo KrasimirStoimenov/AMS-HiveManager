@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Home.module.css';
 import apiariesAPI from '../../api/apiaries-api';
 
@@ -26,7 +27,7 @@ export default function Home() {
             <h1>AMS-HiveManager</h1>
             <div className={`${styles.subheader}`}>
                 <h4>Apiaries with hives:</h4>
-                <Button variant="outline-secondary">+ Add Apiary</Button>
+                <Button as={Link} to='/apiary/create' variant="outline-secondary">+ Add Apiary</Button>
             </div>
             {isLoading
                 ? <Loading />
