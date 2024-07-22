@@ -6,7 +6,6 @@ import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row';
 import Form from 'react-bootstrap/Form';
 
-import '../../../public/input-form-styles.css'
 import apiariesAPI from '../../api/apiaries-api';
 
 const initialFormValues = {
@@ -53,7 +52,7 @@ export default function ApiaryCreate() {
                         <Button className='form-control'>Back</Button>
                     </Col>
                     <Col xs={6} md={6} lg={6}>
-                        <Button type="submit" className='btn-success form-control'>Create</Button>
+                        <Button className='form-control' type="submit" variant='success'>Create</Button>
                     </Col>
                 </Row>
             </fieldset>

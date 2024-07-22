@@ -1,11 +1,15 @@
 import { Routes, Route } from 'react-router-dom'
 
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import './App.css'
+import '../public/input-form-styles.css'
+
+import Container from 'react-bootstrap/esm/Container'
 
 import Home from './components/home/Home'
 import Header from './components/header/Header'
-import Container from 'react-bootstrap/esm/Container'
 import ApiaryCreate from './components/apiary-create/ApiaryCreate'
+import HiveList from './components/hive-list/HiveList'
 
 function App() {
   return (
