@@ -11,6 +11,7 @@ import Header from './components/header/Header'
 import ApiaryCreate from './components/apiary-create/ApiaryCreate'
 import HiveList from './components/hive-list/HiveList'
 import HiveDetails from './components/hive-details/HiveDetails';
+import HiveCreate from './components/hive-create/HiveCreate';
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/apiaries/create' element={<ApiaryCreate />} />
-          <Route path='hives/:hiveId/details' element={<HiveDetails />} />
+          <Route path='/hives/create' element={<HiveCreate />} />
+          <Route path='/hives/:hiveId/details' element={<HiveDetails />} />
         </Routes>
       </Container>
     </>
