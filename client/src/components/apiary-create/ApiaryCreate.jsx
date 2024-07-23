@@ -49,7 +49,7 @@ export default function ApiaryCreate() {
 
                 <Row>
                     <Col xs={6} md={6} lg={6}>
-                        <Button className='form-control'>Back</Button>
+                        <Button className='form-control' onClick={() => navigate(-1)}>Back</Button>
                     </Col>
                     <Col xs={6} md={6} lg={6}>
                         <Button className='form-control' type="submit" variant='success'>Create</Button>
