@@ -21,8 +21,6 @@ function App() {
       <Container>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/apiaries/create' element={<ApiaryCreate />} />
-          <Route path='/hives/create' element={<HiveCreate />} />
           <Route path='/apiaries/add' element={<ApiaryAdd />} />
           <Route path='/hives/add' element={<HiveAdd />} />
           <Route path='/hives/:hiveId/details' element={<HiveDetails />} />
