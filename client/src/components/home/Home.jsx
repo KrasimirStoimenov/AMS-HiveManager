@@ -37,6 +37,7 @@ export default function Home() {
                             key={index}
                             apiaryId={apiary._id}
                             apiaryName={apiary.name}
+                            apiaryLocation={apiary.location}
                             eventKey={index.toString()}
                         />
                     )}
