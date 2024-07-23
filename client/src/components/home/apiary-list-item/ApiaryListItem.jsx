@@ -36,7 +36,7 @@ export default function ApiaryListItem({
             </Accordion.Header>
             <Accordion.Body onEnter={() => setShowAddHiveButton(true)} onExit={() => setShowAddHiveButton(false)}>
                 {((showAddHiveButton && !isLoading) &&
-                    <Button as={Link} to="/hives/add" variant="outline-secondary" className="float-end"><i className="bi bi-plus-lg"></i> Add Hive</Button>
+                    <Button as={Link} to="/hives/add" variant="outline-primary" className="float-end"><i className="bi bi-plus-lg"></i> Add Hive</Button>
                 )}
 
                 {isLoading

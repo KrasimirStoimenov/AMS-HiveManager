@@ -24,10 +24,10 @@ export default function Home() {
 
     return (
         <>
-            <h1>AMS-HiveManager</h1>
+            <h1 className='mb-5 mt-5'>AMS-HiveManager</h1>
             <div className={`${styles.subheader}`}>
-                <h4>Apiaries with hives:</h4>
-                <Button as={Link} to='/apiaries/add' variant="outline-secondary"><i className="bi bi-plus-lg"></i> Add Apiary</Button>
+                <h4 className='text-primary'>Apiaries with hives:</h4>
+                <Button as={Link} to='/apiaries/add' variant="outline-primary"><i className="bi bi-plus-lg"></i> Add Apiary</Button>
             </div>
             {isLoading
                 ? <Loading />

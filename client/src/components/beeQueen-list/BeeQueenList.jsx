@@ -28,7 +28,7 @@ export default function BeeQueenList() {
                 <Col className='text-start text-primary'>
                     <h2>Bee Queens List</h2>
                 </Col>
-                <Col className='text-end'>
+                <Col className='text-end pt-1'>
                     <Button as={Link} to={'/beeQueen/add'} variant='outline-primary'><i className="bi bi-plus-lg"></i> Add Bee Queen</Button>
                 </Col>
             </Row>
