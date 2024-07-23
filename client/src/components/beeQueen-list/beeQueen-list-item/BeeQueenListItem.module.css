@@ -1,0 +1,8 @@
+.helper-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.helper-buttons button {
+    flex-basis: 30%;
+}

@@ -12,6 +12,7 @@ import ApiaryAdd from './components/apiary-add/ApiaryAdd'
 import HiveList from './components/hive-list/HiveList'
 import HiveDetails from './components/hive-details/HiveDetails';
 import HiveAdd from './components/hive-add/HiveAdd';
+import BeeQueenList from './components/beeQueen-list/BeeQueenList';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path='/apiaries/add' element={<ApiaryAdd />} />
           <Route path='/hives/add' element={<HiveAdd />} />
           <Route path='/hives/:hiveId/details' element={<HiveDetails />} />
+          <Route path='/beeQueens' element={<BeeQueenList />} />
         </Routes>
       </Container>
     </>
