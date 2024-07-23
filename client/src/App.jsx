@@ -20,11 +20,10 @@ function App() {
       <Container>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/apiary/create' element={<ApiaryCreate />} />
+          <Route path='/apiaries/create' element={<ApiaryCreate />} />
           <Route path='hives/:hiveId/details' element={<HiveDetails />} />
         </Routes>
       </Container>
-
     </>
   )
 }

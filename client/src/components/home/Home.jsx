@@ -27,7 +27,7 @@ export default function Home() {
             <h1>AMS-HiveManager</h1>
             <div className={`${styles.subheader}`}>
                 <h4>Apiaries with hives:</h4>
-                <Button as={Link} to='/apiary/create' variant="outline-secondary"><i className="bi bi-plus-lg"></i> Add Apiary</Button>
+                <Button as={Link} to='/apiaries/create' variant="outline-secondary"><i className="bi bi-plus-lg"></i> Add Apiary</Button>
             </div>
             {isLoading
                 ? <Loading />
