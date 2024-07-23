@@ -13,12 +13,12 @@ const initialFormValues = {
     location: '',
 };
 
-export default function ApiaryCreate() {
+export default function ApiaryAdd() {
     const navigate = useNavigate();
     const { values, changeHandler, submitHandler } = useForm(initialFormValues, submitFormHandler)
 
     async function submitFormHandler(values) {
-        await apiariesAPI.createApiary(values);
+        await apiariesAPI.add(values);
         navigate(`/`);
     }
 
@@ -52,7 +52,7 @@ export default function ApiaryCreate() {
                         <Button className='form-control' onClick={() => navigate(-1)}>Back</Button>
                     </Col>
                     <Col xs={6} md={6} lg={6}>
-                        <Button className='form-control' type="submit" variant='success'>Create</Button>
+                        <Button className='form-control' type="submit" variant='success'>Add</Button>
                     </Col>
                 </Row>
             </fieldset>

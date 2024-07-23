@@ -16,12 +16,12 @@ const initialFormValues = {
     apiary: '',
 };
 
-export default function HiveCreate() {
+export default function HiveAdd() {
     const navigate = useNavigate();
     const { values, changeHandler, submitHandler } = useForm(initialFormValues, submitHiveHandler);
 
     async function submitHiveHandler() {
-        await hivesAPI.create(values);
+        await hivesAPI.add(values);
         navigate(`/`);
     }
 
@@ -105,7 +105,7 @@ export default function HiveCreate() {
                         <Button className='form-control' onClick={() => navigate(-1)}>Back</Button>
                     </Col>
                     <Col xs={6} md={6} lg={6}>
-                        <Button className='form-control' type="submit" variant='success'>Create</Button>
+                        <Button className='form-control' type="submit" variant='success'>Add</Button>
                     </Col>
                 </Row>
             </fieldset>

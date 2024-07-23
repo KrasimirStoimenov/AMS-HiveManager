@@ -8,10 +8,10 @@ import Container from 'react-bootstrap/esm/Container'
 
 import Home from './components/home/Home'
 import Header from './components/header/Header'
-import ApiaryCreate from './components/apiary-create/ApiaryCreate'
+import ApiaryAdd from './components/apiary-add/ApiaryAdd'
 import HiveList from './components/hive-list/HiveList'
 import HiveDetails from './components/hive-details/HiveDetails';
-import HiveCreate from './components/hive-create/HiveCreate';
+import HiveAdd from './components/hive-add/HiveAdd';
 
 function App() {
   return (
@@ -23,6 +23,8 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/apiaries/create' element={<ApiaryCreate />} />
           <Route path='/hives/create' element={<HiveCreate />} />
+          <Route path='/apiaries/add' element={<ApiaryAdd />} />
+          <Route path='/hives/add' element={<HiveAdd />} />
           <Route path='/hives/:hiveId/details' element={<HiveDetails />} />
         </Routes>
       </Container>
