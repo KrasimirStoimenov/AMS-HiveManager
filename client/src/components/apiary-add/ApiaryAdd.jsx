@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 
@@ -6,7 +7,7 @@ import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row';
 import Form from 'react-bootstrap/Form';
 
-import apiariesAPI from '../../api/apiaries-api';
+import requester from '../../api/requester';
 
 const initialFormValues = {
     name: '',
@@ -15,10 +16,14 @@ const initialFormValues = {
 
 export default function ApiaryAdd() {
     const navigate = useNavigate();
-    const { values, changeHandler, submitHandler } = useForm(initialFormValues, submitFormHandler)
+    const { values, changeHandler, submitHandler } = useForm(initialFormValues, submitFormHandler);
+    const [isLoading, setIsLoading] = useState(false);
 
     async function submitFormHandler(values) {
-        await apiariesAPI.add(values);
+        setIsLoading(true);
+        await requester.post('http://localhost:3030/jsonstore/apiaries', values);
+
+        setIsLoading(false);
         navigate(`/`);
     }
 
@@ -52,7 +57,11 @@ export default function ApiaryAdd() {
                         <Button className='form-control' onClick={() => navigate(-1)}>Back</Button>
                     </Col>
                     <Col xs={6} md={6} lg={6}>
-                        <Button className='form-control' type="submit" variant='success'>Add</Button>
+                        <Button className='form-control' type="submit" variant='success' disabled={isLoading}>
+                            {isLoading
+                                ? 'Adding...'
+                                : 'Add'}
+                        </Button>
                     </Col>
                 </Row>
             </fieldset>

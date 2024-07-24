@@ -1,10 +1,13 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import Button from 'react-bootstrap/esm/Button';
 import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row';
 import Form from 'react-bootstrap/Form';
+
 import { useForm } from '../../hooks/useForm';
-import hivesAPI from '../../api/hives-api';
-import { useNavigate } from 'react-router-dom';
+import requester from '../../api/requester';
 
 const initialFormValues = {
     number: '',
@@ -19,9 +22,13 @@ const initialFormValues = {
 export default function HiveAdd() {
     const navigate = useNavigate();
     const { values, changeHandler, submitHandler } = useForm(initialFormValues, submitHiveHandler);
+    const [isLoading, setIsLoading] = useState(false);
 
     async function submitHiveHandler() {
-        await hivesAPI.add(values);
+        setIsLoading(true);
+        await requester.post('http://localhost:3030/jsonstore/hives', values);
+
+        setIsLoading(false);
         navigate(`/`);
     }
 
@@ -105,7 +112,11 @@ export default function HiveAdd() {
                         <Button className='form-control' onClick={() => navigate(-1)}>Back</Button>
                     </Col>
                     <Col xs={6} md={6} lg={6}>
-                        <Button className='form-control' type="submit" variant='success'>Add</Button>
+                        <Button className='form-control' type="submit" variant='success' disabled={isLoading}>
+                            {isLoading
+                                ? 'Adding...'
+                                : 'Add'}
+                        </Button>
                     </Col>
                 </Row>
             </fieldset>
