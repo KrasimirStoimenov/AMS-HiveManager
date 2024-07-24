@@ -9,19 +9,11 @@ import beeQueensAPI from '../../api/beeQueens-api';
 import BeeQueenListItem from './beeQueen-list-item/BeeQueenListItem';
 import { Col, Row } from 'react-bootstrap';
 import Loading from '../loading/Loading';
+import { useFetch } from '../../hooks/useFetch';
 
 export default function BeeQueenList() {
-    const [beeQueens, setBeeQueens] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const { data: beeQueens, isFetching } = useFetch('http://localhost:3030/jsonstore/beeQueens', []);
 
-    useEffect(() => {
-        (async () => {
-            const result = await beeQueensAPI.getAll();
-
-            setBeeQueens(Object.values(result));
-            setIsLoading(false);
-        })();
-    }, []);
     return (
         <Container>
             <Row className='pb-3 pt-3'>
@@ -32,7 +24,7 @@ export default function BeeQueenList() {
                     <Button as={Link} to={'/beeQueen/add'} variant='outline-primary'><i className="bi bi-plus-lg"></i> Add Bee Queen</Button>
                 </Col>
             </Row>
-            {isLoading
+            {isFetching
                 ? <Loading />
                 : <Table border={1}>
                     <thead>
@@ -45,7 +37,7 @@ export default function BeeQueenList() {
                         </tr>
                     </thead>
                     <tbody>
-                        {beeQueens.map(beeQueen =>
+                        {Object.values(beeQueens).map(beeQueen =>
                             <BeeQueenListItem
                                 key={beeQueen._id}
                                 beeQueen={beeQueen}

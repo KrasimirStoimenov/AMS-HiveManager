@@ -9,7 +9,6 @@ import Container from 'react-bootstrap/esm/Container'
 import Home from './components/home/Home'
 import Header from './components/header/Header'
 import ApiaryAdd from './components/apiary-add/ApiaryAdd'
-import HiveList from './components/hive-list/HiveList'
 import HiveDetails from './components/hive-details/HiveDetails';
 import HiveAdd from './components/hive-add/HiveAdd';
 import BeeQueenList from './components/beeQueen-list/BeeQueenList';

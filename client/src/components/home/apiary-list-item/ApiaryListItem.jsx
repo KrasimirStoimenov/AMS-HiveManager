@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Row from 'react-bootstrap/Row';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
-import hivesAPI from '../../../api/hives-api';
 
 import HiveCard from './hive-card/HiveCard';
 import Loading from '../../loading/Loading';
+import { useFetch } from '../../../hooks/useFetch';
 
 export default function ApiaryListItem({
     apiaryId,
@@ -15,18 +15,9 @@ export default function ApiaryListItem({
     apiaryLocation,
     eventKey
 }) {
-    const [apiaryHives, setApiaryHives] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const { data: apiaryHives, isFetching } = useFetch('http://localhost:3030/jsonstore/hives', []);
+
     const [showAddHiveButton, setShowAddHiveButton] = useState(true);
-
-    useEffect(() => {
-        (async () => {
-            const result = await hivesAPI.getAll();
-
-            setApiaryHives(Object.values(result));
-            setIsLoading(false);
-        })();
-    }, []);
 
     return (
         <Accordion.Item eventKey={eventKey}>
@@ -35,14 +26,14 @@ export default function ApiaryListItem({
                 {apiaryLocation}
             </Accordion.Header>
             <Accordion.Body onEnter={() => setShowAddHiveButton(true)} onExit={() => setShowAddHiveButton(false)}>
-                {((showAddHiveButton && !isLoading) &&
+                {((showAddHiveButton && !isFetching) &&
                     <Button as={Link} to="/hives/add" variant="outline-primary" className="float-end"><i className="bi bi-plus-lg"></i> Add Hive</Button>
                 )}
 
-                {isLoading
+                {isFetching
                     ? <Loading />
                     : <Row xs={1} md={3} lg={4} className="g-4">
-                        {apiaryHives.map(hive =>
+                        {Object.values(apiaryHives).map(hive =>
                             <HiveCard
                                 key={hive._id}
                                 hive={hive}

@@ -1,23 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Card, ListGroup, Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import hivesAPI from '../../api/hives-api';
+import { Container, Row, Col, Card, ListGroup, Button } from 'react-bootstrap';
 import Loading from '../loading/Loading';
+import { useFetch } from '../../hooks/useFetch';
 
 export default function HiveDetails() {
-    const [hive, setHive] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
-
     const { hiveId } = useParams();
-
-    useEffect(() => {
-        (async () => {
-            const hive = await hivesAPI.getById(hiveId);
-
-            setHive(hive);
-            setIsLoading(false);
-        })();
-    }, []);
+    const { data: hive, isFetching } = useFetch(`http://localhost:3030/jsonstore/hives/${hiveId}`, {});
 
     return (
         < Container className="my-5" >
@@ -25,7 +13,7 @@ export default function HiveDetails() {
                 <Col md={8}>
                     <Card>
                         <Card.Header as="h5">Hive Details</Card.Header>
-                        {isLoading
+                        {isFetching
                             ? <Loading />
                             : <Card.Body>
                                 <Card.Title>Hive №{hive.number}</Card.Title>
@@ -48,7 +36,7 @@ export default function HiveDetails() {
                                     <strong>Times Used:</strong> {hive.timesUsedCount}
                                 </Card.Text>
                                 <Card.Text>
-                                <strong>Queen Status:</strong> TODO: Queen status
+                                    <strong>Queen Status:</strong> TODO: Queen status
                                 </Card.Text>
                                 <ListGroup className="my-4">
                                     <ListGroup.Item>
