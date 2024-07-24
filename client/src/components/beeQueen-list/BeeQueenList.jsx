@@ -19,7 +19,7 @@ export default function BeeQueenList() {
                     <h2>Bee Queens List</h2>
                 </Col>
                 <Col className='text-end pt-1'>
-                    <Button as={Link} to={'/beeQueen/add'} variant='outline-primary'><i className="bi bi-plus-lg"></i> Add Bee Queen</Button>
+                    <Button as={Link} to={'/beeQueens/add'} variant='outline-primary'><i className="bi bi-plus-lg"></i> Add Bee Queen</Button>
                 </Col>
             </Row>
             {isFetching
