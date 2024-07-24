@@ -18,6 +18,8 @@ export default function ApiaryListItem({
     const { data: apiaryHives, isFetching } = useFetch('http://localhost:3030/jsonstore/hives', []);
 
     const [showAddHiveButton, setShowAddHiveButton] = useState(true);
+    const handleShow = () => setShowAddHiveButton(true);
+    const handleClose = () => setShowAddHiveButton(false);
 
     return (
         <Accordion.Item eventKey={eventKey}>
@@ -25,7 +27,7 @@ export default function ApiaryListItem({
                 {apiaryName}
                 {apiaryLocation}
             </Accordion.Header>
-            <Accordion.Body onEnter={() => setShowAddHiveButton(true)} onExit={() => setShowAddHiveButton(false)}>
+            <Accordion.Body onEnter={handleShow} onExit={handleClose}>
                 {((showAddHiveButton && !isFetching) &&
                     <Button as={Link} to="/hives/add" variant="outline-primary" className="float-end"><i className="bi bi-plus-lg"></i> Add Hive</Button>
                 )}
