@@ -1,5 +1,7 @@
 async function requester(method, url, data) {
-    const options = {};
+    const options = {
+        method: method
+    };
 
     if (data) {
         options.method = method;
