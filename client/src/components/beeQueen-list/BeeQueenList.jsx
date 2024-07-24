@@ -13,7 +13,7 @@ import Delete from '../delete/Delete';
 import requester from '../../api/requester';
 
 export default function BeeQueenList() {
-    const { data: beeQueens, isFetching } = useFetch('http://localhost:3030/jsonstore/beeQueens', []);
+    const { data: beeQueens, isFetching, refetch } = useFetch('http://localhost:3030/jsonstore/beeQueens', []);
     const [showDeleteById, setShowDeleteById] = useState(null);
 
     function deleteClickHandler(beeQueenId) {
@@ -25,13 +25,10 @@ export default function BeeQueenList() {
     }
 
     async function deleteHandler(beeQueenId) {
-        // delete request to server
         await requester.del(`http://localhost:3030/jsonstore/beeQueens/${beeQueenId}`);
 
-        // TODO: Refetch to show new state
-
-        // close modal
         setShowDeleteById(null);
+        refetch();
     }
 
     return (
