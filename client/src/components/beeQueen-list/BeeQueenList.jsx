@@ -1,11 +1,9 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/esm/Button';
 
-import beeQueensAPI from '../../api/beeQueens-api';
 import BeeQueenListItem from './beeQueen-list-item/BeeQueenListItem';
 import { Col, Row } from 'react-bootstrap';
 import Loading from '../loading/Loading';
