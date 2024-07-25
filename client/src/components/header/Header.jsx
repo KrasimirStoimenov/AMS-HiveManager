@@ -15,6 +15,10 @@ export default function Header() {
                         <Nav.Link as={Link} to='/hives'>Hives</Nav.Link>
                         <Nav.Link as={Link} to='/beeQueens'>BeeQueens</Nav.Link>
                     </Nav>
+                    <Nav>
+                        <Nav.Link as={Link} to='/login'>Login</Nav.Link>
+                        <Nav.Link as={Link} to='/register'>Register</Nav.Link>
+                    </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
