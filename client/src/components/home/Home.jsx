@@ -21,7 +21,7 @@ export default function Home() {
             {isFetching
                 ? <Loading />
                 : <Accordion defaultActiveKey="0">
-                    {apiaries.map((apiary, index) =>
+                    {apiaries.reverse().map((apiary, index) =>
                         <ApiaryListItem
                             key={index}
                             apiaryId={apiary._id}
