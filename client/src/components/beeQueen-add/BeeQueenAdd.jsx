@@ -8,6 +8,7 @@ import Form from 'react-bootstrap/Form';
 
 import { useForm } from '../../hooks/useForm';
 import requester from '../../api/requester';
+import { useAddBeeQueen } from '../../hooks/useBeeQueens';
 
 const initialFormValues = {
     isAlive: true,
@@ -18,16 +19,21 @@ const initialFormValues = {
 
 export default function BeeQueenAdd() {
     const navigate = useNavigate();
-    const { values, changeHandler, submitHandler } = useForm(initialFormValues, submitHiveHandler);
-    const [isLoading, setIsLoading] = useState(false);
+    const addBeeQueenHandler = useAddBeeQueen();
+    const [isAdding, setIsAdding] = useState(false);
 
-    async function submitHiveHandler() {
-        setIsLoading(true);
-        await requester.post('http://localhost:3030/jsonstore/beeQueens', values);
+    const submitBeeQueenHandler = async (values) => {
+        try {
+            setIsAdding(true);
+            await addBeeQueenHandler(values);
+            setIsAdding(false);
+            navigate(`/beeQueens`);
+        } catch (error) {
+            alert(error.message);
+        }
+    };
 
-        setIsLoading(false);
-        navigate(`/beeQueens`);
-    }
+    const { values, changeHandler, submitHandler } = useForm(initialFormValues, submitBeeQueenHandler);
 
     return (
         <Form onSubmit={submitHandler}>
@@ -40,6 +46,7 @@ export default function BeeQueenAdd() {
                         value={values.year}
                         onChange={changeHandler}
                         required
+                        disabled={isAdding}
                     />
                     <Form.Label>Year</Form.Label>
                 </Form.Group>
@@ -49,6 +56,7 @@ export default function BeeQueenAdd() {
                         name="colorMark"
                         value={values.colorMark}
                         onChange={changeHandler}
+                        disabled={isAdding}
                     />
                     <Form.Label>Color Mark</Form.Label>
                 </Form.Group>
@@ -57,7 +65,8 @@ export default function BeeQueenAdd() {
                         name="hive"
                         value={values.hive}
                         onChange={changeHandler}
-                        required>
+                        required
+                        disabled={isAdding}>
                         <option>Open this select menu</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
@@ -66,11 +75,11 @@ export default function BeeQueenAdd() {
                 </Form.Group>
                 <Row>
                     <Col xs={6} md={6} lg={6}>
-                        <Button className='form-control' onClick={() => navigate(-1)}>Back</Button>
+                        <Button className='form-control' onClick={() => navigate(-1)} disabled={isAdding}>Back</Button>
                     </Col>
                     <Col xs={6} md={6} lg={6}>
-                        <Button className='form-control' type="submit" variant='success' disabled={isLoading}>
-                            {isLoading
+                        <Button className='form-control' type="submit" variant='success' disabled={isAdding}>
+                            {isAdding
                                 ? 'Adding...'
                                 : 'Add'}
                         </Button>

@@ -1,35 +1,32 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import Table from 'react-bootstrap/Table';
-import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/esm/Button';
+import { useDeleteBeeQueen, useGetAllBeeQueens } from '../../hooks/useBeeQueens';
+
+import { Col, Row, Table, Container, Button } from 'react-bootstrap';
 
 import BeeQueenListItem from './beeQueen-list-item/BeeQueenListItem';
-import { Col, Row } from 'react-bootstrap';
 import Loading from '../loading/Loading';
-import { useFetch } from '../../hooks/useFetch';
 import Delete from '../delete/Delete';
-import requester from '../../api/requester';
 
 export default function BeeQueenList() {
-    const { data: beeQueens, isFetching, refetch } = useFetch('http://localhost:3030/jsonstore/beeQueens', []);
+    const { beeQueens, isFetching, refetch } = useGetAllBeeQueens();
+    const deleteBeeQueenHandler = useDeleteBeeQueen();
     const [showDeleteById, setShowDeleteById] = useState(null);
 
-    function deleteClickHandler(beeQueenId) {
-        setShowDeleteById(beeQueenId);
-    }
+    const deleteClickHandler = (beeQueenId) => { setShowDeleteById(beeQueenId); };
+    const closeHandler = () => { setShowDeleteById(null); };
 
-    function closeHandler() {
-        setShowDeleteById(null);
-    }
+    const deleteHandler = async (beeQueenId) => {
+        try {
+            await deleteBeeQueenHandler(beeQueenId);
 
-    async function deleteHandler(beeQueenId) {
-        await requester.del(`http://localhost:3030/jsonstore/beeQueens/${beeQueenId}`);
-
-        setShowDeleteById(null);
-        refetch();
-    }
+            setShowDeleteById(null);
+            refetch();
+        } catch (error) {
+            alert(error.message);
+        };
+    };
 
     return (
         <>

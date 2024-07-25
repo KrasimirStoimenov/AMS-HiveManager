@@ -34,7 +34,7 @@ export default function HiveAdd() {
         } catch (error) {
             alert(error.message);
         }
-    }
+    };
 
     const { values, changeHandler, submitHandler } = useForm(initialFormValues, submitHiveHandler);
 

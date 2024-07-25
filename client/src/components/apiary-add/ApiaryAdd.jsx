@@ -28,7 +28,7 @@ export default function ApiaryAdd() {
         } catch (error) {
             alert(error.message);
         }
-    }
+    };
 
     const { values, changeHandler, submitHandler } = useForm(initialFormValues, submitFormHandler);
 
