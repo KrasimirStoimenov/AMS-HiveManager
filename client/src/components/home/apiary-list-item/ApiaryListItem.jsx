@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 
 import HiveCard from './hive-card/HiveCard';
 import Loading from '../../loading/Loading';
-import { useFetch } from '../../../hooks/useFetch';
+import { useGetAllHives } from '../../../hooks/useHives';
 
 export default function ApiaryListItem({
     apiaryId,
@@ -15,7 +15,7 @@ export default function ApiaryListItem({
     apiaryLocation,
     eventKey
 }) {
-    const { data: apiaryHives, isFetching } = useFetch('http://localhost:3030/jsonstore/hives', []);
+    const { hives: apiaryHives, isFetching } = useGetAllHives();
 
     const [showAddHiveButton, setShowAddHiveButton] = useState(true);
     const handleShow = () => setShowAddHiveButton(true);
@@ -35,7 +35,7 @@ export default function ApiaryListItem({
                 {isFetching
                     ? <Loading />
                     : <Row xs={1} md={3} lg={4} className="g-4">
-                        {Object.values(apiaryHives).map(hive =>
+                        {apiaryHives.map(hive =>
                             <HiveCard
                                 key={hive._id}
                                 hive={hive}

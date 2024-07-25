@@ -1,11 +1,14 @@
 import { useParams } from 'react-router-dom';
+
+import { useGetHiveById } from '../../hooks/useHives';
+
 import { Container, Row, Col, Card, ListGroup, Button } from 'react-bootstrap';
+
 import Loading from '../loading/Loading';
-import { useFetch } from '../../hooks/useFetch';
 
 export default function HiveDetails() {
     const { hiveId } = useParams();
-    const { data: hive, isFetching } = useFetch(`http://localhost:3030/jsonstore/hives/${hiveId}`, {});
+    const { hive, isFetching } = useGetHiveById(hiveId);
 
     return (
         < Container className="my-5" >

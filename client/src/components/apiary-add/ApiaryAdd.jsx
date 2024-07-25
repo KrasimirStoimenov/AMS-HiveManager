@@ -16,15 +16,14 @@ const initialFormValues = {
 
 export default function ApiaryAdd() {
     const navigate = useNavigate();
-    const apiaryAdd = useAddApiary();
-    const [isLoading, setIsLoading] = useState(false);
+    const addApiaryHandler = useAddApiary();
+    const [isAdding, setisAdding] = useState(false);
 
     const submitFormHandler = async (values) => {
         try {
-            setIsLoading(true);
-            await apiaryAdd(values);
-            setIsLoading(false);
-
+            setisAdding(true);
+            await addApiaryHandler(values);
+            setisAdding(false);
             navigate(`/`);
         } catch (error) {
             alert(error.message);
@@ -45,6 +44,7 @@ export default function ApiaryAdd() {
                         value={values.name}
                         onChange={changeHandler}
                         required
+                        disabled={isAdding}
                     />
                     <Form.Label>Name</Form.Label>
                 </Form.Group>
@@ -55,17 +55,18 @@ export default function ApiaryAdd() {
                         value={values.location}
                         onChange={changeHandler}
                         required
+                        disabled={isAdding}
                     />
                     <Form.Label>Location</Form.Label>
                 </Form.Group>
 
                 <Row>
                     <Col xs={6} md={6} lg={6}>
-                        <Button className='form-control' onClick={() => navigate(-1)}>Back</Button>
+                        <Button className='form-control' onClick={() => navigate(-1)} disabled={isAdding}>Back</Button>
                     </Col>
                     <Col xs={6} md={6} lg={6}>
-                        <Button className='form-control' type="submit" variant='success' disabled={isLoading}>
-                            {isLoading
+                        <Button className='form-control' type="submit" variant='success' disabled={isAdding}>
+                            {isAdding
                                 ? 'Adding...'
                                 : 'Add'}
                         </Button>

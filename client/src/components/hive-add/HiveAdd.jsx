@@ -8,6 +8,7 @@ import Form from 'react-bootstrap/Form';
 
 import { useForm } from '../../hooks/useForm';
 import requester from '../../api/requester';
+import { useAddHive } from '../../hooks/useHives';
 
 const initialFormValues = {
     number: '',
@@ -21,16 +22,21 @@ const initialFormValues = {
 
 export default function HiveAdd() {
     const navigate = useNavigate();
-    const { values, changeHandler, submitHandler } = useForm(initialFormValues, submitHiveHandler);
-    const [isLoading, setIsLoading] = useState(false);
+    const addHiveHandler = useAddHive();
+    const [isAdding, setIsAdding] = useState(false);
 
-    async function submitHiveHandler() {
-        setIsLoading(true);
-        await requester.post('http://localhost:3030/jsonstore/hives', values);
-
-        setIsLoading(false);
-        navigate(`/`);
+    const submitHiveHandler = async (values) => {
+        try {
+            setIsAdding(true);
+            await addHiveHandler(values);
+            setIsAdding(false);
+            navigate(`/`);
+        } catch (error) {
+            alert(error.message);
+        }
     }
+
+    const { values, changeHandler, submitHandler } = useForm(initialFormValues, submitHiveHandler);
 
     return (
         <Form onSubmit={submitHandler}>
@@ -43,6 +49,7 @@ export default function HiveAdd() {
                         value={values.number}
                         onChange={changeHandler}
                         required
+                        disabled={isAdding}
                     />
                     <Form.Label>Number</Form.Label>
                 </Form.Group>
@@ -53,6 +60,7 @@ export default function HiveAdd() {
                         value={values.type}
                         onChange={changeHandler}
                         required
+                        disabled={isAdding}
                     />
                     <Form.Label>Type</Form.Label>
                 </Form.Group>
@@ -63,6 +71,7 @@ export default function HiveAdd() {
                         value={values.status}
                         onChange={changeHandler}
                         required
+                        disabled={isAdding}
                     />
                     <Form.Label>Status</Form.Label>
                 </Form.Group>
@@ -72,6 +81,7 @@ export default function HiveAdd() {
                         name="color"
                         value={values.color}
                         onChange={changeHandler}
+                        disabled={isAdding}
                     />
                     <Form.Label>Color</Form.Label>
                 </Form.Group>
@@ -82,6 +92,7 @@ export default function HiveAdd() {
                         value={values.dateBought}
                         onChange={changeHandler}
                         required
+                        disabled={isAdding}
                     />
                     <Form.Label>Date Bought</Form.Label>
                 </Form.Group>
@@ -92,6 +103,7 @@ export default function HiveAdd() {
                         value={values.timesUsedCount}
                         onChange={changeHandler}
                         required
+                        disabled={isAdding}
                     />
                     <Form.Label>Times Used Count</Form.Label>
                 </Form.Group>
@@ -100,7 +112,8 @@ export default function HiveAdd() {
                         name="apiary"
                         value={values.apiary}
                         onChange={changeHandler}
-                        required>
+                        required
+                        disabled={isAdding}>
                         <option>Open this select menu</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
@@ -109,11 +122,11 @@ export default function HiveAdd() {
                 </Form.Group>
                 <Row>
                     <Col xs={6} md={6} lg={6}>
-                        <Button className='form-control' onClick={() => navigate(-1)}>Back</Button>
+                        <Button className='form-control' onClick={() => navigate(-1)} disabled={isAdding}>Back</Button>
                     </Col>
                     <Col xs={6} md={6} lg={6}>
-                        <Button className='form-control' type="submit" variant='success' disabled={isLoading}>
-                            {isLoading
+                        <Button className='form-control' type="submit" variant='success' disabled={isAdding}>
+                            {isAdding
                                 ? 'Adding...'
                                 : 'Add'}
                         </Button>
