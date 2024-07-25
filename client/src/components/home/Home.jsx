@@ -23,7 +23,7 @@ export default function Home() {
                 : <Accordion defaultActiveKey="0">
                     {apiaries.reverse().map((apiary, index) =>
                         <ApiaryListItem
-                            key={index}
+                            key={apiary._id}
                             apiaryId={apiary._id}
                             apiaryName={apiary.name}
                             apiaryLocation={apiary.location}
