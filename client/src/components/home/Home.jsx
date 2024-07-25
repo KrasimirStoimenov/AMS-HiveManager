@@ -6,10 +6,10 @@ import Button from 'react-bootstrap/Button';
 
 import ApiaryListItem from './apiary-list-item/ApiaryListItem';
 import Loading from '../loading/Loading';
-import { useFetch } from '../../hooks/useFetch';
+import { useGetAllApiaries } from '../../hooks/useApiaries';
 
 export default function Home() {
-    const { data: apiaries, isFetching } = useFetch('http://localhost:3030/jsonstore/apiaries', []);
+    const { apiaries, isFetching } = useGetAllApiaries();
 
     return (
         <>
@@ -21,7 +21,7 @@ export default function Home() {
             {isFetching
                 ? <Loading />
                 : <Accordion defaultActiveKey="0">
-                    {Object.values(apiaries).map((apiary, index) =>
+                    {apiaries.map((apiary, index) =>
                         <ApiaryListItem
                             key={index}
                             apiaryId={apiary._id}

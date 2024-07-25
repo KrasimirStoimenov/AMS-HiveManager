@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row';
 import Form from 'react-bootstrap/Form';
 
-import requester from '../../api/requester';
+import { useAddApiary } from '../../hooks/useApiaries';
 
 const initialFormValues = {
     name: '',
@@ -16,16 +16,23 @@ const initialFormValues = {
 
 export default function ApiaryAdd() {
     const navigate = useNavigate();
-    const { values, changeHandler, submitHandler } = useForm(initialFormValues, submitFormHandler);
+    const apiaryAdd = useAddApiary();
     const [isLoading, setIsLoading] = useState(false);
 
-    async function submitFormHandler(values) {
-        setIsLoading(true);
-        await requester.post('http://localhost:3030/jsonstore/apiaries', values);
+    const submitFormHandler = async (values) => {
+        try {
+            setIsLoading(true);
+            await apiaryAdd(values);
+            setIsLoading(false);
 
-        setIsLoading(false);
-        navigate(`/`);
+            navigate(`/`);
+        } catch (error) {
+            alert(error.message);
+        }
     }
+
+    const { values, changeHandler, submitHandler } = useForm(initialFormValues, submitFormHandler);
+
 
     return (
         <Form onSubmit={submitHandler}>
