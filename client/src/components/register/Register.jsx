@@ -1,5 +1,5 @@
 import { useRegister } from '../../hooks/useAuth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 
 import { Container, Row, Col, Card, Form, Button, FloatingLabel } from 'react-bootstrap';
@@ -77,6 +77,9 @@ export default function Register() {
                                 <Button variant="primary" type="submit" className="w-100 p-2">Register</Button>
                             </Form>
                         </Card.Body>
+                        <Card.Footer className="text-center">
+                            <small>Already have an account? <Link to='/login'>Sign In</Link></small>
+                        </Card.Footer>
                     </Card>
                 </Col>
             </Row>
