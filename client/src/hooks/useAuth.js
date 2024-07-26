@@ -5,12 +5,11 @@ import authAPI from "../api/auth-api";
 export const useLogin = () => {
     const { changeAuthState } = useContext(AuthContext);
 
-    const loginHandler = async (loginData) => {
+    const login = async (loginData) => {
 
         const result = await authAPI.login(loginData);
-        console.log(result);
         changeAuthState(result);
     }
 
-    return loginHandler;
+    return login;
 }
