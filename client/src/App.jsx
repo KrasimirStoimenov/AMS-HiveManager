@@ -16,6 +16,7 @@ import BeeQueenAdd from './components/beeQueen-add/BeeQueenAdd';
 import { useState } from 'react';
 import { AuthContext } from './contexts/AuthContext';
 import Login from './components/login/Login';
+import Register from './components/register/Register';
 
 function App() {
     const [authState, setAuthState] = useState({});
@@ -38,6 +39,7 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/login' element={<Login />} />
+                    <Route path='/register' element={<Register />} />
                     <Route path='/apiaries/add' element={<ApiaryAdd />} />
                     <Route path='/hives/add' element={<HiveAdd />} />
                     <Route path='/hives/:hiveId/details' element={<HiveDetails />} />

@@ -1,11 +1,13 @@
 import requester from "./requester";
 
-const BASE_URL = 'http://localhost:3030/users/login';
+const BASE_URL = 'http://localhost:3030/users';
 
-const login = (loginData) => requester.post(`${BASE_URL}`, loginData)
+const login = (loginData) => requester.post(`${BASE_URL}/login`, loginData)
+const register = (registerData) => requester.post(`${BASE_URL}/register`, registerData)
 
 const authAPI = {
-    login
+    login,
+    register
 }
 
 export default authAPI;

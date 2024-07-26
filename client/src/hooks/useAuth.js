@@ -13,3 +13,15 @@ export const useLogin = () => {
 
     return login;
 }
+
+export const useRegister = () => {
+    const { changeAuthState } = useContext(AuthContext);
+
+    const register = async (registerData) => {
+
+        const result = await authAPI.register(registerData);
+        changeAuthState(result);
+    }
+
+    return register;
+}

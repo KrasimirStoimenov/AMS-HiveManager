@@ -1,33 +1,37 @@
-import { useLogin } from '../../hooks/useAuth';
+import { useRegister } from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 
 import { Container, Row, Col, Card, Form, Button, FloatingLabel } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 const initialFormValues = {
     email: '',
-    password: ''
+    password: '',
+    'confirm-password': ''
 };
 
-export default function Login() {
+export default function Register() {
     const navigate = useNavigate();
-    const login = useLogin();
+    const register = useRegister();
 
-    const loginHandler = async (values) => {
+    const registerHandler = async (values) => {
         if (values.email == '' || values.password == '') {
             return alert('All fields are required!');
         }
 
+        if (values.password != values['confirm-password']) {
+            return alert('Passwords don\'t match!');
+        }
+
         try {
-            await login(values);
+            await register(values);
             navigate('/');
         } catch (error) {
             alert(error.message);
         }
     };
 
-    const { values, changeHandler, submitHandler } = useForm(initialFormValues, loginHandler);
+    const { values, changeHandler, submitHandler } = useForm(initialFormValues, registerHandler);
 
     return (
         <Container>
@@ -35,10 +39,10 @@ export default function Login() {
                 <Col md={6} lg={4}>
                     <Card className="shadow-sm">
                         <Card.Body>
-                            <Card.Title as={'h2'} className="text-center mb-4 mt-2">Login</Card.Title>
+                            <Card.Title as={'h2'} className="text-center mb-4 mt-2">Register</Card.Title>
                             <Form onSubmit={submitHandler}>
                                 <Form.Group controlId="formBasicEmail" className="mb-4">
-                                    <FloatingLabel controlId="floatingEmailAddress" label="Email address">
+                                    <FloatingLabel controlId="floatingEmailAddress" label="Email Address">
                                         <Form.Control
                                             type="email"
                                             name="email"
@@ -59,12 +63,20 @@ export default function Login() {
                                         />
                                     </FloatingLabel>
                                 </Form.Group>
-                                <Button variant="primary" type="submit" className="w-100 p-2">Login</Button>
+                                <Form.Group controlId="formConfirmPassword" className="mb-4">
+                                    <FloatingLabel controlId="confirm-password" label="Confirm Password">
+                                        <Form.Control
+                                            type="password"
+                                            name="confirm-password"
+                                            placeholder="Confirm Password"
+                                            value={values['confirm-password']}
+                                            onChange={changeHandler}
+                                        />
+                                    </FloatingLabel>
+                                </Form.Group>
+                                <Button variant="primary" type="submit" className="w-100 p-2">Register</Button>
                             </Form>
                         </Card.Body>
-                        <Card.Footer className="text-center">
-                            <small>Don't have an account? <Link to='/register'>Sign Up</Link></small>
-                        </Card.Footer>
                     </Card>
                 </Col>
             </Row>
