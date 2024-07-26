@@ -59,7 +59,7 @@ export default function Login() {
                                         />
                                     </FloatingLabel>
                                 </Form.Group>
-                                <Button variant="primary" type="submit" className="w-100 p-2">Login</Button>
+                                <Button variant="primary" type="submit" className="w-100 p-2">Sign In</Button>
                             </Form>
                         </Card.Body>
                         <Card.Footer className="text-center">

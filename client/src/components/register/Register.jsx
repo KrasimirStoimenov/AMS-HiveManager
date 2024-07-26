@@ -74,7 +74,7 @@ export default function Register() {
                                         />
                                     </FloatingLabel>
                                 </Form.Group>
-                                <Button variant="primary" type="submit" className="w-100 p-2">Register</Button>
+                                <Button variant="primary" type="submit" className="w-100 p-2">Sign Up</Button>
                             </Form>
                         </Card.Body>
                         <Card.Footer className="text-center">

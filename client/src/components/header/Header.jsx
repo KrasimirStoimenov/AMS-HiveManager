@@ -19,13 +19,15 @@ export default function Header() {
                         <Nav.Link as={Link} to='/hives'>Hives</Nav.Link>
                         <Nav.Link as={Link} to='/beeQueens'>BeeQueens</Nav.Link>
                     </Nav>
-                    {!isAuthenticated && (
-                        <Nav>
-                            <Nav.Link as={Link} to='/login'>Login</Nav.Link>
+                    {isAuthenticated
+                        ? (<Nav>
+                            <Nav.Link as={Link} to='/logout'><i className="fa fa-fw fa-sign-out-alt text-dark mr-4"></i>Logout</Nav.Link>
+                        </Nav>)
+                        : (<Nav>
+                            <Nav.Link as={Link} to='/login'><i className="fa fa-fw fa-sign-out-alt text-dark mr-4"></i>Login</Nav.Link>
                             <Nav.Link as={Link} to='/register'>Register</Nav.Link>
-                        </Nav>
-                    )}
-
+                        </Nav>)
+                    }
                 </Navbar.Collapse>
             </Container>
         </Navbar>

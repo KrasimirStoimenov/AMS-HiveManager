@@ -4,7 +4,6 @@ import authAPI from "../api/auth-api";
 
 export const useLogin = () => {
     const { changeAuthState } = useContext(AuthContext);
-
     const login = async (loginData) => {
 
         const result = await authAPI.login(loginData);
@@ -16,7 +15,6 @@ export const useLogin = () => {
 
 export const useRegister = () => {
     const { changeAuthState } = useContext(AuthContext);
-
     const register = async (registerData) => {
 
         const result = await authAPI.register(registerData);
@@ -24,4 +22,15 @@ export const useRegister = () => {
     }
 
     return register;
+}
+
+export const useLogout = () => {
+    const { changeAuthState } = useContext(AuthContext);
+    const logout = async () => {
+
+        await authAPI.logout();
+        changeAuthState({});
+    }
+
+    return logout;
 }

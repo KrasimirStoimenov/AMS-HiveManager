@@ -17,6 +17,7 @@ import { useState } from 'react';
 import { AuthContext } from './contexts/AuthContext';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
+import Logout from './components/logout/Logout';
 
 function App() {
     const [authState, setAuthState] = useState({});
@@ -40,6 +41,7 @@ function App() {
                     <Route path='/' element={<Home />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
+                    <Route path='/logout' element={<Logout />} />
                     <Route path='/apiaries/add' element={<ApiaryAdd />} />
                     <Route path='/hives/add' element={<HiveAdd />} />
                     <Route path='/hives/:hiveId/details' element={<HiveDetails />} />
