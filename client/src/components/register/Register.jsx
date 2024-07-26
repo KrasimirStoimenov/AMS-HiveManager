@@ -15,16 +15,20 @@ export default function Register() {
     const register = useRegister();
 
     const registerHandler = async (values) => {
-        if (values.email == '' || values.password == '') {
+        const email = values.email;
+        const password = values.password;
+        const confirmPassword = values['confirm-password'];
+
+        if (email == '' || password == '') {
             return alert('All fields are required!');
         }
 
-        if (values.password != values['confirm-password']) {
+        if (password != confirmPassword) {
             return alert('Passwords don\'t match!');
         }
 
         try {
-            await register(values);
+            await register(email, password);
             navigate('/');
         } catch (error) {
             alert(error.message);

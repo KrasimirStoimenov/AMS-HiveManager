@@ -24,13 +24,14 @@ function App() {
 
     const changeAuthState = (state) => {
         setAuthState(state);
-    }
+    };
+
     const contextData = {
         email: authState.email,
         accessToken: authState.accessToken,
         isAuthenticated: !!authState.email,
         changeAuthState
-    }
+    };
 
     return (
         <AuthContext.Provider value={contextData}>
