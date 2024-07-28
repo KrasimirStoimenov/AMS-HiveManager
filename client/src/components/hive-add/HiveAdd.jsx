@@ -29,11 +29,12 @@ export default function HiveAdd() {
         try {
             setIsAdding(true);
             await addHiveHandler(values);
-            setIsAdding(false);
             navigate(`/`);
         } catch (error) {
             alert(error.message);
-        }
+        } finally {
+            setIsAdding(false);
+        };
     };
 
     const { values, changeHandler, submitHandler } = useForm(initialFormValues, submitHiveHandler);

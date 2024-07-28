@@ -23,11 +23,12 @@ export default function ApiaryAdd() {
         try {
             setisAdding(true);
             await addApiaryHandler(values);
-            setisAdding(false);
             navigate(`/`);
         } catch (error) {
             alert(error.message);
-        }
+        } finally {
+            setisAdding(false);
+        };
     };
 
     const { values, changeHandler, submitHandler } = useForm(initialFormValues, submitFormHandler);

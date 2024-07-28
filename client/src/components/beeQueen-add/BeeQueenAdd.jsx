@@ -26,10 +26,11 @@ export default function BeeQueenAdd() {
         try {
             setIsAdding(true);
             await addBeeQueenHandler(values);
-            setIsAdding(false);
             navigate(`/beeQueens`);
         } catch (error) {
             alert(error.message);
+        } finally {
+            setIsAdding(false);
         }
     };
 
