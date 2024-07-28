@@ -39,6 +39,25 @@ export const useGetHiveById = (hiveId) => {
     }
 }
 
+export const useGetByApiaryId = (apiaryId) => {
+    const [apiaryHives, setApiaryHives] = useState([]);
+    const [isFetching, setIsFetching] = useState(true);
+
+    useEffect(() => {
+        (async () => {
+            const result = await hivesAPI.getByApiaryId(apiaryId);
+
+            setApiaryHives(Object.values(result));
+            setIsFetching(false);
+        })();
+    }, []);
+
+    return {
+        apiaryHives,
+        isFetching
+    }
+}
+
 export const useAddHive = () => {
     const addHiveHandler = (data) => hivesAPI.add(data);
 
