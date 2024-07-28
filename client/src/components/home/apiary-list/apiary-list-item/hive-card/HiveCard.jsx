@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
+import { Card, Col } from 'react-bootstrap';
 
 export default function HiveCard({
     hive

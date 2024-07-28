@@ -1,13 +1,11 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useGetAllHives } from '../../../../hooks/useHives';
 
-import Row from 'react-bootstrap/Row';
-import Accordion from 'react-bootstrap/Accordion';
-import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
+import { Row, Accordion, Button } from 'react-bootstrap';
 
 import HiveCard from './hive-card/HiveCard';
-import Loading from '../../loading/Loading';
-import { useGetAllHives } from '../../../hooks/useHives';
+import Loading from '../../../loading/Loading';
 
 export default function ApiaryListItem({
     apiaryId,

@@ -5,7 +5,11 @@ import { Navigate } from 'react-router-dom';
 export default function Logout() {
     const logout = useLogout();
 
-    logout();
+    useEffect(() => {
+        (async () => {
+            await logout();
+        })();
+    }, [])
 
-    return (<Navigate to={'/login'} />);
+    return (<Navigate to={'/'} />);
 };

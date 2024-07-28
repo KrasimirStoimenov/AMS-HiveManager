@@ -1,36 +1,18 @@
-import { Link } from 'react-router-dom';
-import styles from './Home.module.css';
 
-import Accordion from 'react-bootstrap/Accordion';
-import Button from 'react-bootstrap/Button';
+import { useAuthContext } from '../../contexts/AuthContext';
 
-import ApiaryListItem from './apiary-list-item/ApiaryListItem';
-import Loading from '../loading/Loading';
-import { useGetAllApiaries } from '../../hooks/useApiaries';
+import GuestHome from './guest-home/GuestHome';
+import ApiaryList from './apiary-list/ApiaryList';
 
 export default function Home() {
-    const { apiaries, isFetching } = useGetAllApiaries();
+    const { isAuthenticated } = useAuthContext();
+
 
     return (
         <>
-            <h1 className='mb-5 mt-5'>AMS-HiveManager</h1>
-            <div className={`${styles.subheader}`}>
-                <h4 className='text-primary'>Apiaries with hives:</h4>
-                <Button as={Link} to='/apiaries/add' variant="outline-primary"><i className="bi bi-plus-lg"></i> Add Apiary</Button>
-            </div>
-            {isFetching
-                ? <Loading />
-                : <Accordion defaultActiveKey="0">
-                    {apiaries.reverse().map((apiary, index) =>
-                        <ApiaryListItem
-                            key={apiary._id}
-                            apiaryId={apiary._id}
-                            apiaryName={apiary.name}
-                            apiaryLocation={apiary.location}
-                            eventKey={index.toString()}
-                        />
-                    )}
-                </Accordion>
+            {isAuthenticated
+                ? <ApiaryList />
+                : <GuestHome />
             }
         </>
     );
