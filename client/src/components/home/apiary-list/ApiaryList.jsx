@@ -2,7 +2,7 @@ import { useGetAllApiaries } from '../../../hooks/useApiaries';
 import styles from './ApiaryList.module.css';
 
 import { Link } from 'react-router-dom';
-import { Accordion, Button } from 'react-bootstrap';
+import { Accordion, Button, Row } from 'react-bootstrap';
 import ApiaryListItem from './apiary-list-item/ApiaryListItem';
 import Loading from '../../loading/Loading';
 
@@ -19,17 +19,24 @@ export default function ApiaryList() {
             </div>
             {isFetching
                 ? <Loading />
-                : <Accordion defaultActiveKey="0">
-                    {apiaries.reverse().map((apiary, index) =>
-                        <ApiaryListItem
-                            key={apiary._id}
-                            apiaryId={apiary._id}
-                            apiaryName={apiary.name}
-                            apiaryLocation={apiary.location}
-                            eventKey={index.toString()}
-                        />
-                    )}
-                </Accordion>
+                : <>
+                    {apiaries.length > 0
+                        ? <Accordion defaultActiveKey="0">
+                            {apiaries.reverse().map((apiary, index) =>
+                                <ApiaryListItem
+                                    key={apiary._id}
+                                    apiaryId={apiary._id}
+                                    apiaryName={apiary.name}
+                                    apiaryLocation={apiary.location}
+                                    eventKey={index.toString()}
+                                />
+                            )}
+                        </Accordion>
+                        : <Accordion >
+                            <Accordion.Header>It looks like you haven't added any apiaries yet. Start managing your application by adding your first apiary.</Accordion.Header>
+                        </Accordion>
+                    }
+                </>
             }
         </>
     );

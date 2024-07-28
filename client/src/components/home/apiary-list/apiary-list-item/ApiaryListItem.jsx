@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useGetByApiaryId } from '../../../../hooks/useHives';
 
 import { Link } from 'react-router-dom';
-import { Row, Accordion, Button } from 'react-bootstrap';
+import { Row, Accordion, Button, Container } from 'react-bootstrap';
 
 import HiveCard from './hive-card/HiveCard';
 import Loading from '../../../loading/Loading';
@@ -31,20 +31,22 @@ export default function ApiaryListItem({
 
                 {isFetching
                     ? <Loading />
-                    : <Row xs={1} md={3} lg={4} className="g-4">
-                        {apiaryHives.length > 0
-                            ? (apiaryHives.map(hive =>
-                                <HiveCard
-                                    key={hive._id}
-                                    hive={hive}
-                                />
-                            ))
-                            : <p>It looks like you haven't added any hives yet. Start managing your apiary by adding your first hive.</p>
-                        }
+                    : <>
+                        {(apiaryHives.length > 0
+                            ? <Row xs={1} md={3} lg={4} className="g-4">
+                                {apiaryHives.map(hive =>
+                                    <HiveCard
+                                        key={hive._id}
+                                        hive={hive}
+                                    />
+                                )}
+                            </Row>
+                            : <Row className="fst-italic p-1">It looks like you haven't added any hives yet. Start managing your apiary by adding your first hive.</Row>
+                        )}
 
-                    </Row>
+                    </>
                 }
             </Accordion.Body>
-        </Accordion.Item>
+        </Accordion.Item >
     );
 }
