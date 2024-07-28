@@ -10,7 +10,7 @@ const getByApiaryId = (apiaryId) => {
     });
 
     return requester.get(`${BASE_URL}?${params.toString()}`);
-}
+};
 const add = (data) => requester.post(`${BASE_URL}`, data);
 
 const hivesAPI = {

@@ -7,20 +7,25 @@ import Row from 'react-bootstrap/esm/Row';
 import Form from 'react-bootstrap/Form';
 
 import { useForm } from '../../hooks/useForm';
-import requester from '../../api/requester';
-import { useAddBeeQueen } from '../../hooks/useBeeQueens';
+import { useAddBeeQueen, useGetAllBeeQueens } from '../../hooks/useBeeQueens';
+import { useGetAllHives } from '../../hooks/useHives';
 
 const initialFormValues = {
     isAlive: true,
     year: new Date().getFullYear(),
     colorMark: '',
-    hive: '',
+    hiveId: '',
 };
 
 export default function BeeQueenAdd() {
     const navigate = useNavigate();
     const addBeeQueenHandler = useAddBeeQueen();
     const [isAdding, setIsAdding] = useState(false);
+
+    const { beeQueens } = useGetAllBeeQueens();
+    const { hives } = useGetAllHives();
+    const hiveIdsForBeeQueens = new Set(beeQueens.map(beeQueen => beeQueen.hiveId));
+    const hivesWithoutBeeQueen = hives.filter(hive => !hiveIdsForBeeQueens.has(hive._id));
 
     const submitBeeQueenHandler = async (values) => {
         try {
@@ -61,16 +66,15 @@ export default function BeeQueenAdd() {
                     />
                     <Form.Label>Color Mark</Form.Label>
                 </Form.Group>
-                <Form.Group className="field" controlId="hive">
+                <Form.Group className="field" controlId="hiveId">
                     <Form.Select
-                        name="hive"
-                        value={values.hive}
+                        name="hiveId"
+                        value={values.hiveId}
                         onChange={changeHandler}
                         required
                         disabled={isAdding}>
-                        <option>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
+                        <option>Select hive:</option>
+                        {hivesWithoutBeeQueen.map(hive => <option key={hive._id} value={hive._id}>{hive.number} - {hive.color}</option>)}
                     </Form.Select>
                     <Form.Label>Hive</Form.Label>
                 </Form.Group>
