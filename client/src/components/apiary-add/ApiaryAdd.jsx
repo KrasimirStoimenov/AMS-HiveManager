@@ -33,7 +33,6 @@ export default function ApiaryAdd() {
 
     const { values, changeHandler, submitHandler } = useForm(initialFormValues, submitFormHandler);
 
-
     return (
         <Form onSubmit={submitHandler}>
             <fieldset>

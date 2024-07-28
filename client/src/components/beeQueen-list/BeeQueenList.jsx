@@ -13,20 +13,20 @@ export default function BeeQueenList() {
     const { beeQueens, isFetching, changeBeeQueens } = useGetAllBeeQueens();
     const deleteBeeQueenHandler = useDeleteBeeQueen();
     const [showDeleteById, setShowDeleteById] = useState(null);
-    const [deleting, setDeleting] = useState(false);
+    const [isDeleting, setIsDeleting] = useState(false);
 
     const deleteClickHandler = (beeQueenId) => { setShowDeleteById(beeQueenId); };
     const closeHandler = () => { setShowDeleteById(null); };
 
     const deleteHandler = async (beeQueenId) => {
         try {
-            setDeleting(true);
+            setIsDeleting(true);
             await deleteBeeQueenHandler(beeQueenId);
             changeBeeQueens(oldState => oldState.filter(beeQueen => beeQueen._id !== beeQueenId));
         } catch (error) {
             alert(error.message);
         } finally {
-            setDeleting(false);
+            setIsDeleting(false);
             setShowDeleteById(null);
         };
     };
@@ -37,7 +37,7 @@ export default function BeeQueenList() {
                 <Delete
                     onClose={closeHandler}
                     onDelete={() => deleteHandler(showDeleteById)}
-                    isDeleting={deleting}
+                    isDeleting={isDeleting}
                 />
             )}
             <Container>
