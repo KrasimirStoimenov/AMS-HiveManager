@@ -31,9 +31,9 @@ export const useRegister = () => {
 
 export const useLogout = () => {
     const { changeAuthState } = useAuthContext();
-    const logoutHandler = async () => {
+    const logoutHandler = () => {
 
-        await authAPI.logout();
+        authAPI.logout();
         changeAuthState({});
     };
 

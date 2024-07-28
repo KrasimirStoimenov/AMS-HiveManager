@@ -12,7 +12,7 @@ export default function ApiaryList() {
 
     return (
         <>
-            <h1 className='mb-5 mt-5'>AMS-HiveManager</h1>
+            <h1 className={`${styles['main-header']}`}>AMS-HiveManager</h1>
             <div className={`${styles.subheader}`}>
                 <h4 className='text-primary'>Apiaries with hives:</h4>
                 <Button as={Link} to='/apiaries/add' variant="outline-primary"><i className="bi bi-plus-lg"></i> Add Apiary</Button>
