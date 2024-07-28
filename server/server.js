@@ -1345,13 +1345,13 @@
                 _id: "227d3c1c-1c77-4dc1-9735-2d33ead51b92",
                 name: "Test",
                 location: "Test",
-                _ownerId: "07f260f4-466c-4607-9a33-f7273b24f1b4"
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8"
             },
             "9740c58b-7ccd-457c-b011-4b78ea87b27b": {
                 _id: "9740c58b-7ccd-457c-b011-4b78ea87b27b",
                 name: "Second test",
                 location: "Second test location",
-                _ownerId: "07f260f4-466c-4607-9a33-f7273b24f1b4"
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8"
             }
         },
         hives: {

@@ -16,8 +16,6 @@ export function useForm(initialValues, submitHandlerCallback) {
         e.preventDefault();
 
         submitHandlerCallback(values);
-        
-        setValues(initialValues);
     }
 
     return {
