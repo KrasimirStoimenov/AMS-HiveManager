@@ -13,28 +13,14 @@ import HiveDetails from './components/hive-details/HiveDetails';
 import HiveAdd from './components/hive-add/HiveAdd';
 import BeeQueenList from './components/beeQueen-list/BeeQueenList';
 import BeeQueenAdd from './components/beeQueen-add/BeeQueenAdd';
-import { useState } from 'react';
-import { AuthContext } from './contexts/AuthContext';
+import { AuthContextProvider } from './contexts/AuthContext';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Logout from './components/logout/Logout';
 
 function App() {
-    const [authState, setAuthState] = useState({});
-
-    const changeAuthState = (state) => {
-        setAuthState(state);
-    };
-
-    const contextData = {
-        email: authState.email,
-        accessToken: authState.accessToken,
-        isAuthenticated: !!authState.email,
-        changeAuthState
-    };
-
     return (
-        <AuthContext.Provider value={contextData}>
+        <AuthContextProvider>
             <Header />
 
             <Container>
@@ -50,7 +36,7 @@ function App() {
                     <Route path='/beeQueens/add' element={<BeeQueenAdd />} />
                 </Routes>
             </Container>
-        </AuthContext.Provider>
+        </AuthContextProvider>
     )
 }
 
