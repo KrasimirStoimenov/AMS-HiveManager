@@ -4,7 +4,6 @@ import beeQueensAPI from "../api/beeQueens-api";
 export const useGetAllBeeQueens = () => {
     const [beeQueens, setBeeQueens] = useState([]);
     const [isFetching, setIsFetching] = useState(true);
-    const [toggleRefetch, setToggleRefetch] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -13,17 +12,16 @@ export const useGetAllBeeQueens = () => {
             setBeeQueens(Object.values(result));
             setIsFetching(false);
         })();
-    }, [toggleRefetch]);
+    }, []);
 
-    function refetch() {
-        setIsFetching(true);
-        setToggleRefetch(state => !state);
+    const changeBeeQueens = (state) => {
+        setBeeQueens(state);
     };
 
     return {
         beeQueens,
-        isFetching,
-        refetch
+        changeBeeQueens,
+        isFetching
     }
 }
 

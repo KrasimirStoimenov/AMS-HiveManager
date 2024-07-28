@@ -10,7 +10,7 @@ import Loading from '../loading/Loading';
 import Delete from '../delete/Delete';
 
 export default function BeeQueenList() {
-    const { beeQueens, isFetching, refetch } = useGetAllBeeQueens();
+    const { beeQueens, isFetching, changeBeeQueens } = useGetAllBeeQueens();
     const deleteBeeQueenHandler = useDeleteBeeQueen();
     const [showDeleteById, setShowDeleteById] = useState(null);
 
@@ -22,7 +22,7 @@ export default function BeeQueenList() {
             await deleteBeeQueenHandler(beeQueenId);
 
             setShowDeleteById(null);
-            refetch();
+            changeBeeQueens(oldState => oldState.filter(beeQueen => beeQueen._id !== beeQueenId));
         } catch (error) {
             alert(error.message);
         };
