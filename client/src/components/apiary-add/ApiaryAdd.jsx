@@ -66,9 +66,7 @@ export default function ApiaryAdd() {
                     </Col>
                     <Col xs={6} md={6} lg={6}>
                         <Button className='form-control' type="submit" variant='success' disabled={isAdding}>
-                            {isAdding
-                                ? 'Adding...'
-                                : 'Add'}
+                            {isAdding ? 'Adding...' : 'Add'}
                         </Button>
                     </Col>
                 </Row>
