@@ -59,7 +59,14 @@ export const useGetByApiaryId = (apiaryId) => {
 }
 
 export const useAddHive = () => {
-    const addHiveHandler = (data) => hivesAPI.add(data);
+    const addHiveHandler = (data) => {
+        const formattedData = {
+            ...data,
+            dateBought: new Date(data.dateBought).toISOString(),
+        };
+
+        hivesAPI.add(formattedData);
+    }
 
     return addHiveHandler;
 }

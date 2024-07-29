@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { useDeleteHive, useGetHiveById } from '../../hooks/useHives';
 
@@ -7,6 +7,7 @@ import { Container, Row, Col, Card, ListGroup, Button } from 'react-bootstrap';
 
 import Loading from '../loading/Loading';
 import Delete from '../delete/Delete';
+import { formatDate } from '../../utils/dateUtils';
 
 export default function HiveDetails() {
     const { hiveId } = useParams();
@@ -65,7 +66,7 @@ export default function HiveDetails() {
                                         <strong>Color:</strong> {hive.color}
                                     </Card.Text>
                                     <Card.Text>
-                                        <strong>Date bought:</strong> {hive.dateBought}
+                                        <strong>Date bought:</strong> {formatDate(hive.dateBought)}
                                     </Card.Text>
                                     <Card.Text>
                                         <strong>Times Used:</strong> {hive.timesUsedCount}
@@ -75,7 +76,7 @@ export default function HiveDetails() {
                                     </Card.Text>
                                     <ListGroup className="my-4">
                                         <ListGroup.Item>
-                                            <strong>Inspections:</strong> TODO: Inspections
+                                            <Link to={`/hives/${hive._id}/inspections`}><strong>Inspections:</strong> TODO: Inspections</Link>
                                         </ListGroup.Item>
                                         <ListGroup.Item>
                                             <strong>Harvests:</strong> TODO: Harvests

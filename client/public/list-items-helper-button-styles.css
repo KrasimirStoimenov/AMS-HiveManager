@@ -1,8 +1,8 @@
-.helper-buttons {
+.list-items-helper-buttons {
     display: flex;
     justify-content: space-evenly;
 }
 
-.helper-buttons button {
+.list-items-helper-buttons button {
     flex-basis: 35%;
 }

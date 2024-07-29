@@ -1,9 +1,11 @@
 import { Routes, Route } from 'react-router-dom'
 
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import './App.css'
-import '../public/input-form-styles.css'
+import './App.css';
+import '../public/input-form-styles.css';
+import '../public/list-items-helper-button-styles.css';
 
+import { AuthContextProvider } from './contexts/AuthContext';
 import Container from 'react-bootstrap/esm/Container'
 
 import Home from './components/home/Home'
@@ -13,10 +15,10 @@ import HiveDetails from './components/hive-details/HiveDetails';
 import HiveAdd from './components/hive-add/HiveAdd';
 import BeeQueenList from './components/beeQueen-list/BeeQueenList';
 import BeeQueenAdd from './components/beeQueen-add/BeeQueenAdd';
-import { AuthContextProvider } from './contexts/AuthContext';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Logout from './components/logout/Logout';
+import HiveInspectionList from './components/hive-details/hive-inspection-list/HiveInspectionList';
 
 function App() {
     return (
@@ -32,6 +34,7 @@ function App() {
                     <Route path='/apiaries/add' element={<ApiaryAdd />} />
                     <Route path='/hives/add' element={<HiveAdd />} />
                     <Route path='/hives/:hiveId/details' element={<HiveDetails />} />
+                    <Route path='/hives/:hiveId/inspections' element={<HiveInspectionList />} />
                     <Route path='/beeQueens' element={<BeeQueenList />} />
                     <Route path='/beeQueens/add' element={<BeeQueenAdd />} />
                 </Routes>
