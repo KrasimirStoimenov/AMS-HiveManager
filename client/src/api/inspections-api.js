@@ -7,11 +7,20 @@ const getByHiveId = (hiveId) => {
         where: `hiveId="${hiveId}"`
     });
 
-    return requester.get(`${BASE_URL}?${params.toString()}`)
-}
+    return requester.get(`${BASE_URL}?${params.toString()}`);
+};
+
+const getCountByHiveId = (hiveId) => {
+    const params = new URLSearchParams({
+        where: `hiveId="${hiveId}"`
+    });
+
+    return requester.get(`${BASE_URL}?${params.toString()}&count`);
+};
 
 const inspectionsAPI = {
     getByHiveId,
-}
+    getCountByHiveId
+};
 
 export default inspectionsAPI;

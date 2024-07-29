@@ -8,11 +8,13 @@ import { Container, Row, Col, Card, ListGroup, Button } from 'react-bootstrap';
 import Loading from '../loading/Loading';
 import Delete from '../delete/Delete';
 import { formatDate } from '../../utils/dateUtils';
+import { useGetInspectionsCountByHiveId } from '../../hooks/useInspections';
 
 export default function HiveDetails() {
     const { hiveId } = useParams();
     const navigate = useNavigate();
     const { hive, isFetching } = useGetHiveById(hiveId);
+    const { hiveInspectionsCount } = useGetInspectionsCountByHiveId(hiveId);
 
     const deleteHiveHandler = useDeleteHive();
     const [showDeleteById, setShowDeleteById] = useState(null);
@@ -76,7 +78,7 @@ export default function HiveDetails() {
                                     </Card.Text>
                                     <ListGroup className="my-4">
                                         <ListGroup.Item>
-                                            <Link to={`/hives/${hive._id}/inspections`}><strong>Inspections:</strong> TODO: Inspections</Link>
+                                            <Link to={`/hives/${hive._id}/inspections`}><strong>Inspections:</strong> {hiveInspectionsCount}</Link>
                                         </ListGroup.Item>
                                         <ListGroup.Item>
                                             <strong>Harvests:</strong> TODO: Harvests
