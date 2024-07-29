@@ -50,7 +50,7 @@ export default function HiveInspectionList() {
                         <h2>Inspections for hive: №{hiveNumber}</h2>
                     </Col>
                     <Col className='text-end pt-1'>
-                        <Button as={Link} to={'/inspections/add'} variant='outline-primary'><i className="bi bi-plus-lg"></i> Add Inspection</Button>
+                        <Button as={Link} to={`/hives/${hiveId}/inspections/add`} variant='outline-primary'><i className="bi bi-plus-lg"></i> Add Inspection</Button>
                     </Col>
                 </Row>
                 {isFetching

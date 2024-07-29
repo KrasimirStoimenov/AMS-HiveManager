@@ -19,6 +19,7 @@ import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Logout from './components/logout/Logout';
 import HiveInspectionList from './components/hive-details/hive-inspection-list/HiveInspectionList';
+import HiveInspectionAdd from './components/hive-details/hive-inspection-list/hive-inspection-add/HiveInspectionAdd';
 
 function App() {
     return (
@@ -35,6 +36,7 @@ function App() {
                     <Route path='/hives/add' element={<HiveAdd />} />
                     <Route path='/hives/:hiveId/details' element={<HiveDetails />} />
                     <Route path='/hives/:hiveId/inspections' element={<HiveInspectionList />} />
+                    <Route path='/hives/:hiveId/inspections/add' element={<HiveInspectionAdd />} />
                     <Route path='/beeQueens' element={<BeeQueenList />} />
                     <Route path='/beeQueens/add' element={<BeeQueenAdd />} />
                 </Routes>
