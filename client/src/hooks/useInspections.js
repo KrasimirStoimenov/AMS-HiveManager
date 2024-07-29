@@ -15,8 +15,13 @@ export const useGetInspectionsByHiveId = (hiveId) => {
         })();
     }, []);
 
+    const changeInspections = (state) => {
+        setHiveInspections(state)
+    };
+
     return {
         hiveInspections,
+        changeInspections,
         isFetching
     };
 };
@@ -39,3 +44,9 @@ export const useGetInspectionsCountByHiveId = (hiveId) => {
         isFetching
     };
 };
+
+export const useDeleteInspection = () => {
+    const deleteInspectionHandler = (inspectionId) => inspectionsAPI.remove(inspectionId);
+
+    return deleteInspectionHandler;
+}

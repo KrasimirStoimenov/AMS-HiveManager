@@ -91,7 +91,7 @@ export const useAddHive = () => {
 }
 
 export const useDeleteHive = () => {
-    const deleteHiveHandler = (hive) => hivesAPI.remove(hive);
+    const deleteHiveHandler = (hiveId) => hivesAPI.remove(hiveId);
 
     return deleteHiveHandler;
 }
