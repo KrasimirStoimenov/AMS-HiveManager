@@ -33,7 +33,7 @@ export const useGetInspectionsCountByHiveId = (hiveId) => {
     useEffect(() => {
         (async () => {
             const result = await inspectionsAPI.getCountByHiveId(hiveId);
-            console.log(result);
+
             setHiveInspectionsCount(result);
             setIsFetching(false);
         })();
