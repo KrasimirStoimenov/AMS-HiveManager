@@ -39,7 +39,7 @@ export const useGetHiveById = (hiveId) => {
     }
 }
 
-export const useGetByApiaryId = (apiaryId) => {
+export const useGetHiveByApiaryId = (apiaryId) => {
     const [apiaryHives, setApiaryHives] = useState([]);
     const [isFetching, setIsFetching] = useState(true);
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useGetByApiaryId } from '../../../../hooks/useHives';
+import { useGetHiveByApiaryId } from '../../../../hooks/useHives';
 
 import { Link } from 'react-router-dom';
 import { Row, Accordion, Button, Container } from 'react-bootstrap';
@@ -13,7 +13,7 @@ export default function ApiaryListItem({
     apiaryLocation,
     eventKey
 }) {
-    const { apiaryHives, isFetching } = useGetByApiaryId(apiaryId);
+    const { apiaryHives, isFetching } = useGetHiveByApiaryId(apiaryId);
     const [showAddHiveButton, setShowAddHiveButton] = useState(true);
     const handleShow = () => setShowAddHiveButton(true);
     const handleClose = () => setShowAddHiveButton(false);
