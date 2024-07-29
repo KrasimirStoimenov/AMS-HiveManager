@@ -22,7 +22,7 @@ export default function ApiaryList() {
                 : <>
                     {apiaries.length > 0
                         ? <Accordion defaultActiveKey="0">
-                            {apiaries.reverse().map((apiary, index) =>
+                            {apiaries.map((apiary, index) =>
                                 <ApiaryListItem
                                     key={apiary._id}
                                     apiaryId={apiary._id}
