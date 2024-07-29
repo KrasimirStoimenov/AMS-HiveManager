@@ -11,6 +11,16 @@ const getByApiaryId = (apiaryId) => {
 
     return requester.get(`${BASE_URL}?${params.toString()}`);
 };
+
+const getHiveNumberById = (hiveId) => {
+    const params = new URLSearchParams({
+        where: `_id="${hiveId}"`,
+        select: 'number'
+    });
+
+    return requester.get(`${BASE_URL}?${params.toString()}`);
+};
+
 const add = (data) => requester.post(`${BASE_URL}`, data);
 const remove = (hiveId) => requester.del(`${BASE_URL}/${hiveId}`);
 
@@ -18,6 +28,7 @@ const hivesAPI = {
     getAll,
     getById,
     getByApiaryId,
+    getHiveNumberById,
     add,
     remove
 };

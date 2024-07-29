@@ -22,7 +22,7 @@ export const useGetInspectionsByHiveId = (hiveId) => {
 };
 
 export const useGetInspectionsCountByHiveId = (hiveId) => {
-    const [hiveInspectionsCount, setHiveInspectionsCount] = useState();
+    const [hiveInspectionsCount, setHiveInspectionsCount] = useState(0);
     const [isFetching, setIsFetching] = useState(true);
 
     useEffect(() => {

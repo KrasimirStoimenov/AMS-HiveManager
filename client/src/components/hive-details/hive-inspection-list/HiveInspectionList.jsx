@@ -4,16 +4,18 @@ import { useGetInspectionsByHiveId } from '../../../hooks/useInspections';
 import { Col, Row, Table, Container, Button } from 'react-bootstrap';
 import HiveInspectionListItem from './hive-inspection-list-item/HiveInspectionListItem';
 import Loading from '../../loading/Loading';
+import { useGetHiveNumberById } from '../../../hooks/useHives';
 
 export default function HiveInspectionList() {
     const { hiveId } = useParams();
     const { hiveInspections, isFetching } = useGetInspectionsByHiveId(hiveId);
+    const { hiveNumber } = useGetHiveNumberById(hiveId);
 
     return (
         <Container>
             <Row className='pb-3 pt-3'>
                 <Col className='text-start text-primary'>
-                    <h2>Inspections for hive: {hiveId}</h2>
+                    <h2>Inspections for hive: {hiveNumber}</h2>
                 </Col>
                 <Col className='text-end pt-1'>
                     <Button as={Link} to={'/inspections/add'} variant='outline-primary'><i className="bi bi-plus-lg"></i> Add Inspection</Button>
