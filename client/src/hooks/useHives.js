@@ -81,13 +81,13 @@ export const useGetHiveNumberById = (hiveId) => {
 };
 
 export const useAddHive = () => {
-    const addHiveHandler = (data) => {
+    const addHiveHandler = async (data) => {
         const formattedData = {
             ...data,
             dateBought: new Date(data.dateBought).toISOString(),
         };
 
-        hivesAPI.add(formattedData);
+        await hivesAPI.add(formattedData);
     };
 
     return addHiveHandler;

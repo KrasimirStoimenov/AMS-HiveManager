@@ -1343,34 +1343,53 @@
         apiaries: {
             "227d3c1c-1c77-4dc1-9735-2d33ead51b92": {
                 _id: "227d3c1c-1c77-4dc1-9735-2d33ead51b92",
-                name: "Test",
-                location: "Test",
+                name: "Peter's Apiary",
+                location: "Sofia",
                 _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8"
             },
             "9740c58b-7ccd-457c-b011-4b78ea87b27b": {
                 _id: "9740c58b-7ccd-457c-b011-4b78ea87b27b",
-                name: "Second test",
-                location: "Second test location",
+                name: "Rooftop",
+                location: "Sofia",
                 _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8"
+            },
+            "0d46c893-69ff-46b0-9f99-9d7daa825c47": {
+                _id: "0d46c893-69ff-46b0-9f99-9d7daa825c47",
+                name: "Тhe white birch area",
+                location: "Plovdiv",
+                _createdOn: 1722334253749,
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a"
             }
         },
         hives: {
             "904ae01f-a837-4e4b-87eb-ea6d0aa07662": {
                 _id: "904ae01f-a837-4e4b-87eb-ea6d0aa07662",
                 number: 1,
-                type: "SomeType",
+                type: "Dadant Blatt",
                 status: "Active",
                 color: "Yellow",
                 dateBought: "2023-11-01T07:22:00.358Z",
                 timesUsedCount: 1,
                 apiaryId: "227d3c1c-1c77-4dc1-9735-2d33ead51b92",
                 _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8"
+            },
+            "02c59f21-0acd-4e6e-a330-663406b58196": {
+                _id: "02c59f21-0acd-4e6e-a330-663406b58196",
+                number: "1",
+                type: "Sunbed",
+                status: "Active",
+                color: "Blue",
+                dateBought: "2024-07-03T00:00:00.000Z",
+                timesUsedCount: "1",
+                apiaryId: "0d46c893-69ff-46b0-9f99-9d7daa825c47",
+                _createdOn: 1722334456603,
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a"
             }
         },
         inspections: {
             "b3eeb658-49d7-4c87-b346-e1ff669b84f7": {
                 _id: "b3eeb658-49d7-4c87-b346-e1ff669b84f7",
-                inspectionDate: "2023-11-01T07:22:00.358Z",
+                date: "2023-11-01T07:22:00.358Z",
                 weatherConditions: "Sunny",
                 observations: "Everything's fine",
                 actionsTaken: "",
@@ -1391,9 +1410,9 @@
         havrests: {
             "338c5c9e-a47a-4a9a-89f2-00ebbb473646": {
                 _id: "338c5c9e-a47a-4a9a-89f2-00ebbb473646",
-                harvestDate: "2023-11-01T07:22:00.358Z",
-                harvestAmount: 12.52,
-                harvestProduct: "Honey",
+                date: "2023-11-01T07:22:00.358Z",
+                amount: 12.52,
+                product: "Honey",
                 hiveId: "904ae01f-a837-4e4b-87eb-ea6d0aa07662",
                 _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8"
             }
