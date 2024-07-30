@@ -2,7 +2,15 @@ import requester from './requester'
 
 const BASE_URL = `http://localhost:3030/data/beeQueens`;
 
-const getAll = () => requester.get(`${BASE_URL}`);
+const getAll = (userId) => {
+    const params = new URLSearchParams({
+        where: `_ownerId="${userId}"`,
+        load: `hive=hiveId:hives`
+    });
+
+    return requester.get(`${BASE_URL}?${params.toString()}`);
+};
+
 const getById = (beeQueenId) => requester.get(`${BASE_URL}/${beeQueenId}`);
 const getByHiveId = (hiveId) => {
     const params = new URLSearchParams({
@@ -12,13 +20,6 @@ const getByHiveId = (hiveId) => {
     return requester.get(`${BASE_URL}?${params.toString()}`);
 };
 
-const getAllWithHive = () => {
-    const params = new URLSearchParams({
-        load: `hive=hiveId:hives`
-    });
-
-    return requester.get(`${BASE_URL}?${params.toString()}`);
-};
 const getCountByHiveId = (hiveId) => {
     const params = new URLSearchParams({
         where: `hiveId="${hiveId}"`
@@ -34,7 +35,6 @@ const beeQueensAPI = {
     getAll,
     getById,
     getByHiveId,
-    getAllWithHive,
     getCountByHiveId,
     add,
     remove,

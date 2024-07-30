@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import beeQueensAPI from "../api/beeQueens-api";
+import { useAuthContext } from "../contexts/AuthContext";
 
 export const useGetAllBeeQueens = () => {
     const [beeQueens, setBeeQueens] = useState([]);
     const [isFetching, setIsFetching] = useState(true);
+    const { userId } = useAuthContext();
 
     useEffect(() => {
         (async () => {
-            const result = await beeQueensAPI.getAll();
+            const result = await beeQueensAPI.getAll(userId);
 
             setBeeQueens(Object.values(result));
             setIsFetching(false);
@@ -63,30 +65,6 @@ export const useGetBeeQueensByHiveId = (hiveId) => {
 
     return {
         hiveBeeQueens,
-        changeBeeQueens,
-        isFetching
-    };
-};
-
-export const useGetAllBeeQueensWithHive = () => {
-    const [beeQueens, setBeeQueens] = useState([]);
-    const [isFetching, setIsFetching] = useState(true);
-
-    useEffect(() => {
-        (async () => {
-            const result = await beeQueensAPI.getAllWithHive();
-
-            setBeeQueens(Object.values(result));
-            setIsFetching(false);
-        })();
-    }, []);
-
-    const changeBeeQueens = (state) => {
-        setBeeQueens(state);
-    };
-
-    return {
-        beeQueens,
         changeBeeQueens,
         isFetching
     };
