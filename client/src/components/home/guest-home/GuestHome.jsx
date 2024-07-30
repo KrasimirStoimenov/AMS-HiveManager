@@ -1,4 +1,6 @@
-import { Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
+import { Container, Row, Col, Button } from 'react-bootstrap';
 
 export default function GuestHome() {
     return (
@@ -13,6 +15,8 @@ export default function GuestHome() {
                     <p>
                         Track hive locations, log inspections, record honey production, and manage tasks all in one place.
                     </p>
+                    <Button as={Link} to="/login" variant="primary" className="me-2">Login</Button>
+                    <Button as={Link} to="/register" variant="secondary" >Register</Button>
                 </Col>
             </Row>
         </Container>
