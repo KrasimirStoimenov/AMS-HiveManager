@@ -8,7 +8,7 @@ export default function HiveHarvestListItem({
     return (
         <tr>
             <td>{formatDate(hiveHarvest.date)}</td>
-            <td>{hiveHarvest.amount}</td>
+            <td>{Number(hiveHarvest.amount).toFixed(2)}</td>
             <td>{hiveHarvest.product}</td>
             <td className='list-items-helper-buttons'>
                 <Button variant='warning'><i className="bi bi-pencil-square"></i> Edit</Button>

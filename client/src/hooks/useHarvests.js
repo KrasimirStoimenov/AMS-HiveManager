@@ -47,7 +47,7 @@ export const useGetHarvestsCountByHiveId = (hiveId) => {
 
 export const useAddHarvest = () => {
     const addHarvestHandler = async (harvestData) => {
-        delete inspectionData.hiveDisplayName;
+        delete harvestData.hiveDisplayName;
 
         const formattedData = {
             ...harvestData,

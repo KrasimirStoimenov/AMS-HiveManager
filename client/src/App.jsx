@@ -23,6 +23,7 @@ import Logout from './components/logout/Logout';
 import HiveInspectionList from './components/hive-details/hive-inspection-list/HiveInspectionList';
 import HiveInspectionAdd from './components/hive-details/hive-inspection-list/hive-inspection-add/HiveInspectionAdd';
 import HiveHarvestList from './components/hive-details/hive-harvest-list/HiveHarvestList';
+import HiveHarvestAdd from './components/hive-details/hive-harvest-list/hive-harvest-add/HiveHarvestAdd';
 
 function App() {
     return (
@@ -43,6 +44,7 @@ function App() {
                         <Route path='/hives/:hiveId/inspections' element={<HiveInspectionList />} />
                         <Route path='/hives/:hiveId/inspections/add' element={<HiveInspectionAdd />} />
                         <Route path='/hives/:hiveId/harvests' element={<HiveHarvestList />} />
+                        <Route path='/hives/:hiveId/harvests/add' element={<HiveHarvestAdd />} />
                     </Route>
 
                     <Route path='/beeQueens' element={<BeeQueenList />} />
