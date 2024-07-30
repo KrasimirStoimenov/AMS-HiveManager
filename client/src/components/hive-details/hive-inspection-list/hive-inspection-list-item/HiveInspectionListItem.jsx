@@ -7,7 +7,7 @@ export default function HiveInspectionListItem({
 }) {
     return (
         <tr>
-            <td>{formatDate(hiveInspection.inspectionDate)}</td>
+            <td>{formatDate(hiveInspection.date)}</td>
             <td>{hiveInspection.weatherConditions}</td>
             <td>{hiveInspection.observations}</td>
             <td>{hiveInspection.actionsTaken}</td>

@@ -81,7 +81,7 @@ export default function HiveDetails() {
                                             <Link to={`/hives/${hive._id}/inspections`}><strong>Inspections:</strong> {hiveInspectionsCount}</Link>
                                         </ListGroup.Item>
                                         <ListGroup.Item>
-                                            <strong>Harvests:</strong> TODO: Harvests
+                                            <Link to={`/hives/${hive._id}/harvests`}><strong>Harvests:</strong> 1</Link>
                                         </ListGroup.Item>
                                     </ListGroup>
                                     <Button variant="warning" className="me-2"><i className="bi bi-pencil-square"></i> Edit</Button>
