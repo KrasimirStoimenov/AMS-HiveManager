@@ -5,10 +5,10 @@ import { useDeleteInspection, useGetInspectionsByHiveId } from '../../../hooks/u
 
 import { Col, Row, Table, Container, Button } from 'react-bootstrap';
 
+import { useHiveContext } from '../../../contexts/HiveContext';
 import HiveInspectionListItem from './hive-inspection-list-item/HiveInspectionListItem';
 import Loading from '../../loading/Loading';
 import Delete from '../../delete/Delete';
-import { useHiveContext } from '../../../contexts/HiveContext';
 
 export default function HiveInspectionList() {
     const { hiveId } = useParams();

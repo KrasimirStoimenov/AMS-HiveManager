@@ -18,11 +18,13 @@ const getCountByHiveId = (hiveId) => {
     return requester.get(`${BASE_URL}?${params.toString()}&count`);
 };
 
+const add = (data) => requester.post(`${BASE_URL}`, data);
 const remove = (inspectionId) => requester.del(`${BASE_URL}/${inspectionId}`);
 
 const inspectionsAPI = {
     getByHiveId,
     getCountByHiveId,
+    add,
     remove
 };
 

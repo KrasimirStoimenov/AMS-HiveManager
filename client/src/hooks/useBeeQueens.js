@@ -45,7 +45,7 @@ export const useGetBeeQueenById = (beeQueenId) => {
 }
 
 export const useAddBeeQueen = () => {
-    const addBeeQueenHandler = (data) => beeQueensAPI.add(data);
+    const addBeeQueenHandler = async (data) => await beeQueensAPI.add(data);
 
     return addBeeQueenHandler;
 }

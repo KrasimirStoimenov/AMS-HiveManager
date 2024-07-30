@@ -24,7 +24,7 @@ export const useGetAllApiaries = () => {
 }
 
 export const useAddApiary = () => {
-    const addApiaryHandler = (data) => apiariesAPI.add(data);
+    const addApiaryHandler = async (data) => await apiariesAPI.add(data);
 
     return addApiaryHandler;
 }
