@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 
-import { useDeleteBeeQueen, useGetAllBeeQueens } from '../../../hooks/useBeeQueens';
+import { useDeleteBeeQueen, useGetBeeQueensByHiveId } from '../../../hooks/useBeeQueens';
 import { useHiveContext } from '../../../contexts/HiveContext';
 
 import { Col, Row, Table, Container, Button } from 'react-bootstrap';
@@ -14,7 +14,7 @@ import HiveBeeQueenListItem from './hive-beeQueen-list-item/HiveBeeQueenListItem
 export default function HiveBeeQueenList() {
     const { hiveId } = useParams();
     const { hiveNumber } = useHiveContext();
-    const { beeQueens, isFetching, changeBeeQueens } = useGetAllBeeQueens();
+    const { hiveBeeQueens, isFetching, changeBeeQueens } = useGetBeeQueensByHiveId(hiveId);
     const deleteBeeQueenHandler = useDeleteBeeQueen();
     const [showDeleteById, setShowDeleteById] = useState(null);
     const [isDeleting, setIsDeleting] = useState(false);
@@ -65,7 +65,7 @@ export default function HiveBeeQueenList() {
                             </tr>
                         </thead>
                         <tbody>
-                            {beeQueens.map(beeQueen =>
+                            {hiveBeeQueens.map(beeQueen =>
                                 <HiveBeeQueenListItem
                                     key={beeQueen._id}
                                     beeQueen={beeQueen}

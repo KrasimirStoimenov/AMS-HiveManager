@@ -44,6 +44,54 @@ export const useGetBeeQueenById = (beeQueenId) => {
     };
 };
 
+export const useGetBeeQueensByHiveId = (hiveId) => {
+    const [hiveBeeQueens, setHiveBeeQueens] = useState([]);
+    const [isFetching, setIsFetching] = useState(true);
+
+    useEffect(() => {
+        (async () => {
+            const result = await beeQueensAPI.getByHiveId(hiveId);
+
+            setHiveBeeQueens(Object.values(result));
+            setIsFetching(false);
+        })();
+    }, []);
+
+    const changeBeeQueens = (state) => {
+        setHiveBeeQueens(state)
+    };
+
+    return {
+        hiveBeeQueens,
+        changeBeeQueens,
+        isFetching
+    };
+};
+
+export const useGetAllBeeQueensWithHive = () => {
+    const [beeQueens, setBeeQueens] = useState([]);
+    const [isFetching, setIsFetching] = useState(true);
+
+    useEffect(() => {
+        (async () => {
+            const result = await beeQueensAPI.getAllWithHive();
+
+            setBeeQueens(Object.values(result));
+            setIsFetching(false);
+        })();
+    }, []);
+
+    const changeBeeQueens = (state) => {
+        setBeeQueens(state);
+    };
+
+    return {
+        beeQueens,
+        changeBeeQueens,
+        isFetching
+    };
+};
+
 export const useGetBeeQueensCountByHiveId = (hiveId) => {
     const [hiveBeeQueensCount, setHiveBeeQueensCount] = useState(0);
     const [isFetching, setIsFetching] = useState(true);

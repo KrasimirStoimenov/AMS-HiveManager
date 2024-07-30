@@ -1,4 +1,4 @@
-import { useGetAllBeeQueens } from '../../hooks/useBeeQueens';
+import { useGetAllBeeQueens, useGetAllBeeQueensWithHive } from '../../hooks/useBeeQueens';
 
 import { Col, Row, Table, Container } from 'react-bootstrap';
 
@@ -6,7 +6,7 @@ import BeeQueenListItem from './beeQueen-list-item/BeeQueenListItem';
 import Loading from '../loading/Loading';
 
 export default function BeeQueenList() {
-    const { beeQueens, isFetching } = useGetAllBeeQueens();
+    const { beeQueens, isFetching } = useGetAllBeeQueensWithHive();
 
     return (
         <Container>
