@@ -1407,7 +1407,7 @@
                 _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8"
             }
         },
-        havrests: {
+        harvests: {
             "338c5c9e-a47a-4a9a-89f2-00ebbb473646": {
                 _id: "338c5c9e-a47a-4a9a-89f2-00ebbb473646",
                 date: "2023-11-01T07:22:00.358Z",
