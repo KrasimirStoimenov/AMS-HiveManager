@@ -46,10 +46,12 @@ export const useGetHarvestsCountByHiveId = (hiveId) => {
 };
 
 export const useAddHarvest = () => {
-    const addHarvestHandler = async (data) => {
+    const addHarvestHandler = async (harvestData) => {
+        delete inspectionData.hiveDisplayName;
+
         const formattedData = {
-            ...data,
-            harvestDate: new Date(data.harvestDate).toISOString(),
+            ...harvestData,
+            date: new Date(harvestData.date).toISOString(),
         };
 
         await harvestsAPI.add(formattedData);
