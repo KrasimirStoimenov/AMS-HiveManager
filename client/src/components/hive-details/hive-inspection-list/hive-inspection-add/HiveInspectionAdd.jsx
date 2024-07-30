@@ -13,7 +13,7 @@ export default function HiveInspectionAdd() {
     const addInspectionHandler = useAddInspection();
 
     const initialValues = {
-        inspectionDate: '',
+        date: '',
         weatherConditions: '',
         observations: '',
         actionsTaken: '',
@@ -39,16 +39,16 @@ export default function HiveInspectionAdd() {
         <Form onSubmit={submitHandler}>
             <fieldset>
                 <legend className="text-primary">Add Inspection</legend>
-                <Form.Group className="field" controlId="inspectionDate">
+                <Form.Group className="field" controlId="date">
                     <Form.Control
                         type="date"
-                        name="inspectionDate"
-                        value={values.inspectionDate}
+                        name="date"
+                        value={values.date}
                         onChange={changeHandler}
                         required
                         disabled={isAdding}
                     />
-                    <Form.Label>Inspection Date</Form.Label>
+                    <Form.Label>Date</Form.Label>
                 </Form.Group>
                 <Form.Group className="field" controlId="weatherConditions">
                     <Form.Control
