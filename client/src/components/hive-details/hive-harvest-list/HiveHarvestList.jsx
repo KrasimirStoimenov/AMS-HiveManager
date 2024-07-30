@@ -1,18 +1,46 @@
 import { Link, useParams } from "react-router-dom";
 
 import { useHiveContext } from "../../../contexts/HiveContext";
-import { useGetHarvestsByHiveId } from "../../../hooks/useHarvests";
+import { useDeleteHarvest, useGetHarvestsByHiveId } from "../../../hooks/useHarvests";
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import Loading from "../../loading/Loading";
-import HiveInspectionListItem from "./hive-harvest-list-item/HiveHarvestListItem";
+import Delete from "../../delete/Delete";
+import { useState } from "react";
+import HiveHarvestListItem from "./hive-harvest-list-item/HiveHarvestListItem";
 
 export default function HiveHarvestList() {
     const { hiveId } = useParams();
     const { hiveNumber } = useHiveContext();
-    const { hiveHarvests, isFetching } = useGetHarvestsByHiveId(hiveId);
+    const { hiveHarvests, isFetching, changeHarvests } = useGetHarvestsByHiveId(hiveId);
 
+    const [showDeleteById, setShowDeleteById] = useState(null);
+    const [isDeleting, setIsDeleting] = useState(false);
+    const deleteHarvestHandler = useDeleteHarvest();
+
+    const deleteClickHandler = (harvestId) => { setShowDeleteById(harvestId); };
+    const closeHandler = () => { setShowDeleteById(null); };
+
+    const deleteHandler = async (harvestId) => {
+        try {
+            setIsDeleting(true);
+            await deleteHarvestHandler(harvestId);
+            changeHarvests(oldState => oldState.filter(harvest => harvest._id !== harvestId));
+        } catch (error) {
+            alert(error.message);
+        } finally {
+            setIsDeleting(false);
+            setShowDeleteById(null);
+        };
+    };
     return (
         <>
+            {showDeleteById && (
+                <Delete
+                    onClose={closeHandler}
+                    onDelete={() => deleteHandler(showDeleteById)}
+                    isDeleting={isDeleting}
+                />
+            )}
             <Container>
                 <Row className='pb-3 pt-3'>
                     <Col className='text-start text-primary'>
@@ -35,10 +63,10 @@ export default function HiveHarvestList() {
                         </thead>
                         <tbody>
                             {hiveHarvests.map(hiveHarvest =>
-                                <HiveInspectionListItem
+                                <HiveHarvestListItem
                                     key={hiveHarvest._id}
                                     hiveHarvest={hiveHarvest}
-                                // deleteClickHandler={deleteClickHandler}
+                                    deleteClickHandler={deleteClickHandler}
                                 />
                             )}
                         </tbody>
