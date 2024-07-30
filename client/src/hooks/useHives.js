@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import hivesAPI from "../api/hives-api";
+import { useHiveContext } from "../contexts/HiveContext";
 
 export const useGetAllHives = () => {
     const [hives, setHives] = useState([]);
@@ -17,12 +18,13 @@ export const useGetAllHives = () => {
     return {
         hives,
         isFetching
-    }
-}
+    };
+};
 
 export const useGetHiveById = (hiveId) => {
     const [hive, setHive] = useState([]);
     const [isFetching, setIsFetching] = useState(true);
+    const { changeHiveState } = useHiveContext();
 
     useEffect(() => {
         (async () => {
@@ -30,14 +32,15 @@ export const useGetHiveById = (hiveId) => {
 
             setHive(result);
             setIsFetching(false);
+            changeHiveState(result);
         })();
     }, []);
 
     return {
         hive,
         isFetching
-    }
-}
+    };
+};
 
 export const useGetHiveByApiaryId = (apiaryId) => {
     const [apiaryHives, setApiaryHives] = useState([]);
@@ -55,8 +58,8 @@ export const useGetHiveByApiaryId = (apiaryId) => {
     return {
         apiaryHives,
         isFetching
-    }
-}
+    };
+};
 
 export const useGetHiveNumberById = (hiveId) => {
     const [hiveNumber, setHiveNumber] = useState(0);
@@ -74,8 +77,8 @@ export const useGetHiveNumberById = (hiveId) => {
     return {
         hiveNumber,
         isFetching
-    }
-}
+    };
+};
 
 export const useAddHive = () => {
     const addHiveHandler = (data) => {
@@ -85,13 +88,13 @@ export const useAddHive = () => {
         };
 
         hivesAPI.add(formattedData);
-    }
+    };
 
     return addHiveHandler;
-}
+};
 
 export const useDeleteHive = () => {
     const deleteHiveHandler = (hiveId) => hivesAPI.remove(hiveId);
 
     return deleteHiveHandler;
-}
+};

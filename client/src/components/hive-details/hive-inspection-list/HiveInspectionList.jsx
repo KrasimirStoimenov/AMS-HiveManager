@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import { useGetHiveNumberById } from '../../../hooks/useHives';
 import { useDeleteInspection, useGetInspectionsByHiveId } from '../../../hooks/useInspections';
 
 import { Col, Row, Table, Container, Button } from 'react-bootstrap';
@@ -9,14 +8,15 @@ import { Col, Row, Table, Container, Button } from 'react-bootstrap';
 import HiveInspectionListItem from './hive-inspection-list-item/HiveInspectionListItem';
 import Loading from '../../loading/Loading';
 import Delete from '../../delete/Delete';
+import { useHiveContext } from '../../../contexts/HiveContext';
 
 export default function HiveInspectionList() {
     const { hiveId } = useParams();
+    const { hiveNumber } = useHiveContext();
     const [showDeleteById, setShowDeleteById] = useState(null);
     const [isDeleting, setIsDeleting] = useState(false);
 
     const { hiveInspections, isFetching, changeInspections } = useGetInspectionsByHiveId(hiveId);
-    const { hiveNumber } = useGetHiveNumberById(hiveId);
     const deleteInspectionHandler = useDeleteInspection();
 
     const deleteClickHandler = (inspectionId) => { setShowDeleteById(inspectionId); };

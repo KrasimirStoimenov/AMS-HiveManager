@@ -1,5 +1,4 @@
-import { useAuthContext } from "../contexts/AuthContext"
-import { clearAuthData, setAuthData } from "../utils/authDataUtils";
+import { useAuthContext } from "../contexts/AuthContext";
 
 import authAPI from "../api/auth-api";
 

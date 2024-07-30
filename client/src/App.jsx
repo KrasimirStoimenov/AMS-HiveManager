@@ -6,6 +6,8 @@ import '../public/input-form-styles.css';
 import '../public/list-items-helper-button-styles.css';
 
 import { AuthContextProvider } from './contexts/AuthContext';
+import { HiveContextProvider } from './contexts/HiveContext';
+
 import Container from 'react-bootstrap/esm/Container'
 
 import Home from './components/home/Home'
@@ -34,9 +36,13 @@ function App() {
                     <Route path='/logout' element={<Logout />} />
                     <Route path='/apiaries/add' element={<ApiaryAdd />} />
                     <Route path='/hives/add' element={<HiveAdd />} />
-                    <Route path='/hives/:hiveId/details' element={<HiveDetails />} />
-                    <Route path='/hives/:hiveId/inspections' element={<HiveInspectionList />} />
-                    <Route path='/hives/:hiveId/inspections/add' element={<HiveInspectionAdd />} />
+
+                    <Route element={<HiveContextProvider />}>
+                        <Route path='/hives/:hiveId/details' element={<HiveDetails />} />
+                        <Route path='/hives/:hiveId/inspections' element={<HiveInspectionList />} />
+                        <Route path='/hives/:hiveId/inspections/add' element={<HiveInspectionAdd />} />
+                    </Route>
+
                     <Route path='/beeQueens' element={<BeeQueenList />} />
                     <Route path='/beeQueens/add' element={<BeeQueenAdd />} />
                 </Routes>
