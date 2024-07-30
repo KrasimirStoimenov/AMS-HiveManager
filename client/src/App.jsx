@@ -16,7 +16,6 @@ import ApiaryAdd from './components/apiary-add/ApiaryAdd'
 import HiveDetails from './components/hive-details/HiveDetails';
 import HiveAdd from './components/hive-add/HiveAdd';
 import BeeQueenList from './components/beeQueen-list/BeeQueenList';
-import BeeQueenAdd from './components/beeQueen-add/BeeQueenAdd';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Logout from './components/logout/Logout';
@@ -24,6 +23,8 @@ import HiveInspectionList from './components/hive-details/hive-inspection-list/H
 import HiveInspectionAdd from './components/hive-details/hive-inspection-list/hive-inspection-add/HiveInspectionAdd';
 import HiveHarvestList from './components/hive-details/hive-harvest-list/HiveHarvestList';
 import HiveHarvestAdd from './components/hive-details/hive-harvest-list/hive-harvest-add/HiveHarvestAdd';
+import HiveBeeQueenList from './components/hive-details/hive-beeQueen-list/HiveBeeQueenList';
+import HiveBeeQueenAdd from './components/hive-details/hive-beeQueen-list/hive-beeQueen-add/HiveBeeQueenAdd';
 
 function App() {
     return (
@@ -45,10 +46,11 @@ function App() {
                         <Route path='/hives/:hiveId/inspections/add' element={<HiveInspectionAdd />} />
                         <Route path='/hives/:hiveId/harvests' element={<HiveHarvestList />} />
                         <Route path='/hives/:hiveId/harvests/add' element={<HiveHarvestAdd />} />
+                        <Route path='/hives/:hiveId/beeQueens' element={<HiveBeeQueenList />} />
+                        <Route path='/hives/:hiveId/beeQueens/add' element={<HiveBeeQueenAdd />} />
                     </Route>
 
                     <Route path='/beeQueens' element={<BeeQueenList />} />
-                    <Route path='/beeQueens/add' element={<BeeQueenAdd />} />
                 </Routes>
             </Container>
         </AuthContextProvider>

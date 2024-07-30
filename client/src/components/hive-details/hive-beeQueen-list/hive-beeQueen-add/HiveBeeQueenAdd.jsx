@@ -1,37 +1,34 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import Button from 'react-bootstrap/esm/Button';
-import Col from 'react-bootstrap/esm/Col';
-import Row from 'react-bootstrap/esm/Row';
-import Form from 'react-bootstrap/Form';
+import { Button, Col, Row, Form } from 'react-bootstrap/';
 
-import { useForm } from '../../hooks/useForm';
-import { useAddBeeQueen, useGetAllBeeQueens } from '../../hooks/useBeeQueens';
-import { useGetAllHives } from '../../hooks/useHives';
+import { useHiveContext } from '../../../../contexts/HiveContext';
+import { useForm } from '../../../../hooks/useForm';
+import { useAddBeeQueen } from '../../../../hooks/useBeeQueens';
 
-const initialFormValues = {
-    isAlive: true,
-    year: new Date().getFullYear(),
-    colorMark: '',
-    hiveId: '',
-};
 
-export default function BeeQueenAdd() {
+
+export default function HiveBeeQueenAdd() {
     const navigate = useNavigate();
-    const addBeeQueenHandler = useAddBeeQueen();
+    const { hiveId } = useParams();
+    const { hiveNumber, hiveColor } = useHiveContext();
     const [isAdding, setIsAdding] = useState(false);
+    const addBeeQueenHandler = useAddBeeQueen();
 
-    const { beeQueens } = useGetAllBeeQueens();
-    const { hives } = useGetAllHives();
-    const hiveIdsForBeeQueens = new Set(beeQueens.map(beeQueen => beeQueen.hiveId));
-    const hivesWithoutBeeQueen = hives.filter(hive => !hiveIdsForBeeQueens.has(hive._id));
+    const initialFormValues = {
+        isAlive: true,
+        year: new Date().getFullYear(),
+        colorMark: '',
+        hiveDisplayName: hiveNumber ? `${hiveNumber} - ${hiveColor}` : hiveId,
+        hiveId: hiveId,
+    };
 
-    const submitBeeQueenHandler = async (values) => {
+    const submitFormHandler = async (values) => {
         try {
             setIsAdding(true);
             await addBeeQueenHandler(values);
-            navigate(`/beeQueens`);
+            navigate(`/hives/${hiveId}/beeQueens`);
         } catch (error) {
             alert(error.message);
         } finally {
@@ -39,7 +36,7 @@ export default function BeeQueenAdd() {
         }
     };
 
-    const { values, changeHandler, submitHandler } = useForm(initialFormValues, submitBeeQueenHandler);
+    const { values, changeHandler, submitHandler } = useForm(initialFormValues, submitFormHandler);
 
     return (
         <Form onSubmit={submitHandler}>
@@ -67,15 +64,13 @@ export default function BeeQueenAdd() {
                     <Form.Label>Color Mark</Form.Label>
                 </Form.Group>
                 <Form.Group className="field" controlId="hiveId">
-                    <Form.Select
+                    <Form.Control
                         name="hiveId"
-                        value={values.hiveId}
+                        value={values.hiveDisplayName}
                         onChange={changeHandler}
                         required
-                        disabled={isAdding}>
-                        <option>Select hive:</option>
-                        {hivesWithoutBeeQueen.map(hive => <option key={hive._id} value={hive._id}>{hive.number} - {hive.color}</option>)}
-                    </Form.Select>
+                        disabled>
+                    </Form.Control>
                     <Form.Label>Hive</Form.Label>
                 </Form.Group>
                 <Row>

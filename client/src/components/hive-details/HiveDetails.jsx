@@ -9,12 +9,16 @@ import Loading from '../loading/Loading';
 import Delete from '../delete/Delete';
 import { formatDate } from '../../utils/dateUtils';
 import { useGetInspectionsCountByHiveId } from '../../hooks/useInspections';
+import { useGetHarvestsCountByHiveId } from '../../hooks/useHarvests';
+import { useGetBeeQueensCountByHiveId } from '../../hooks/useBeeQueens';
 
 export default function HiveDetails() {
     const { hiveId } = useParams();
     const navigate = useNavigate();
     const { hive, isFetching } = useGetHiveById(hiveId);
     const { hiveInspectionsCount } = useGetInspectionsCountByHiveId(hiveId);
+    const { hiveHarvestsCount } = useGetHarvestsCountByHiveId(hiveId);
+    const { hiveBeeQueensCount } = useGetBeeQueensCountByHiveId(hiveId);
 
     const deleteHiveHandler = useDeleteHive();
     const [showDeleteById, setShowDeleteById] = useState(null);
@@ -78,10 +82,13 @@ export default function HiveDetails() {
                                     </Card.Text>
                                     <ListGroup className="my-4">
                                         <ListGroup.Item>
+                                            <Link to={`/hives/${hive._id}/beeQueens`}><strong>Bee Queens:</strong> {hiveBeeQueensCount}</Link>
+                                        </ListGroup.Item>
+                                        <ListGroup.Item>
                                             <Link to={`/hives/${hive._id}/inspections`}><strong>Inspections:</strong> {hiveInspectionsCount}</Link>
                                         </ListGroup.Item>
                                         <ListGroup.Item>
-                                            <Link to={`/hives/${hive._id}/harvests`}><strong>Harvests:</strong> 1</Link>
+                                            <Link to={`/hives/${hive._id}/harvests`}><strong>Harvests:</strong> {hiveHarvestsCount}</Link>
                                         </ListGroup.Item>
                                     </ListGroup>
                                     <Button variant="warning" className="me-2"><i className="bi bi-pencil-square"></i> Edit</Button>
