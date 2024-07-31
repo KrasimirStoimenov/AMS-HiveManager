@@ -16,7 +16,6 @@ const initialFormValues = {
     status: '',
     color: '',
     dateBought: '',
-    timesUsedCount: '',
     apiary: '',
 };
 
@@ -96,17 +95,6 @@ export default function HiveAdd() {
                         disabled={isAdding}
                     />
                     <Form.Label>Date Bought</Form.Label>
-                </Form.Group>
-                <Form.Group className="field" controlId="timesUsedCount">
-                    <Form.Control
-                        type="text"
-                        name="timesUsedCount"
-                        value={values.timesUsedCount}
-                        onChange={changeHandler}
-                        required
-                        disabled={isAdding}
-                    />
-                    <Form.Label>Times Used Count</Form.Label>
                 </Form.Group>
                 <Form.Group className="field" controlId="apiary">
                     <Form.Select

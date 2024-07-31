@@ -75,9 +75,6 @@ export default function HiveDetails() {
                                         <strong>Date bought:</strong> {formatDate(hive.dateBought)}
                                     </Card.Text>
                                     <Card.Text>
-                                        <strong>Times Used:</strong> {hive.timesUsedCount}
-                                    </Card.Text>
-                                    <Card.Text>
                                         <strong>Queen Status:</strong> TODO: Queen status
                                     </Card.Text>
                                     <ListGroup className="my-4">

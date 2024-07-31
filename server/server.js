@@ -1369,7 +1369,6 @@
                 status: "Active",
                 color: "Yellow",
                 dateBought: "2023-11-01T07:22:00.358Z",
-                timesUsedCount: 1,
                 apiaryId: "227d3c1c-1c77-4dc1-9735-2d33ead51b92",
                 _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8"
             },
@@ -1380,7 +1379,6 @@
                 status: "Active",
                 color: "Blue",
                 dateBought: "2024-07-03T00:00:00.000Z",
-                timesUsedCount: "1",
                 apiaryId: "0d46c893-69ff-46b0-9f99-9d7daa825c47",
                 _createdOn: 1722334456603,
                 _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a"
