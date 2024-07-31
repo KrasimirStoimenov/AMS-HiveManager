@@ -38,7 +38,7 @@ function App() {
                     <Route path='/register' element={<Register />} />
                     <Route path='/logout' element={<Logout />} />
                     <Route path='/apiaries/add' element={<ApiaryAdd />} />
-                    <Route path='/hives/add' element={<HiveAdd />} />
+                    <Route path='/apiaries/:apiaryId/hives/add' element={<HiveAdd />} />
 
                     <Route element={<HiveContextProvider />}>
                         <Route path='/hives/:hiveId/details' element={<HiveDetails />} />

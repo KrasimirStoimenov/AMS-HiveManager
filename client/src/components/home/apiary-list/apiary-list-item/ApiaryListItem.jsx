@@ -26,7 +26,7 @@ export default function ApiaryListItem({
             </Accordion.Header>
             <Accordion.Body onEnter={handleShow} onExit={handleClose}>
                 {((showAddHiveButton && !isFetching) &&
-                    <Button as={Link} to="/hives/add" variant="outline-primary" className="float-end"><i className="bi bi-plus-lg"></i> Add Hive</Button>
+                    <Button as={Link} to={`/apiaries/${apiaryId}/hives/add`} variant="outline-primary" className="float-end"><i className="bi bi-plus-lg"></i> Add Hive</Button>
                 )}
 
                 {isFetching
