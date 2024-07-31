@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import Button from 'react-bootstrap/esm/Button';
 import Col from 'react-bootstrap/esm/Col';
@@ -7,22 +7,27 @@ import Row from 'react-bootstrap/esm/Row';
 import Form from 'react-bootstrap/Form';
 
 import { useForm } from '../../hooks/useForm';
-import requester from '../../api/requester';
 import { useAddHive } from '../../hooks/useHives';
+import { useGetApiaryById } from '../../hooks/useApiaries';
+import Loading from '../loading/Loading';
 
-const initialFormValues = {
-    number: '',
-    type: '',
-    status: '',
-    color: '',
-    dateBought: '',
-    apiary: '',
-};
+
 
 export default function HiveAdd() {
+    const { apiaryId } = useParams();
     const navigate = useNavigate();
     const addHiveHandler = useAddHive();
     const [isAdding, setIsAdding] = useState(false);
+    const { apiary, isFetching: isApiaryFetching } = useGetApiaryById(apiaryId);
+
+    const initialFormValues = {
+        number: '',
+        type: '',
+        status: '',
+        color: '',
+        dateBought: '',
+        apiaryId: apiaryId,
+    };
 
     const submitHiveHandler = async (values) => {
         try {
@@ -96,17 +101,18 @@ export default function HiveAdd() {
                     />
                     <Form.Label>Date Bought</Form.Label>
                 </Form.Group>
-                <Form.Group className="field" controlId="apiary">
-                    <Form.Select
-                        name="apiary"
-                        value={values.apiary}
-                        onChange={changeHandler}
-                        required
-                        disabled={isAdding}>
-                        <option>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                    </Form.Select>
+                <Form.Group className="field" controlId="apiaryId">
+                    {
+                        isApiaryFetching
+                            ? <Loading />
+                            : <Form.Control
+                                type="text"
+                                name="apiaryId"
+                                value={`${apiary.name} - ${apiary.location}`}
+                                required
+                                disabled
+                            />
+                    }
                     <Form.Label>Apiary</Form.Label>
                 </Form.Group>
                 <Row>
