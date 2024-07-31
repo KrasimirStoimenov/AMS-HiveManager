@@ -4,6 +4,7 @@ import { useForm } from "../../../../hooks/useForm";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useAddHarvest } from "../../../../hooks/useHarvests";
+import { dateTodayInitialFormValue } from "../../../../utils/dateUtils";
 
 export default function HiveHarvestAdd() {
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function HiveHarvestAdd() {
     const addHarvestHandler = useAddHarvest();
 
     const initialValues = {
-        date: '',
+        date: dateTodayInitialFormValue(),
         amount: '',
         product: '',
         hiveDisplayName: hiveNumber ? `${hiveNumber} - ${hiveColor}` : hiveId,

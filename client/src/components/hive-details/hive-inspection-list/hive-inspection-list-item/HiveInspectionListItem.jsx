@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import { formatDate } from "../../../../utils/dateUtils";
+import { formatIsoStringToDate } from "../../../../utils/dateUtils";
 
 export default function HiveInspectionListItem({
     hiveInspection,
@@ -7,7 +7,7 @@ export default function HiveInspectionListItem({
 }) {
     return (
         <tr>
-            <td>{formatDate(hiveInspection.date)}</td>
+            <td>{formatIsoStringToDate(hiveInspection.date)}</td>
             <td>{hiveInspection.weatherConditions}</td>
             <td>{hiveInspection.observations}</td>
             <td>{hiveInspection.actionsTaken}</td>

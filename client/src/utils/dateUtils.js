@@ -1,4 +1,4 @@
-export const formatDate = (dateString) => {
+export const formatIsoStringToDate = (dateString) => {
     const date = new Date(dateString);
 
     const dateOptions = { year: 'numeric', month: 'long', day: '2-digit' };
@@ -7,3 +7,7 @@ export const formatDate = (dateString) => {
 
     return formattedDate;
 };
+
+export const dateTodayInitialFormValue = () => {
+    return new Date().toISOString().split('T')[0];
+}

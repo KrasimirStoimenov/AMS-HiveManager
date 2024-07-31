@@ -10,6 +10,7 @@ import { useForm } from '../../hooks/useForm';
 import { useAddHive } from '../../hooks/useHives';
 import { useGetApiaryById } from '../../hooks/useApiaries';
 import Loading from '../loading/Loading';
+import { dateTodayInitialFormValue } from '../../utils/dateUtils';
 
 
 
@@ -25,7 +26,7 @@ export default function HiveAdd() {
         type: '',
         status: '',
         color: '',
-        dateBought: '',
+        dateBought: dateTodayInitialFormValue(),
         apiaryId: apiaryId,
     };
 

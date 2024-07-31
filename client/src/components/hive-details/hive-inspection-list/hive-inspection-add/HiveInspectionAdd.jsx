@@ -4,6 +4,7 @@ import { useForm } from "../../../../hooks/useForm";
 import { useAddInspection } from "../../../../hooks/useInspections";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button, Col, Form, Row } from "react-bootstrap";
+import { dateTodayInitialFormValue } from "../../../../utils/dateUtils";
 
 export default function HiveInspectionAdd() {
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function HiveInspectionAdd() {
     const addInspectionHandler = useAddInspection();
 
     const initialValues = {
-        date: '',
+        date: dateTodayInitialFormValue(),
         weatherConditions: '',
         observations: '',
         actionsTaken: '',

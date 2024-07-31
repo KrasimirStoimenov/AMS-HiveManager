@@ -7,7 +7,7 @@ import { Container, Row, Col, Card, ListGroup, Button } from 'react-bootstrap';
 
 import Loading from '../loading/Loading';
 import Delete from '../delete/Delete';
-import { formatDate } from '../../utils/dateUtils';
+import { formatIsoStringToDate } from '../../utils/dateUtils';
 import { useGetInspectionsCountByHiveId } from '../../hooks/useInspections';
 import { useGetHarvestsCountByHiveId } from '../../hooks/useHarvests';
 import { useGetBeeQueensCountByHiveId } from '../../hooks/useBeeQueens';
@@ -72,7 +72,7 @@ export default function HiveDetails() {
                                         <strong>Color:</strong> {hive.color}
                                     </Card.Text>
                                     <Card.Text>
-                                        <strong>Date bought:</strong> {formatDate(hive.dateBought)}
+                                        <strong>Date bought:</strong> {formatIsoStringToDate(hive.dateBought)}
                                     </Card.Text>
                                     <Card.Text>
                                         <strong>Queen Status:</strong> TODO: Queen status
