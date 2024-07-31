@@ -20,11 +20,30 @@ export const useGetAllApiaries = () => {
     return {
         apiaries,
         isFetching
-    }
-}
+    };
+};
+
+export const useGetApiaryById = (apiaryId) => {
+    const [apiary, setApiary] = useState([]);
+    const [isFetching, setIsFetching] = useState(true);
+
+    useEffect(() => {
+        (async () => {
+            const result = await apiariesAPI.getById(apiaryId);
+
+            setApiary(result);
+            setIsFetching(false);
+        })();
+    }, []);
+
+    return {
+        apiary,
+        isFetching
+    };
+};
 
 export const useAddApiary = () => {
     const addApiaryHandler = async (data) => await apiariesAPI.add(data);
 
     return addApiaryHandler;
-}
+};
