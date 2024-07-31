@@ -20,10 +20,7 @@ export default function ApiaryListItem({
 
     return (
         <Accordion.Item eventKey={eventKey}>
-            <Accordion.Header>
-                {apiaryName}
-                {apiaryLocation}
-            </Accordion.Header>
+            <Accordion.Header>{`${apiaryName} - ${apiaryLocation}`}</Accordion.Header>
             <Accordion.Body onEnter={handleShow} onExit={handleClose}>
                 {((showAddHiveButton && !isFetching) &&
                     <Button as={Link} to={`/apiaries/${apiaryId}/hives/add`} variant="outline-primary" className="float-end"><i className="bi bi-plus-lg"></i> Add Hive</Button>

@@ -1,13 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useForm } from '../../hooks/useForm';
 
-import Button from 'react-bootstrap/esm/Button';
-import Col from 'react-bootstrap/esm/Col';
-import Row from 'react-bootstrap/esm/Row';
-import Form from 'react-bootstrap/Form';
+import { Button, Col, Row, Form } from 'react-bootstrap';
+import { useAddApiary } from '../../../../hooks/useApiaries';
+import { useForm } from '../../../../hooks/useForm';
 
-import { useAddApiary } from '../../hooks/useApiaries';
 
 const initialFormValues = {
     name: '',

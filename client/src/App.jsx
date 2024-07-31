@@ -12,13 +12,13 @@ import Container from 'react-bootstrap/esm/Container'
 
 import Home from './components/home/Home'
 import Header from './components/header/Header'
-import ApiaryAdd from './components/apiary-add/ApiaryAdd'
 import HiveDetails from './components/hive-details/HiveDetails';
 import HiveAdd from './components/hive-add/HiveAdd';
 import BeeQueenList from './components/beeQueen-list/BeeQueenList';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Logout from './components/logout/Logout';
+import ApiaryAdd from './components/home/apiary-list/apiary-add/ApiaryAdd';
 import HiveInspectionList from './components/hive-details/hive-inspection-list/HiveInspectionList';
 import HiveInspectionAdd from './components/hive-details/hive-inspection-list/hive-inspection-add/HiveInspectionAdd';
 import HiveHarvestList from './components/hive-details/hive-harvest-list/HiveHarvestList';
