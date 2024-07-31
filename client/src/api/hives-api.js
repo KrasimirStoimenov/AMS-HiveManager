@@ -3,7 +3,14 @@ import requester from './requester'
 const BASE_URL = `http://localhost:3030/data/hives`;
 
 const getAll = () => requester.get(`${BASE_URL}`);
-const getById = (hiveId) => requester.get(`${BASE_URL}/${hiveId}`);
+const getById = (hiveId) => {
+    const params = new URLSearchParams({
+        load: `apiary=apiaryId:apiaries`
+    });
+
+    return requester.get(`${BASE_URL}/${hiveId}?${params.toString()}`);
+};
+
 const getByApiaryId = (apiaryId) => {
     const params = new URLSearchParams({
         where: `apiaryId="${apiaryId}"`

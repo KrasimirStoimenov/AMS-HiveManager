@@ -60,7 +60,7 @@ export default function HiveDetails() {
                                 : <Card.Body>
                                     <Card.Title>Hive №{hive.number}</Card.Title>
                                     <Card.Text>
-                                        <strong>Location:</strong> TODO:Apiary location when context is introduced
+                                        <strong>Location:</strong> {hive.apiary.name} - {hive.apiary.location}
                                     </Card.Text>
                                     <Card.Text>
                                         <strong>Type:</strong> {hive.type}
