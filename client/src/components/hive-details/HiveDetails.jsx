@@ -10,7 +10,7 @@ import Delete from '../delete/Delete';
 import { formatIsoStringToDate } from '../../utils/dateUtils';
 import { useGetInspectionsCountByHiveId } from '../../hooks/useInspections';
 import { useGetHarvestsCountByHiveId } from '../../hooks/useHarvests';
-import { useGetBeeQueensCountByHiveId } from '../../hooks/useBeeQueens';
+import { useGetBeeQueensByHiveId } from '../../hooks/useBeeQueens';
 
 export default function HiveDetails() {
     const { hiveId } = useParams();
@@ -18,7 +18,7 @@ export default function HiveDetails() {
     const { hive, isFetching } = useGetHiveById(hiveId);
     const { hiveInspectionsCount } = useGetInspectionsCountByHiveId(hiveId);
     const { hiveHarvestsCount } = useGetHarvestsCountByHiveId(hiveId);
-    const { hiveBeeQueensCount } = useGetBeeQueensCountByHiveId(hiveId);
+    const { hiveBeeQueens } = useGetBeeQueensByHiveId(hiveId);
 
     const deleteHiveHandler = useDeleteHive();
     const [showDeleteById, setShowDeleteById] = useState(null);
@@ -75,11 +75,16 @@ export default function HiveDetails() {
                                         <strong>Date bought:</strong> {formatIsoStringToDate(hive.dateBought)}
                                     </Card.Text>
                                     <Card.Text>
-                                        <strong>Queen Status:</strong> TODO: Queen status
+                                        <strong>Queen Status: </strong>
+                                        {(hiveBeeQueens.filter(x => x.isAlive).length > 0)
+                                            ? <strong className="text-success">{`Has alive bee queen from ${hiveBeeQueens[0].year} year with mark: ${hiveBeeQueens[0].colorMark}`}</strong>
+                                            : <strong className="text-danger">Hive is queenless. There is no live bee queen for the hive.</strong>
+                                        }
                                     </Card.Text>
                                     <ListGroup className="my-4">
+
                                         <ListGroup.Item>
-                                            <Link to={`/hives/${hive._id}/beeQueens`}><strong>Bee Queens:</strong> {hiveBeeQueensCount}</Link>
+                                            <Link to={`/hives/${hive._id}/beeQueens`}><strong>Bee Queens:</strong> {hiveBeeQueens.length}</Link>
                                         </ListGroup.Item>
                                         <ListGroup.Item>
                                             <Link to={`/hives/${hive._id}/inspections`}><strong>Inspections:</strong> {hiveInspectionsCount}</Link>

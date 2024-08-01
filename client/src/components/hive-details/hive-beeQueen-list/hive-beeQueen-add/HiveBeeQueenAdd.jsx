@@ -59,6 +59,7 @@ export default function HiveBeeQueenAdd() {
                         name="colorMark"
                         value={values.colorMark}
                         onChange={changeHandler}
+                        required
                         disabled={isAdding}
                     />
                     <Form.Label>Color Mark</Form.Label>
