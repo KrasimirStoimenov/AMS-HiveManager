@@ -2,8 +2,6 @@ import { Routes, Route } from 'react-router-dom'
 
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './App.css';
-import '../public/input-form-styles.css';
-import '../public/list-items-helper-button-styles.css';
 
 import { AuthContextProvider } from './contexts/AuthContext';
 import { HiveContextProvider } from './contexts/HiveContext';
