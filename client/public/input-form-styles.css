@@ -44,7 +44,7 @@ fieldset legend {
     border: 1px solid var(--validation-success-color)
 }
 
-.field input.input-validation-error {
+.field input:user-invalid {
     border: 1px solid var(--validation-invalid-color);
 }
 
@@ -102,9 +102,4 @@ fieldset legend {
 .field input[type=checkbox].form-checkbox:checked:after {
     transform: translate(60%, 0);
     background-color: var(--checkbox-background-white-color);
-}
-
-.validation-summary-errors,
-.field-validation-error {
-    font-style: italic;
 }
