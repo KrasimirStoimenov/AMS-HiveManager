@@ -9,10 +9,14 @@ export const useGetAllBeeQueens = () => {
 
     useEffect(() => {
         (async () => {
-            const result = await beeQueensAPI.getAll(userId);
+            try {
+                const result = await beeQueensAPI.getAll(userId);
+                setBeeQueens(Object.values(result));
+            } catch (error) {
+            } finally {
+                setIsFetching(false);
+            }
 
-            setBeeQueens(Object.values(result));
-            setIsFetching(false);
         })();
     }, []);
 
