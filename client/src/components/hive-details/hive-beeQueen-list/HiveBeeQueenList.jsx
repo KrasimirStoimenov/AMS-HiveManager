@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-
 import { useDeleteBeeQueen, useGetBeeQueensByHiveId } from '../../../hooks/useBeeQueens';
 import { useHiveContext } from '../../../contexts/HiveContext';
 
@@ -50,7 +49,10 @@ export default function HiveBeeQueenList() {
                         <h2>Bee Queens for hive: {hiveNumber ? `№${hiveNumber}` : hiveId}</h2>
                     </Col>
                     <Col className='text-end pt-1'>
-                        <Button as={Link} to={`/hives/${hiveId}/beeQueens/add`} variant='outline-primary'><i className="bi bi-plus-lg"></i> Add Bee Queen</Button>
+                        {hiveBeeQueens.filter(x => x.isAlive).length > 0
+                            ? <Button variant='outline-secondary' disabled><i className="bi bi-plus-lg"></i> Add Bee Queen</Button>
+                            : <Button as={Link} to={`/hives/${hiveId}/beeQueens/add`} variant='outline-primary'><i className="bi bi-plus-lg"></i> Add Bee Queen</Button>
+                        }
                     </Col>
                 </Row>
                 {isFetching

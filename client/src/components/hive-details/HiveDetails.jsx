@@ -82,7 +82,6 @@ export default function HiveDetails() {
                                         }
                                     </Card.Text>
                                     <ListGroup className="my-4">
-
                                         <ListGroup.Item>
                                             <Link to={`/hives/${hive._id}/beeQueens`}><strong>Bee Queens:</strong> {hiveBeeQueens.length}</Link>
                                         </ListGroup.Item>
