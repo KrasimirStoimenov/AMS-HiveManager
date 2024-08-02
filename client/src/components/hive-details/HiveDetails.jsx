@@ -19,6 +19,7 @@ export default function HiveDetails() {
     const { hiveInspectionsCount } = useGetInspectionsCountByHiveId(hiveId);
     const { hiveHarvestsCount } = useGetHarvestsCountByHiveId(hiveId);
     const { hiveBeeQueens } = useGetBeeQueensByHiveId(hiveId);
+    const hiveAliveBeeQueen = hiveBeeQueens.filter(x => x.isAlive);
 
     const deleteHiveHandler = useDeleteHive();
     const [showDeleteById, setShowDeleteById] = useState(null);
@@ -76,8 +77,8 @@ export default function HiveDetails() {
                                     </Card.Text>
                                     <Card.Text>
                                         <strong>Queen Status: </strong>
-                                        {(hiveBeeQueens.filter(x => x.isAlive).length > 0)
-                                            ? <strong className="text-success">{`Has alive bee queen from ${hiveBeeQueens[0].year} year with mark: ${hiveBeeQueens[0].colorMark}`}</strong>
+                                        {(hiveAliveBeeQueen.length > 0)
+                                            ? <strong className="text-success">{`Has alive bee queen from ${hiveAliveBeeQueen[0].year} year with mark: ${hiveAliveBeeQueen[0].colorMark}`}</strong>
                                             : <strong className="text-danger">Hive is queenless. There is no live bee queen for the hive.</strong>
                                         }
                                     </Card.Text>
