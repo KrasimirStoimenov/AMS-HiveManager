@@ -7,8 +7,6 @@ import { useHiveContext } from '../../../../contexts/HiveContext';
 import { useForm } from '../../../../hooks/useForm';
 import { useAddBeeQueen } from '../../../../hooks/useBeeQueens';
 
-
-
 export default function HiveBeeQueenAdd() {
     const navigate = useNavigate();
     const { hiveId } = useParams();

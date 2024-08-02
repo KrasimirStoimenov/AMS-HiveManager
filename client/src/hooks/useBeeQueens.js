@@ -95,7 +95,12 @@ export const useGetBeeQueensCountByHiveId = (hiveId) => {
 
 export const useAddBeeQueen = () => {
     const addBeeQueenHandler = async (data) => {
-        delete data.hiveDisplayName;
+
+        const formattedData = {
+            ...data
+        };
+
+        delete formattedData.hiveDisplayName;
         await beeQueensAPI.add(data);
     };
 
