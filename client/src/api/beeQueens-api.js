@@ -28,7 +28,8 @@ const getCountByHiveId = (hiveId) => {
     return requester.get(`${BASE_URL}?${params.toString()}&count`);
 };
 
-const add = (data) => requester.post(`${BASE_URL}`, data);
+const add = (beeQueen) => requester.post(`${BASE_URL}`, beeQueen);
+const update = (beeQueenId, beeQueen) => requester.put(`${BASE_URL}/${beeQueenId}`, beeQueen)
 const remove = (beeQueenId) => requester.del(`${BASE_URL}/${beeQueenId}`);
 
 const beeQueensAPI = {
@@ -37,6 +38,7 @@ const beeQueensAPI = {
     getByHiveId,
     getCountByHiveId,
     add,
+    update,
     remove,
 };
 

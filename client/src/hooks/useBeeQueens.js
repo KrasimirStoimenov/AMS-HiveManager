@@ -32,7 +32,12 @@ export const useGetAllBeeQueens = () => {
 };
 
 export const useGetBeeQueenById = (beeQueenId) => {
-    const [beeQueen, setBeeQueen] = useState([]);
+    const [beeQueen, setBeeQueen] = useState({
+        year: '',
+        isAlive: '',
+        colorMark: '',
+        hiveId: ''
+    });
     const [isFetching, setIsFetching] = useState(true);
 
     useEffect(() => {
@@ -101,11 +106,17 @@ export const useAddBeeQueen = () => {
         };
 
         delete formattedData.hiveDisplayName;
-        await beeQueensAPI.add(data);
+        await beeQueensAPI.add(formattedData);
     };
 
     return addBeeQueenHandler;
 };
+
+export const useUpdateBeeQueen = () => {
+    const updateBeeQueenHandler = async (beeQueenId, beeQueen) => { await beeQueensAPI.update(beeQueenId, beeQueen); };
+
+    return updateBeeQueenHandler;
+}
 
 export const useDeleteBeeQueen = () => {
     const deleteBeeQueenHandler = (beeQueenId) => beeQueensAPI.remove(beeQueenId);
