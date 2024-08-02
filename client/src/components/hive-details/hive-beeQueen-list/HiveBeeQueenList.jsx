@@ -46,7 +46,7 @@ export default function HiveBeeQueenList() {
             <Container>
                 <Row className='pb-3 pt-3'>
                     <Col className='text-start text-primary'>
-                        <h2>Bee Queens for hive: {hiveNumber ? `№${hiveNumber}` : hiveId}</h2>
+                        <h2>Bee Queens for hive: <Link to={`/hives/${hiveId}/details`} >{hiveNumber ? `№${hiveNumber}` : hiveId}</Link></h2>
                     </Col>
                     <Col className='text-end pt-1'>
                         {hiveBeeQueens.filter(x => x.isAlive).length > 0

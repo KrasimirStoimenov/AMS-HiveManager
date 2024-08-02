@@ -47,7 +47,7 @@ export default function HiveInspectionList() {
             <Container>
                 <Row className='pb-3 pt-3'>
                     <Col className='text-start text-primary'>
-                        <h2>Inspections for hive: {hiveNumber ? `№${hiveNumber}` : hiveId}</h2>
+                        <h2>Inspections for hive: <Link to={`/hives/${hiveId}/details`} >{hiveNumber ? `№${hiveNumber}` : hiveId}</Link></h2>
                     </Col>
                     <Col className='text-end pt-1'>
                         <Button as={Link} to={`/hives/${hiveId}/inspections/add`} variant='outline-primary'><i className="bi bi-plus-lg"></i> Add Inspection</Button>
