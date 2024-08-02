@@ -57,22 +57,23 @@ fieldset legend {
     color: var(--validation-invalid-color)
 }
 
-.field input[type=checkbox].form-checkbox {
+.field input[type=checkbox].form-check-input {
     cursor: pointer;
     width: 2em;
     height: 2em;
     position: relative;
     border-radius: 0.5em;
     margin: 0 1em;
+    box-shadow: none;
 }
 
-.field input[type=checkbox].form-checkbox:before,
-.field input[type=checkbox].form-checkbox:after {
+.field input[type=checkbox].form-check-input:before,
+.field input[type=checkbox].form-check-input:after {
     content: "";
     position: absolute;
 }
 
-.field input[type=checkbox].form-checkbox:before {
+.field input[type=checkbox].form-check-input:before {
     width: 200%;
     height: 100%;
     background-color: var(--checkbox-background-white-color);
@@ -83,7 +84,7 @@ fieldset legend {
 
 }
 
-.field input[type=checkbox].form-checkbox:after {
+.field input[type=checkbox].form-check-input:after {
     width: 80%;
     height: 80%;
     margin-top: 10%;
@@ -94,12 +95,12 @@ fieldset legend {
     transition: all 0.25s cubic-bezier(0.75, 0.01, 0.48, 2);
 }
 
-.field input[type=checkbox].form-checkbox:checked:before {
+.field input[type=checkbox].form-check-input:checked:before {
     background-color: var(--checkbox-background-blue-color);
     box-shadow: 0 0 0 1px var(--checkbox-background-blue-color);
 }
 
-.field input[type=checkbox].form-checkbox:checked:after {
+.field input[type=checkbox].form-check-input:checked:after {
     transform: translate(60%, 0);
     background-color: var(--checkbox-background-white-color);
 }
