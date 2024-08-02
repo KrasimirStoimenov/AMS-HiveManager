@@ -1,12 +1,9 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-
-import { useForm } from "../../../../hooks/useForm";
-import { useAddHarvest } from "../../../../hooks/useHarvests";
 import { useHiveContext } from "../../../../contexts/HiveContext";
-
+import { useForm } from "../../../../hooks/useForm";
+import { useNavigate, useParams } from "react-router-dom";
 import { Button, Col, Form, Row } from "react-bootstrap";
-
+import { useAddHarvest } from "../../../../hooks/useHarvests";
 import { dateTodayInitialFormValue } from "../../../../utils/dateUtils";
 
 export default function HiveHarvestAdd() {
@@ -20,6 +17,7 @@ export default function HiveHarvestAdd() {
         date: dateTodayInitialFormValue(),
         amount: '',
         product: '',
+        hiveDisplayName: hiveNumber ? `${hiveNumber} - ${hiveColor}` : hiveId,
         hiveId: hiveId,
     }
 
@@ -77,7 +75,7 @@ export default function HiveHarvestAdd() {
                 <Form.Group className="field" controlId="hiveId">
                     <Form.Control
                         name="hiveId"
-                        value={hiveNumber ? `${hiveNumber} - ${hiveColor}` : hiveId}
+                        value={values.hiveDisplayName}
                         onChange={changeHandler}
                         required
                         disabled>

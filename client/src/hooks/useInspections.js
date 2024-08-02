@@ -47,6 +47,8 @@ export const useGetInspectionsCountByHiveId = (hiveId) => {
 
 export const useAddInspection = () => {
     const addInspectionHandler = async (inspectionData) => {
+        delete inspectionData.hiveDisplayName;
+
         const formattedData = {
             ...inspectionData,
             date: new Date(inspectionData.date).toISOString(),

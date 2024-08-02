@@ -20,6 +20,7 @@ export default function HiveBeeQueenAdd() {
         isAlive: true,
         year: new Date().getFullYear(),
         colorMark: '',
+        hiveDisplayName: hiveNumber ? `${hiveNumber} - ${hiveColor}` : hiveId,
         hiveId: hiveId,
     };
 
@@ -66,7 +67,7 @@ export default function HiveBeeQueenAdd() {
                 <Form.Group className="field" controlId="hiveId">
                     <Form.Control
                         name="hiveId"
-                        value={hiveNumber ? `${hiveNumber} - ${hiveColor}` : hiveId}
+                        value={values.hiveDisplayName}
                         onChange={changeHandler}
                         required
                         disabled>
