@@ -79,25 +79,6 @@ export const useGetBeeQueensByHiveId = (hiveId) => {
     };
 };
 
-export const useGetBeeQueensCountByHiveId = (hiveId) => {
-    const [hiveBeeQueensCount, setHiveBeeQueensCount] = useState(0);
-    const [isFetching, setIsFetching] = useState(true);
-
-    useEffect(() => {
-        (async () => {
-            const result = await beeQueensAPI.getCountByHiveId(hiveId);
-
-            setHiveBeeQueensCount(result);
-            setIsFetching(false);
-        })();
-    }, []);
-
-    return {
-        hiveBeeQueensCount,
-        isFetching
-    };
-};
-
 export const useAddBeeQueen = () => {
     const addBeeQueenHandler = async (data) => {
 
