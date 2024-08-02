@@ -33,57 +33,61 @@ export default function HiveBeeQueenEdit() {
     const { values, changeHandler, submitHandler, reinitializeValues } = useForm(beeQueen, submitUpdateFormHandler);
 
     return (
-        <>
-            {isFetching
-                ? <Loading />
-                : <Form onSubmit={submitHandler}>
-                    <fieldset>
-                        <legend className="text-primary">Add Bee Queen</legend>
-                        <Form.Group className="field" controlId="year">
-                            <Form.Control
-                                type="number"
-                                name="year"
-                                value={values.year}
-                                onChange={changeHandler}
-                                required
-                                disabled={isUpdating}
-                            />
-                            <Form.Label>Year</Form.Label>
-                        </Form.Group>
-                        <Form.Group className="field" controlId="colorMark">
-                            <Form.Control
-                                type="text"
-                                name="colorMark"
-                                value={values.colorMark}
-                                onChange={changeHandler}
-                                required
-                                disabled={isUpdating}
-                            />
-                            <Form.Label>Color Mark</Form.Label>
-                        </Form.Group>
-                        <Form.Group className="field" controlId="isAlive">
-                            <Form.Check
-                                type="checkbox"
-                                name="isAlive"
-                                checked={values.isAlive}
-                                onChange={changeHandler}
-                                disabled={isUpdating}>
-                            </Form.Check>
-                            <Form.Label>Is Alive</Form.Label>
-                        </Form.Group>
-                        <Row>
-                            <Col xs={6} md={6} lg={6}>
-                                <Button className='form-control' onClick={() => navigate(-1)} disabled={isUpdating}>Back</Button>
-                            </Col>
-                            <Col xs={6} md={6} lg={6}>
-                                <Button className='form-control' type="submit" variant='success' disabled={isUpdating}>
-                                    {isUpdating ? 'Update...' : 'Update'}
-                                </Button>
-                            </Col>
-                        </Row>
-                    </fieldset>
-                </Form>}
-        </>
-
+        <Form onSubmit={submitHandler}>
+            <fieldset>
+                <legend className="text-primary">Edit Bee Queen</legend>
+                <Form.Group className="field" controlId="year">
+                    {isFetching
+                        ? <Loading />
+                        : <Form.Control
+                            type="number"
+                            name="year"
+                            value={values.year}
+                            onChange={changeHandler}
+                            required
+                            disabled={isUpdating}
+                        />
+                    }
+                    <Form.Label>Year</Form.Label>
+                </Form.Group>
+                <Form.Group className="field" controlId="colorMark">
+                    {isFetching
+                        ? <Loading />
+                        : <Form.Control
+                            type="text"
+                            name="colorMark"
+                            value={values.colorMark}
+                            onChange={changeHandler}
+                            required
+                            disabled={isUpdating}
+                        />
+                    }
+                    <Form.Label>Color Mark</Form.Label>
+                </Form.Group>
+                <Form.Group className="field" controlId="isAlive">
+                    {isFetching
+                        ? <Loading />
+                        : <Form.Check
+                            type="checkbox"
+                            name="isAlive"
+                            checked={values.isAlive}
+                            onChange={changeHandler}
+                            disabled={isUpdating}>
+                        </Form.Check>
+                    }
+                    <Form.Label>Is Alive</Form.Label>
+                </Form.Group>
+                <Row>
+                    <Col xs={6} md={6} lg={6}>
+                        <Button className='form-control' onClick={() => navigate(-1)} disabled={isUpdating}>Back</Button>
+                    </Col>
+                    <Col xs={6} md={6} lg={6}>
+                        <Button className='form-control' type="submit" variant='success' disabled={isUpdating}>
+                            {isUpdating ? 'Update...' : 'Update'}
+                        </Button>
+                    </Col>
+                </Row>
+            </fieldset>
+        </Form>
     );
 }
