@@ -18,7 +18,6 @@ export default function HiveInspectionAdd() {
         weatherConditions: '',
         observations: '',
         actionsTaken: '',
-        hiveDisplayName: hiveNumber ? `${hiveNumber} - ${hiveColor}` : hiveId,
         hiveId: hiveId,
     }
 
@@ -85,7 +84,7 @@ export default function HiveInspectionAdd() {
                 <Form.Group className="field" controlId="hiveId">
                     <Form.Control
                         name="hiveId"
-                        value={values.hiveDisplayName}
+                        value={hiveNumber ? `${hiveNumber} - ${hiveColor}` : hiveId}
                         onChange={changeHandler}
                         required
                         disabled>
