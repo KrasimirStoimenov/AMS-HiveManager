@@ -16,7 +16,7 @@ export default function HiveEdit() {
     const updateHiveHandler = useUpdateHive();
     const [isUpdating, setIsUpdating] = useState(false);
 
-    const submitHiveHandler = async (values) => {
+    const submitUpdateFormHandler = async (values) => {
         try {
             setIsUpdating(true);
             await updateHiveHandler(hiveId, values);
@@ -28,7 +28,7 @@ export default function HiveEdit() {
         };
     };
 
-    const { values, changeHandler, submitHandler } = useForm(hive, submitHiveHandler, true);
+    const { values, changeHandler, submitHandler } = useForm(hive, submitUpdateFormHandler, true);
 
     return (
         <Form onSubmit={submitHandler}>

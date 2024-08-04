@@ -2,6 +2,30 @@ import { useEffect, useState } from "react";
 
 import harvestsAPI from "../api/harvests-api";
 
+export const useGetHarvestById = (harvestId) => {
+    const [harvest, setHarvest] = useState({
+        date: '',
+        amount: '',
+        product: '',
+        hiveId: '',
+    });
+    const [isFetching, setIsFetching] = useState(true);
+
+    useEffect(() => {
+        (async () => {
+            const result = await harvestsAPI.getById(harvestId);
+
+            setHarvest(result);
+            setIsFetching(false);
+        })();
+    }, []);
+
+    return {
+        harvest,
+        isFetching
+    };
+};
+
 export const useGetHarvestsByHiveId = (hiveId) => {
     const [hiveHarvests, setHiveHarvests] = useState([]);
     const [isFetching, setIsFetching] = useState(true);
@@ -57,6 +81,12 @@ export const useAddHarvest = () => {
     };
 
     return addHarvestHandler;
+};
+
+export const useUpdateHarvest = () => {
+    const updateHarvestHandler = async (harvestId, harvest) => { await harvestsAPI.update(harvestId, harvest); };
+
+    return updateHarvestHandler;
 };
 
 export const useDeleteHarvest = () => {

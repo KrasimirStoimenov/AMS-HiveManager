@@ -2,25 +2,25 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { useForm } from "../../../../hooks/useForm";
-import { useGetInspectionById, useUpdateInspection } from "../../../../hooks/useInspections";
+import { useGetHarvestById, useUpdateHarvest } from "../../../../hooks/useHarvests";
 
 import { Button, Col, Form, Row } from "react-bootstrap";
-
-import { formatIsoStringToFormDateValue } from "../../../../utils/dateUtils";
 import Loading from "../../../loading/Loading";
 
-export default function HiveInspectionEdit() {
+import { formatIsoStringToFormDateValue } from "../../../../utils/dateUtils";
+
+export default function HiveHarvestEdit() {
     const navigate = useNavigate();
-    const { inspectionId } = useParams();
-    const { inspection, isFetching } = useGetInspectionById(inspectionId);
+    const { harvestId } = useParams();
+    const { harvest, isFetching } = useGetHarvestById(harvestId);
     const [isUpdating, setIsUpdating] = useState(false);
-    const updateInspectionHandler = useUpdateInspection();
+    const updateHarvestHandler = useUpdateHarvest();
 
     const submitUpdateFormHandler = async (values) => {
         try {
             setIsUpdating(true);
-            await updateInspectionHandler(inspectionId, values);
-            navigate(`/hives/${inspection.hiveId}/inspections`);
+            await updateHarvestHandler(harvestId, values);
+            navigate(`/hives/${harvest.hiveId}/harvests`);
         } catch (error) {
             alert(error.message);
         } finally {
@@ -28,12 +28,12 @@ export default function HiveInspectionEdit() {
         };
     };
 
-    const { values, changeHandler, submitHandler } = useForm(inspection, submitUpdateFormHandler, true);
+    const { values, changeHandler, submitHandler } = useForm(harvest, submitUpdateFormHandler, true);
 
     return (
         <Form onSubmit={submitHandler}>
             <fieldset>
-                <legend className="text-primary">Edit Inspection</legend>
+                <legend className="text-primary">Edit Harvest</legend>
                 <Form.Group className="field" controlId="date">
                     {isFetching
                         ? <Loading />
@@ -48,45 +48,33 @@ export default function HiveInspectionEdit() {
                     }
                     <Form.Label>Date</Form.Label>
                 </Form.Group>
-                <Form.Group className="field" controlId="weatherConditions">
+                <Form.Group className="field" controlId="amount">
                     {isFetching
                         ? <Loading />
                         : <Form.Control
-                            type="text"
-                            name="weatherConditions"
-                            value={values.weatherConditions}
-                            onChange={changeHandler}
-                            disabled={isUpdating}
-                        />
-                    }
-                    <Form.Label>Weather Conditions</Form.Label>
-                </Form.Group>
-                <Form.Group className="field" controlId="observations">
-                    {isFetching
-                        ? <Loading />
-                        : <Form.Control as="textarea" rows={3}
-                            type="text"
-                            name="observations"
-                            value={values.observations}
+                            type="number"
+                            name="amount"
+                            value={values.amount}
                             onChange={changeHandler}
                             required
                             disabled={isUpdating}
                         />
                     }
-                    <Form.Label>Observations</Form.Label>
+                    <Form.Label>Amount</Form.Label>
                 </Form.Group>
-                <Form.Group className="field" controlId="actionsTaken">
+                <Form.Group className="field" controlId="product">
                     {isFetching
                         ? <Loading />
-                        : <Form.Control as="textarea" rows={3}
+                        : <Form.Control
                             type="text"
-                            name="actionsTaken"
-                            value={values.actionsTaken}
+                            name="product"
+                            value={values.product}
                             onChange={changeHandler}
+                            required
                             disabled={isUpdating}
                         />
                     }
-                    <Form.Label>Actions Taken</Form.Label>
+                    <Form.Label>Product</Form.Label>
                 </Form.Group>
                 <Row>
                     <Col xs={6} md={6} lg={6}>
