@@ -14,10 +14,6 @@ export default function HiveBeeQueenEdit() {
     const [isUpdating, setIsUpdating] = useState(false);
     const updateBeeQueenHandler = useUpdateBeeQueen();
 
-    useEffect(() => {
-        reinitializeValues(beeQueen);
-    }, [beeQueen]);
-
     const submitUpdateFormHandler = async () => {
         try {
             setIsUpdating(true);
@@ -30,7 +26,7 @@ export default function HiveBeeQueenEdit() {
         }
     };
 
-    const { values, changeHandler, submitHandler, reinitializeValues } = useForm(beeQueen, submitUpdateFormHandler);
+    const { values, changeHandler, submitHandler } = useForm(beeQueen, submitUpdateFormHandler, true);
 
     return (
         <Form onSubmit={submitHandler}>

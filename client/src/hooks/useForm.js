@@ -1,7 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export function useForm(initialValues, submitHandlerCallback) {
+export function useForm(initialValues, submitHandlerCallback, reinitializeForm = false) {
     const [values, setValues] = useState(initialValues);
+
+    useEffect(() => {
+        if (reinitializeForm) {
+            setValues(initialValues);
+        };
+    }, [initialValues, reinitializeForm]);
 
     const changeHandler = (e) => {
         setValues(prevState => ({
@@ -10,22 +16,17 @@ export function useForm(initialValues, submitHandlerCallback) {
                 ? e.target.checked
                 : e.target.value
         }));
-    }
+    };
 
     const submitHandler = (e) => {
         e.preventDefault();
 
         submitHandlerCallback(values);
-    }
-
-    const reinitializeValues = (values) => {
-        setValues(values);
-    }
+    };
 
     return {
         values,
         changeHandler,
         submitHandler,
-        reinitializeValues
     };
 }
