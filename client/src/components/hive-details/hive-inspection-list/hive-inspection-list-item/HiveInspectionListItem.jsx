@@ -1,5 +1,6 @@
 import { Button } from "react-bootstrap";
 import { formatIsoStringToDisplayDate } from "../../../../utils/dateUtils";
+import { Link } from "react-router-dom";
 
 export default function HiveInspectionListItem({
     hiveInspection,
@@ -12,7 +13,7 @@ export default function HiveInspectionListItem({
             <td>{hiveInspection.observations}</td>
             <td>{hiveInspection.actionsTaken}</td>
             <td className='list-items-helper-buttons'>
-                <Button variant='warning'><i className="bi bi-pencil-square"></i> Edit</Button>
+                <Button as={Link} to={`/inspections/${hiveInspection._id}/edit`} variant='warning'><i className="bi bi-pencil-square"></i> Edit</Button>
                 <Button variant='danger' onClick={() => deleteClickHandler(hiveInspection._id)}><i className="bi bi-trash-fill"></i> Delete</Button>
             </td>
         </tr>

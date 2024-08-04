@@ -21,7 +21,7 @@ const getByHiveId = (hiveId) => {
 };
 
 const add = (beeQueen) => requester.post(`${BASE_URL}`, beeQueen);
-const update = (beeQueenId, beeQueen) => requester.put(`${BASE_URL}/${beeQueenId}`, beeQueen)
+const update = (beeQueenId, beeQueen) => requester.put(`${BASE_URL}/${beeQueenId}`, beeQueen);
 const remove = (beeQueenId) => requester.del(`${BASE_URL}/${beeQueenId}`);
 
 const beeQueensAPI = {

@@ -2,6 +2,32 @@ import { useEffect, useState } from "react";
 
 import inspectionsAPI from "../api/inspections-api";
 
+export const useGetInspectionById = (inspectionId) => {
+    const [inspection, setInspection] = useState({
+        date: '',
+        weatherConditions: '',
+        observations: '',
+        actionsTaken: '',
+        hiveId: '',
+    });
+    const [isFetching, setIsFetching] = useState(true);
+
+    useEffect(() => {
+        (async () => {
+            const result = await inspectionsAPI.getById(inspectionId);
+
+            setInspection(result);
+            setIsFetching(false);
+        })();
+    }, []);
+
+
+    return {
+        inspection,
+        isFetching,
+    };
+}
+
 export const useGetInspectionsByHiveId = (hiveId) => {
     const [hiveInspections, setHiveInspections] = useState([]);
     const [isFetching, setIsFetching] = useState(true);
@@ -58,6 +84,12 @@ export const useAddInspection = () => {
 
     return addInspectionHandler;
 };
+
+export const useUpdateInspection = () => {
+    const updateInspectionHandler = async (inspectionId, inspection) => { await inspectionsAPI.update(inspectionId, inspection); };
+
+    return updateInspectionHandler;
+}
 
 export const useDeleteInspection = () => {
     const deleteInspectionHandler = (inspectionId) => inspectionsAPI.remove(inspectionId);
