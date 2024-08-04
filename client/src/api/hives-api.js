@@ -19,7 +19,8 @@ const getByApiaryId = (apiaryId) => {
     return requester.get(`${BASE_URL}?${params.toString()}`);
 };
 
-const add = (data) => requester.post(`${BASE_URL}`, data);
+const add = (hive) => requester.post(`${BASE_URL}`, hive);
+const update = (hiveId, hive) => requester.put(`${BASE_URL}/${hiveId}`, hive);
 const remove = (hiveId) => requester.del(`${BASE_URL}/${hiveId}`);
 
 const hivesAPI = {
@@ -27,6 +28,7 @@ const hivesAPI = {
     getById,
     getByApiaryId,
     add,
+    update,
     remove
 };
 

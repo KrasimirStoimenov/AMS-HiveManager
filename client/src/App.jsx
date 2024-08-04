@@ -24,6 +24,7 @@ import HiveHarvestAdd from './components/hive-details/hive-harvest-list/hive-har
 import HiveBeeQueenList from './components/hive-details/hive-beeQueen-list/HiveBeeQueenList';
 import HiveBeeQueenAdd from './components/hive-details/hive-beeQueen-list/hive-beeQueen-add/HiveBeeQueenAdd';
 import HiveBeeQueenEdit from './components/hive-details/hive-beeQueen-list/hive-beeQueen-edit/HiveBeeQueenEdit';
+import HiveEdit from './components/hive-details/hive-edit/HiveEdit';
 
 function App() {
     return (
@@ -48,6 +49,7 @@ function App() {
                         <Route path='/hives/:hiveId/beeQueens' element={<HiveBeeQueenList />} />
                         <Route path='/hives/:hiveId/beeQueens/add' element={<HiveBeeQueenAdd />} />
 
+                        <Route path='/hives/:hiveId/edit' element={<HiveEdit />} />
                         <Route path='/beeQueens/:beeQueenId/edit' element={<HiveBeeQueenEdit />} />
                     </Route>
 

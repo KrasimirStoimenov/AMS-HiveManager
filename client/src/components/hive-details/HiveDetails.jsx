@@ -7,7 +7,7 @@ import { Container, Row, Col, Card, ListGroup, Button } from 'react-bootstrap';
 
 import Loading from '../loading/Loading';
 import Delete from '../delete/Delete';
-import { formatIsoStringToDate } from '../../utils/dateUtils';
+import { formatIsoStringToDisplayDate } from '../../utils/dateUtils';
 import { useGetInspectionsCountByHiveId } from '../../hooks/useInspections';
 import { useGetHarvestsCountByHiveId } from '../../hooks/useHarvests';
 import { useGetBeeQueensByHiveId } from '../../hooks/useBeeQueens';
@@ -73,7 +73,7 @@ export default function HiveDetails() {
                                         <strong>Color:</strong> {hive.color}
                                     </Card.Text>
                                     <Card.Text>
-                                        <strong>Date bought:</strong> {formatIsoStringToDate(hive.dateBought)}
+                                        <strong>Date bought:</strong> {formatIsoStringToDisplayDate(hive.dateBought)}
                                     </Card.Text>
                                     <Card.Text>
                                         <strong>Queen Status: </strong>
@@ -93,7 +93,7 @@ export default function HiveDetails() {
                                             <Link to={`/hives/${hive._id}/harvests`}><strong>Harvests:</strong> {hiveHarvestsCount}</Link>
                                         </ListGroup.Item>
                                     </ListGroup>
-                                    <Button variant="warning" className="me-2"><i className="bi bi-pencil-square"></i> Edit</Button>
+                                    <Button as={Link} to={`/hives/${hiveId}/edit`} variant="warning" className="me-2"><i className="bi bi-pencil-square"></i> Edit</Button>
                                     <Button variant="danger" onClick={() => deleteClickHandler(hive._id)}><i className="bi bi-trash-fill"></i> Delete</Button>
                                 </Card.Body>
                             }

@@ -22,7 +22,14 @@ export const useGetAllHives = () => {
 };
 
 export const useGetHiveById = (hiveId) => {
-    const [hive, setHive] = useState([]);
+    const [hive, setHive] = useState({
+        number: '',
+        type: '',
+        status: '',
+        color: '',
+        dateBought: '',
+        apiaryId: '',
+    });
     const [isFetching, setIsFetching] = useState(true);
     const { changeHiveState } = useHiveContext();
 
@@ -72,6 +79,12 @@ export const useAddHive = () => {
     };
 
     return addHiveHandler;
+};
+
+export const useUpdateHive = () => {
+    const updateHiveHandler = async (hiveId, hive) => { await hivesAPI.update(hiveId, hive); };
+
+    return updateHiveHandler;
 };
 
 export const useDeleteHive = () => {
