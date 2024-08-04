@@ -75,7 +75,7 @@ export const useAddHive = () => {
             dateBought: new Date(data.dateBought).toISOString(),
         };
 
-        await hivesAPI.add(formattedData);
+        return await hivesAPI.add(formattedData);
     };
 
     return addHiveHandler;
