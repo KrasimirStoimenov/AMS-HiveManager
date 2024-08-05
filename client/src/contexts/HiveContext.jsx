@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 export const HiveContext = createContext();
 
-export function HiveContextProvider(props) {
+export function HiveContextProvider() {
     const [hiveState, setHiveState] = useState({});
 
     const changeHiveState = (state) => {
@@ -19,9 +19,7 @@ export function HiveContextProvider(props) {
 
     return (
         <HiveContext.Provider value={contextData}>
-            <Outlet>
-                {props.children}
-            </Outlet>
+            <Outlet />
         </HiveContext.Provider>
     );
 }
