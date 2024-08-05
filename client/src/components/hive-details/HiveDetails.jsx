@@ -1,23 +1,20 @@
 import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
-import { useDeleteHive, useGetHiveById, useGetHiveWithApiaryById } from '../../hooks/useHives';
-import { useGetInspectionsCountByHiveId } from '../../hooks/useInspections';
-import { useGetHarvestsCountByHiveId } from '../../hooks/useHarvests';
+import { useDeleteHive, useGetHiveWithApiaryById } from '../../hooks/useHives';
 import { useGetBeeQueensByHiveId } from '../../hooks/useBeeQueens';
 
-import { Container, Row, Col, Card, ListGroup, Button, Image } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Image } from 'react-bootstrap';
 
 import Loading from '../loading/Loading';
 import Delete from '../delete/Delete';
 import { formatIsoStringToDisplayDate } from '../../utils/dateUtils';
+import HiveDetailsLinks from './hive-details-links/HiveDetailsLinks';
 
 export default function HiveDetails() {
     const { hiveId } = useParams();
     const navigate = useNavigate();
     const { hiveWithApiary, isFetching } = useGetHiveWithApiaryById(hiveId);
-    const { hiveInspectionsCount } = useGetInspectionsCountByHiveId(hiveId);
-    const { hiveHarvestsCount } = useGetHarvestsCountByHiveId(hiveId);
     const { hiveBeeQueens } = useGetBeeQueensByHiveId(hiveId);
     const hiveAliveBeeQueen = hiveBeeQueens.filter(x => x.isAlive);
 
@@ -85,17 +82,10 @@ export default function HiveDetails() {
                                             : <strong className="text-danger">Hive is queenless. There is no live bee queen for the hive.</strong>
                                         }
                                     </Card.Text>
-                                    <ListGroup className="my-4">
-                                        <ListGroup.Item>
-                                            <Link to={`/hives/${hiveWithApiary._id}/beeQueens`}><strong>Bee Queens:</strong> {hiveBeeQueens.length}</Link>
-                                        </ListGroup.Item>
-                                        <ListGroup.Item>
-                                            <Link to={`/hives/${hiveWithApiary._id}/inspections`}><strong>Inspections:</strong> {hiveInspectionsCount}</Link>
-                                        </ListGroup.Item>
-                                        <ListGroup.Item>
-                                            <Link to={`/hives/${hiveWithApiary._id}/harvests`}><strong>Harvests:</strong> {hiveHarvestsCount}</Link>
-                                        </ListGroup.Item>
-                                    </ListGroup>
+                                    <HiveDetailsLinks
+                                        hiveId={hiveId}
+                                        hiveBeeQueensCount={hiveBeeQueens.length}
+                                    />
                                     <Button as={Link} to={`/hives/${hiveId}/edit`} variant="warning" className="me-2"><i className="bi bi-pencil-square"></i> Edit</Button>
                                     <Button variant="danger" onClick={() => deleteClickHandler(hiveWithApiary._id)}><i className="bi bi-trash-fill"></i> Delete</Button>
                                 </Card.Body>
