@@ -6,10 +6,11 @@ import { useGetBeeQueensByHiveId } from '../../hooks/useBeeQueens';
 
 import { Container, Row, Col, Card, Button, Image } from 'react-bootstrap';
 
+import HiveDetailsLinks from './hive-details-links/HiveDetailsLinks';
 import Loading from '../loading/Loading';
 import Delete from '../delete/Delete';
+
 import { formatIsoStringToDisplayDate } from '../../utils/dateUtils';
-import HiveDetailsLinks from './hive-details-links/HiveDetailsLinks';
 
 export default function HiveDetails() {
     const { hiveId } = useParams();

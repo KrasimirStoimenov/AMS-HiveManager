@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import beeQueensAPI from "../api/beeQueens-api";
+
 import { useAuthContext } from "../contexts/AuthContext";
+
+import beeQueensAPI from "../api/beeQueens-api";
 
 export const useGetAllBeeQueens = () => {
     const [beeQueens, setBeeQueens] = useState([]);

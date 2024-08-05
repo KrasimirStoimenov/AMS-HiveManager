@@ -5,9 +5,9 @@ import { useForm } from "../../../../hooks/useForm";
 import { useGetInspectionById, useUpdateInspection } from "../../../../hooks/useInspections";
 
 import { Button, Col, Form, Row } from "react-bootstrap";
+import Loading from "../../../loading/Loading";
 
 import { formatIsoStringToFormDateValue } from "../../../../utils/dateUtils";
-import Loading from "../../../loading/Loading";
 
 export default function HiveInspectionEdit() {
     const navigate = useNavigate();

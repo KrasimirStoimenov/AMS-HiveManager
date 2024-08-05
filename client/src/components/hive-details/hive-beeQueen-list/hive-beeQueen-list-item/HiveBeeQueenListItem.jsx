@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import Button from 'react-bootstrap/esm/Button';
+import { Button } from "react-bootstrap";
 
 export default function HiveBeeQueenListItem({
     beeQueen,

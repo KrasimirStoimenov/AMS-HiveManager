@@ -1,11 +1,11 @@
+import { Link } from 'react-router-dom';
+
 import { useGetAllApiaries } from '../../../hooks/useApiaries';
 import styles from './ApiaryList.module.css';
 
-import { Link } from 'react-router-dom';
-import { Accordion, Button, Row } from 'react-bootstrap';
+import { Accordion, Button } from 'react-bootstrap';
 import ApiaryListItem from './apiary-list-item/ApiaryListItem';
 import Loading from '../../loading/Loading';
-
 
 export default function ApiaryList() {
     const { apiaries, isFetching } = useGetAllApiaries();

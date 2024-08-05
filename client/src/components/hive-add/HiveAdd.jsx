@@ -1,18 +1,14 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import Button from 'react-bootstrap/esm/Button';
-import Col from 'react-bootstrap/esm/Col';
-import Row from 'react-bootstrap/esm/Row';
-import Form from 'react-bootstrap/Form';
-
 import { useForm } from '../../hooks/useForm';
 import { useAddHive } from '../../hooks/useHives';
 import { useGetApiaryById } from '../../hooks/useApiaries';
+
+import { Button, Col, Row, Form } from 'react-bootstrap';
+
 import Loading from '../loading/Loading';
 import { dateTodayInitialFormValue } from '../../utils/dateUtils';
-
-
 
 export default function HiveAdd() {
     const { apiaryId } = useParams();

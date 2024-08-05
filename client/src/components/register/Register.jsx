@@ -1,6 +1,7 @@
-import { useRegister } from '../../hooks/useAuth';
 import { Link, useNavigate } from 'react-router-dom';
+
 import { useForm } from '../../hooks/useForm';
+import { useRegister } from '../../hooks/useAuth';
 
 import { Container, Row, Col, Card, Form, Button, FloatingLabel } from 'react-bootstrap';
 

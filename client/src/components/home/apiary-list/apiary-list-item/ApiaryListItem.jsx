@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import { useGetHiveByApiaryId } from '../../../../hooks/useHives';
 
-import { Link } from 'react-router-dom';
-import { Row, Accordion, Button, Container } from 'react-bootstrap';
+import { Row, Accordion, Button } from 'react-bootstrap';
 
 import HiveCard from './hive-card/HiveCard';
 import Loading from '../../../loading/Loading';

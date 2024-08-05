@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import { useDeleteInspection, useGetInspectionsByHiveId } from '../../../hooks/useInspections';
+import { useHiveContext } from '../../../contexts/HiveContext';
 
 import { Col, Row, Table, Container, Button } from 'react-bootstrap';
 
-import { useHiveContext } from '../../../contexts/HiveContext';
 import HiveInspectionListItem from './hive-inspection-list-item/HiveInspectionListItem';
 import Loading from '../../loading/Loading';
 import Delete from '../../delete/Delete';

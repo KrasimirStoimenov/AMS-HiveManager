@@ -1,8 +1,8 @@
 
 import { useAuthContext } from '../../contexts/AuthContext';
 
-import GuestHome from './guest-home/GuestHome';
 import ApiaryList from './apiary-list/ApiaryList';
+import GuestHome from './guest-home/GuestHome';
 
 export default function Home() {
     const { isAuthenticated } = useAuthContext();

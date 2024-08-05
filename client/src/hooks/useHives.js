@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import hivesAPI from "../api/hives-api";
+
 import { useHiveContext } from "../contexts/HiveContext";
+
+import hivesAPI from "../api/hives-api";
 
 export const useGetAllHives = () => {
     const [hives, setHives] = useState([]);

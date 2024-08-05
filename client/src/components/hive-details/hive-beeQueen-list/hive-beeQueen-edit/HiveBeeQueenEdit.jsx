@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { useForm } from "../../../../hooks/useForm";
@@ -23,7 +23,7 @@ export default function HiveBeeQueenEdit() {
             alert(error.message);
         } finally {
             setIsUpdating(false);
-        }
+        };
     };
 
     const { values, changeHandler, submitHandler } = useForm(beeQueen, submitUpdateFormHandler, true);

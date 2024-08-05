@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import apiariesAPI from "../api/apiaries-api";
+
 import { useAuthContext } from "../contexts/AuthContext";
 
+import apiariesAPI from "../api/apiaries-api";
 
 export const useGetAllApiaries = () => {
     const [apiaries, setApiaries] = useState([]);

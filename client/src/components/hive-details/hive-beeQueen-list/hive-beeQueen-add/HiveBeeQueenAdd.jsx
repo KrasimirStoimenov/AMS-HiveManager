@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { Button, Col, Row, Form } from 'react-bootstrap/';
-
-import { useHiveContext } from '../../../../contexts/HiveContext';
 import { useForm } from '../../../../hooks/useForm';
 import { useAddBeeQueen } from '../../../../hooks/useBeeQueens';
+import { useHiveContext } from '../../../../contexts/HiveContext';
+
+import { Button, Col, Row, Form } from 'react-bootstrap';
 
 export default function HiveBeeQueenAdd() {
     const navigate = useNavigate();
@@ -31,7 +31,7 @@ export default function HiveBeeQueenAdd() {
             alert(error.message);
         } finally {
             setIsAdding(false);
-        }
+        };
     };
 
     const { values, changeHandler, submitHandler } = useForm(initialFormValues, submitFormHandler);
