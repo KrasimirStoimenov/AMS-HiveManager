@@ -28,6 +28,7 @@ import HiveEdit from './components/hive-details/hive-edit/HiveEdit';
 import HiveInspectionEdit from './components/hive-details/hive-inspection-list/hive-inspection-edit/HiveInspectionEdit';
 import HiveHarvestEdit from './components/hive-details/hive-harvest-list/hive-harvest-edit/HiveHarvestEdit';
 import PrivateRoutes from './components/common/PrivateRoutes';
+import GuestRoutes from './components/common/GuestRoutes';
 
 function App() {
     return (
@@ -37,15 +38,15 @@ function App() {
             <Container>
                 <Routes>
                     <Route path='/' element={<Home />} />
-                    <Route path='/login' element={<Login />} />
-                    <Route path='/register' element={<Register />} />
-
+                    <Route element={<GuestRoutes />} >
+                        <Route path='/login' element={<Login />} />
+                        <Route path='/register' element={<Register />} />
+                    </Route>
                     <Route element={<PrivateRoutes />}>
                         <Route path='/logout' element={<Logout />} />
                         <Route path='/apiaries/add' element={<ApiaryAdd />} />
                         <Route path='/apiaries/:apiaryId/hives/add' element={<HiveAdd />} />
                         <Route path='/beeQueens' element={<BeeQueenList />} />
-
                         <Route element={<HiveContextProvider />}>
                             <Route path='/hives/:hiveId/details' element={<HiveDetails />} />
                             <Route path='/hives/:hiveId/inspections' element={<HiveInspectionList />} />
