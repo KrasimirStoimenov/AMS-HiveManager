@@ -4,6 +4,7 @@ import { useForm } from '../../hooks/useForm';
 import { useRegister } from '../../hooks/useAuth';
 
 import { Container, Row, Col, Card, Form, Button, FloatingLabel } from 'react-bootstrap';
+import { toast, ToastContainer } from 'react-toastify';
 
 const initialFormValues = {
     email: '',
@@ -21,18 +22,18 @@ export default function Register() {
         const confirmPassword = values['confirm-password'];
 
         if (email == '' || password == '') {
-            return alert('All fields are required!');
+            return toast.info('All fields are required!');
         }
 
         if (password != confirmPassword) {
-            return alert('Passwords don\'t match!');
+            return toast.info('Passwords don\'t match!');
         }
 
         try {
             await register(email, password);
             navigate('/');
         } catch (error) {
-            alert(error.message);
+            toast.error('Something went wrong. Please try again later or contact support if the issue persists.');
         }
     };
 
@@ -40,6 +41,7 @@ export default function Register() {
 
     return (
         <Container>
+            <ToastContainer theme='colored' />
             <Row className="justify-content-center">
                 <Col md={6} lg={4}>
                     <Card className="shadow-sm">

@@ -5,6 +5,7 @@ import { useForm } from '../../../../hooks/useForm';
 import { useAddApiary } from '../../../../hooks/useApiaries';
 
 import { Button, Col, Row, Form } from 'react-bootstrap';
+import { toast, ToastContainer } from 'react-toastify';
 
 const initialFormValues = {
     name: '',
@@ -22,7 +23,7 @@ export default function ApiaryAdd() {
             await addApiaryHandler(values);
             navigate(`/`);
         } catch (error) {
-            alert(error.message);
+            toast.error('Something went wrong. Please try again later or contact support if the issue persists.');
         } finally {
             setisAdding(false);
         };
@@ -32,6 +33,7 @@ export default function ApiaryAdd() {
 
     return (
         <Form onSubmit={submitHandler}>
+            <ToastContainer theme='colored' />
             <fieldset>
                 <legend className="text-primary">Add Apiary</legend>
                 <Form.Group className="field" controlId="name">

@@ -5,6 +5,7 @@ import { useDeleteInspection, useGetInspectionsByHiveId } from '../../../hooks/u
 import { useHiveContext } from '../../../contexts/HiveContext';
 
 import { Col, Row, Table, Container, Button } from 'react-bootstrap';
+import { toast, ToastContainer } from 'react-toastify';
 
 import HiveInspectionListItem from './hive-inspection-list-item/HiveInspectionListItem';
 import Loading from '../../loading/Loading';
@@ -28,7 +29,7 @@ export default function HiveInspectionList() {
             await deleteInspectionHandler(inspectionId);
             changeInspections(oldState => oldState.filter(inspection => inspection._id !== inspectionId));
         } catch (error) {
-            alert(error.message);
+            toast.error('Something went wrong. Please try again later or contact support if the issue persists.');
         } finally {
             setIsDeleting(false);
             setShowDeleteById(null);
@@ -45,6 +46,7 @@ export default function HiveInspectionList() {
                 />
             )}
             <Container>
+                <ToastContainer theme='colored' />
                 <Row className='pb-3 pt-3'>
                     <Col className='text-start text-primary'>
                         <h2>Inspections for hive: <Link to={`/hives/${hiveId}/details`} >{hiveNumber ? `№${hiveNumber}` : hiveId}</Link></h2>

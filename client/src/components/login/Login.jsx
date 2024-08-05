@@ -4,6 +4,7 @@ import { useLogin } from '../../hooks/useAuth';
 import { useForm } from '../../hooks/useForm';
 
 import { Container, Row, Col, Card, Form, Button, FloatingLabel } from 'react-bootstrap';
+import { toast, ToastContainer } from 'react-toastify';
 
 const initialFormValues = {
     email: '',
@@ -16,14 +17,14 @@ export default function Login() {
 
     const loginHandler = async (values) => {
         if (values.email == '' || values.password == '') {
-            return alert('All fields are required!');
+            return toast.warning('All fields are required!');
         }
 
         try {
             await login(values);
             navigate('/');
         } catch (error) {
-            alert(error.message);
+            toast.error('Something went wrong. Please try again later or contact support if the issue persists.');
         }
     };
 
@@ -31,6 +32,7 @@ export default function Login() {
 
     return (
         <Container>
+            <ToastContainer theme='colored' />
             <Row className="justify-content-center">
                 <Col md={6} lg={4}>
                     <Card className="shadow-sm">

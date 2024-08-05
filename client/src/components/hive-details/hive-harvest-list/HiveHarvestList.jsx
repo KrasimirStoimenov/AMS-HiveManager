@@ -5,6 +5,7 @@ import { useDeleteHarvest, useGetHarvestsByHiveId } from "../../../hooks/useHarv
 import { useHiveContext } from "../../../contexts/HiveContext";
 
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
+import { toast, ToastContainer } from 'react-toastify';
 
 import HiveHarvestListItem from "./hive-harvest-list-item/HiveHarvestListItem";
 import Loading from "../../loading/Loading";
@@ -28,7 +29,7 @@ export default function HiveHarvestList() {
             await deleteHarvestHandler(harvestId);
             changeHarvests(oldState => oldState.filter(harvest => harvest._id !== harvestId));
         } catch (error) {
-            alert(error.message);
+            toast.error('Something went wrong. Please try again later or contact support if the issue persists.');
         } finally {
             setIsDeleting(false);
             setShowDeleteById(null);
@@ -44,6 +45,7 @@ export default function HiveHarvestList() {
                 />
             )}
             <Container>
+                <ToastContainer theme='colored' />
                 <Row className='pb-3 pt-3'>
                     <Col className='text-start text-primary'>
                         <h2>Harvests for hive: <Link to={`/hives/${hiveId}/details`} >{hiveNumber ? `№${hiveNumber}` : hiveId}</Link></h2>

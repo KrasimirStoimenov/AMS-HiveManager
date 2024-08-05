@@ -5,6 +5,8 @@ import { useForm } from "../../../../hooks/useForm";
 import { useGetHarvestById, useUpdateHarvest } from "../../../../hooks/useHarvests";
 
 import { Button, Col, Form, Row } from "react-bootstrap";
+import { toast, ToastContainer } from 'react-toastify';
+
 import Loading from "../../../loading/Loading";
 
 import { formatIsoStringToFormDateValue } from "../../../../utils/dateUtils";
@@ -22,7 +24,7 @@ export default function HiveHarvestEdit() {
             await updateHarvestHandler(harvestId, values);
             navigate(`/hives/${harvest.hiveId}/harvests`);
         } catch (error) {
-            alert(error.message);
+            toast.error('Something went wrong. Please try again later or contact support if the issue persists.');
         } finally {
             setIsUpdating(false);
         };
@@ -32,6 +34,7 @@ export default function HiveHarvestEdit() {
 
     return (
         <Form onSubmit={submitHandler}>
+            <ToastContainer theme='colored' />
             <fieldset>
                 <legend className="text-primary">Edit Harvest</legend>
                 <Form.Group className="field" controlId="date">

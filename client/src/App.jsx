@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 import { AuthContextProvider } from './contexts/AuthContext';

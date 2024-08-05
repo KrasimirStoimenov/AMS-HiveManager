@@ -6,6 +6,7 @@ import { useAddHive } from '../../hooks/useHives';
 import { useGetApiaryById } from '../../hooks/useApiaries';
 
 import { Button, Col, Row, Form } from 'react-bootstrap';
+import { toast, ToastContainer } from 'react-toastify';
 
 import Loading from '../loading/Loading';
 import { dateTodayInitialFormValue } from '../../utils/dateUtils';
@@ -32,7 +33,7 @@ export default function HiveAdd() {
             const hive = await addHiveHandler(values);
             navigate(`/hives/${hive._id}/details`);
         } catch (error) {
-            alert(error.message);
+            toast.error('Something went wrong. Please try again later or contact support if the issue persists.');
         } finally {
             setIsAdding(false);
         };
@@ -42,6 +43,7 @@ export default function HiveAdd() {
 
     return (
         <Form onSubmit={submitHandler}>
+            <ToastContainer theme='colored' />
             <fieldset>
                 <legend className="text-primary">Add Hive</legend>
                 <Form.Group className="field" controlId="number">

@@ -6,6 +6,7 @@ import { useAddBeeQueen } from '../../../../hooks/useBeeQueens';
 import { useHiveContext } from '../../../../contexts/HiveContext';
 
 import { Button, Col, Row, Form } from 'react-bootstrap';
+import { toast, ToastContainer } from 'react-toastify';
 
 export default function HiveBeeQueenAdd() {
     const navigate = useNavigate();
@@ -28,7 +29,7 @@ export default function HiveBeeQueenAdd() {
             await addBeeQueenHandler(values);
             navigate(`/hives/${hiveId}/beeQueens`);
         } catch (error) {
-            alert(error.message);
+            toast.error('Something went wrong. Please try again later or contact support if the issue persists.');
         } finally {
             setIsAdding(false);
         };
@@ -38,6 +39,7 @@ export default function HiveBeeQueenAdd() {
 
     return (
         <Form onSubmit={submitHandler}>
+            <ToastContainer theme='colored' />
             <fieldset>
                 <legend className="text-primary">Add Bee Queen</legend>
                 <Form.Group className="field" controlId="year">

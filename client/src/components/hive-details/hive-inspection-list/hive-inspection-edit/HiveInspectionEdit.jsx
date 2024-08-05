@@ -5,6 +5,8 @@ import { useForm } from "../../../../hooks/useForm";
 import { useGetInspectionById, useUpdateInspection } from "../../../../hooks/useInspections";
 
 import { Button, Col, Form, Row } from "react-bootstrap";
+import { toast, ToastContainer } from 'react-toastify';
+
 import Loading from "../../../loading/Loading";
 
 import { formatIsoStringToFormDateValue } from "../../../../utils/dateUtils";
@@ -22,7 +24,7 @@ export default function HiveInspectionEdit() {
             await updateInspectionHandler(inspectionId, values);
             navigate(`/hives/${inspection.hiveId}/inspections`);
         } catch (error) {
-            alert(error.message);
+            toast.error('Something went wrong. Please try again later or contact support if the issue persists.');
         } finally {
             setIsUpdating(false);
         };
@@ -32,6 +34,7 @@ export default function HiveInspectionEdit() {
 
     return (
         <Form onSubmit={submitHandler}>
+            <ToastContainer theme='colored' />
             <fieldset>
                 <legend className="text-primary">Edit Inspection</legend>
                 <Form.Group className="field" controlId="date">
