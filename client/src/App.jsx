@@ -27,6 +27,7 @@ import HiveBeeQueenEdit from './components/hive-details/hive-beeQueen-list/hive-
 import HiveEdit from './components/hive-details/hive-edit/HiveEdit';
 import HiveInspectionEdit from './components/hive-details/hive-inspection-list/hive-inspection-edit/HiveInspectionEdit';
 import HiveHarvestEdit from './components/hive-details/hive-harvest-list/hive-harvest-edit/HiveHarvestEdit';
+import PrivateRoutes from './components/common/PrivateRoutes';
 
 function App() {
     return (
@@ -38,26 +39,27 @@ function App() {
                     <Route path='/' element={<Home />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
-                    <Route path='/logout' element={<Logout />} />
-                    <Route path='/apiaries/add' element={<ApiaryAdd />} />
-                    <Route path='/apiaries/:apiaryId/hives/add' element={<HiveAdd />} />
 
-                    <Route element={<HiveContextProvider />}>
-                        <Route path='/hives/:hiveId/details' element={<HiveDetails />} />
-                        <Route path='/hives/:hiveId/inspections' element={<HiveInspectionList />} />
-                        <Route path='/hives/:hiveId/inspections/add' element={<HiveInspectionAdd />} />
-                        <Route path='/hives/:hiveId/harvests' element={<HiveHarvestList />} />
-                        <Route path='/hives/:hiveId/harvests/add' element={<HiveHarvestAdd />} />
-                        <Route path='/hives/:hiveId/beeQueens' element={<HiveBeeQueenList />} />
-                        <Route path='/hives/:hiveId/beeQueens/add' element={<HiveBeeQueenAdd />} />
+                    <Route element={<PrivateRoutes />}>
+                        <Route path='/logout' element={<Logout />} />
+                        <Route path='/apiaries/add' element={<ApiaryAdd />} />
+                        <Route path='/apiaries/:apiaryId/hives/add' element={<HiveAdd />} />
+                        <Route path='/beeQueens' element={<BeeQueenList />} />
 
-                        <Route path='/hives/:hiveId/edit' element={<HiveEdit />} />
-                        <Route path='/harvests/:harvestId/edit' element={<HiveHarvestEdit />} />
-                        <Route path='/beeQueens/:beeQueenId/edit' element={<HiveBeeQueenEdit />} />
-                        <Route path='/inspections/:inspectionId/edit' element={<HiveInspectionEdit />} />
+                        <Route element={<HiveContextProvider />}>
+                            <Route path='/hives/:hiveId/details' element={<HiveDetails />} />
+                            <Route path='/hives/:hiveId/inspections' element={<HiveInspectionList />} />
+                            <Route path='/hives/:hiveId/inspections/add' element={<HiveInspectionAdd />} />
+                            <Route path='/hives/:hiveId/harvests' element={<HiveHarvestList />} />
+                            <Route path='/hives/:hiveId/harvests/add' element={<HiveHarvestAdd />} />
+                            <Route path='/hives/:hiveId/beeQueens' element={<HiveBeeQueenList />} />
+                            <Route path='/hives/:hiveId/beeQueens/add' element={<HiveBeeQueenAdd />} />
+                            <Route path='/hives/:hiveId/edit' element={<HiveEdit />} />
+                            <Route path='/harvests/:harvestId/edit' element={<HiveHarvestEdit />} />
+                            <Route path='/beeQueens/:beeQueenId/edit' element={<HiveBeeQueenEdit />} />
+                            <Route path='/inspections/:inspectionId/edit' element={<HiveInspectionEdit />} />
+                        </Route>
                     </Route>
-
-                    <Route path='/beeQueens' element={<BeeQueenList />} />
                 </Routes>
             </Container>
         </AuthContextProvider>
