@@ -2,15 +2,15 @@ import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { useDeleteHive, useGetHiveById } from '../../hooks/useHives';
+import { useGetInspectionsCountByHiveId } from '../../hooks/useInspections';
+import { useGetHarvestsCountByHiveId } from '../../hooks/useHarvests';
+import { useGetBeeQueensByHiveId } from '../../hooks/useBeeQueens';
 
-import { Container, Row, Col, Card, ListGroup, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card, ListGroup, Button, Image } from 'react-bootstrap';
 
 import Loading from '../loading/Loading';
 import Delete from '../delete/Delete';
 import { formatIsoStringToDisplayDate } from '../../utils/dateUtils';
-import { useGetInspectionsCountByHiveId } from '../../hooks/useInspections';
-import { useGetHarvestsCountByHiveId } from '../../hooks/useHarvests';
-import { useGetBeeQueensByHiveId } from '../../hooks/useBeeQueens';
 
 export default function HiveDetails() {
     const { hiveId } = useParams();
@@ -52,13 +52,16 @@ export default function HiveDetails() {
             )}
 
             < Container className="my-5" >
-                <Row className="justify-content-center">
-                    <Col md={8}>
-                        <Card>
-                            <Card.Header as="h5">Hive Details</Card.Header>
-                            {isFetching
-                                ? <Loading />
-                                : <Card.Body>
+                <Card>
+                    <Card.Header as="h5" className='fw-bold'>Hive Details</Card.Header>
+                    {isFetching
+                        ? <Loading />
+                        : <Row className="justify-content-center">
+                            <Col md={5} lg={5}>
+                                <Image src="https://thewildlifecommunity.co.uk/cdn/shop/products/SBH1_Solitary_Bee_Hive_5_Web.jpg?v=1622645194" thumbnail />
+                            </Col>
+                            <Col md={7} lg={7}>
+                                <Card.Body >
                                     <Card.Title>Hive №{hive.number}</Card.Title>
                                     <Card.Text>
                                         <strong>Location:</strong> {hive.apiary.name} - {hive.apiary.location}
@@ -96,10 +99,10 @@ export default function HiveDetails() {
                                     <Button as={Link} to={`/hives/${hiveId}/edit`} variant="warning" className="me-2"><i className="bi bi-pencil-square"></i> Edit</Button>
                                     <Button variant="danger" onClick={() => deleteClickHandler(hive._id)}><i className="bi bi-trash-fill"></i> Delete</Button>
                                 </Card.Body>
-                            }
-                        </Card>
-                    </Col>
-                </Row>
+                            </Col>
+                        </Row>
+                    }
+                </Card>
             </Container>
         </>
     );
