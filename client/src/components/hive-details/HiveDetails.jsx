@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
-import { useDeleteHive, useGetHiveById } from '../../hooks/useHives';
+import { useDeleteHive, useGetHiveById, useGetHiveWithApiaryById } from '../../hooks/useHives';
 import { useGetInspectionsCountByHiveId } from '../../hooks/useInspections';
 import { useGetHarvestsCountByHiveId } from '../../hooks/useHarvests';
 import { useGetBeeQueensByHiveId } from '../../hooks/useBeeQueens';
@@ -15,7 +15,7 @@ import { formatIsoStringToDisplayDate } from '../../utils/dateUtils';
 export default function HiveDetails() {
     const { hiveId } = useParams();
     const navigate = useNavigate();
-    const { hive, isFetching } = useGetHiveById(hiveId);
+    const { hiveWithApiary, isFetching } = useGetHiveWithApiaryById(hiveId);
     const { hiveInspectionsCount } = useGetInspectionsCountByHiveId(hiveId);
     const { hiveHarvestsCount } = useGetHarvestsCountByHiveId(hiveId);
     const { hiveBeeQueens } = useGetBeeQueensByHiveId(hiveId);
@@ -62,21 +62,21 @@ export default function HiveDetails() {
                             </Col>
                             <Col md={7} lg={7}>
                                 <Card.Body >
-                                    <Card.Title>Hive №{hive.number}</Card.Title>
+                                    <Card.Title>Hive №{hiveWithApiary.number}</Card.Title>
                                     <Card.Text>
-                                        <strong>Location:</strong> {hive.apiary.name} - {hive.apiary.location}
+                                        <strong>Location:</strong> {hiveWithApiary.apiary.name} - {hiveWithApiary.apiary.location}
                                     </Card.Text>
                                     <Card.Text>
-                                        <strong>Type:</strong> {hive.type}
+                                        <strong>Type:</strong> {hiveWithApiary.type}
                                     </Card.Text>
                                     <Card.Text>
-                                        <strong>Status:</strong> {hive.status}
+                                        <strong>Status:</strong> {hiveWithApiary.status}
                                     </Card.Text>
                                     <Card.Text>
-                                        <strong>Color:</strong> {hive.color}
+                                        <strong>Color:</strong> {hiveWithApiary.color}
                                     </Card.Text>
                                     <Card.Text>
-                                        <strong>Date bought:</strong> {formatIsoStringToDisplayDate(hive.dateBought)}
+                                        <strong>Date bought:</strong> {formatIsoStringToDisplayDate(hiveWithApiary.dateBought)}
                                     </Card.Text>
                                     <Card.Text>
                                         <strong>Queen Status: </strong>
@@ -87,17 +87,17 @@ export default function HiveDetails() {
                                     </Card.Text>
                                     <ListGroup className="my-4">
                                         <ListGroup.Item>
-                                            <Link to={`/hives/${hive._id}/beeQueens`}><strong>Bee Queens:</strong> {hiveBeeQueens.length}</Link>
+                                            <Link to={`/hives/${hiveWithApiary._id}/beeQueens`}><strong>Bee Queens:</strong> {hiveBeeQueens.length}</Link>
                                         </ListGroup.Item>
                                         <ListGroup.Item>
-                                            <Link to={`/hives/${hive._id}/inspections`}><strong>Inspections:</strong> {hiveInspectionsCount}</Link>
+                                            <Link to={`/hives/${hiveWithApiary._id}/inspections`}><strong>Inspections:</strong> {hiveInspectionsCount}</Link>
                                         </ListGroup.Item>
                                         <ListGroup.Item>
-                                            <Link to={`/hives/${hive._id}/harvests`}><strong>Harvests:</strong> {hiveHarvestsCount}</Link>
+                                            <Link to={`/hives/${hiveWithApiary._id}/harvests`}><strong>Harvests:</strong> {hiveHarvestsCount}</Link>
                                         </ListGroup.Item>
                                     </ListGroup>
                                     <Button as={Link} to={`/hives/${hiveId}/edit`} variant="warning" className="me-2"><i className="bi bi-pencil-square"></i> Edit</Button>
-                                    <Button variant="danger" onClick={() => deleteClickHandler(hive._id)}><i className="bi bi-trash-fill"></i> Delete</Button>
+                                    <Button variant="danger" onClick={() => deleteClickHandler(hiveWithApiary._id)}><i className="bi bi-trash-fill"></i> Delete</Button>
                                 </Card.Body>
                             </Col>
                         </Row>

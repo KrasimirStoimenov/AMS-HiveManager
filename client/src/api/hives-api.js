@@ -3,7 +3,9 @@ import requester from './requester'
 const BASE_URL = `http://localhost:3030/data/hives`;
 
 const getAll = () => requester.get(`${BASE_URL}`);
-const getById = (hiveId) => {
+const getById = (hiveId) => requester.get(`${BASE_URL}/${hiveId}`);
+
+const getHiveWithApiaryById = (hiveId) => {
     const params = new URLSearchParams({
         load: `apiary=apiaryId:apiaries`
     });
@@ -26,6 +28,7 @@ const remove = (hiveId) => requester.del(`${BASE_URL}/${hiveId}`);
 const hivesAPI = {
     getAll,
     getById,
+    getHiveWithApiaryById,
     getByApiaryId,
     add,
     update,
