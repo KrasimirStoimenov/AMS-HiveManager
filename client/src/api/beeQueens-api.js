@@ -1,6 +1,6 @@
 import requester from './requester'
 
-const BASE_URL = `http://localhost:3030/data/beeQueens`;
+const BASE_URL = `${import.meta.env.VITE_API_URL}/data/beeQueens`;
 
 const getAll = (userId) => {
     const params = new URLSearchParams({

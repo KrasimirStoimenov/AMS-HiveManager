@@ -1,6 +1,6 @@
 import requester from './requester'
 
-const BASE_URL = 'http://localhost:3030/data/apiaries';
+const BASE_URL = `${import.meta.env.VITE_API_URL}/data/apiaries`;
 
 const getAll = (userId) => {
     const params = new URLSearchParams({

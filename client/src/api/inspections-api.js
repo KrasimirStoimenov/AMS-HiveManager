@@ -1,6 +1,6 @@
 import requester from "./requester"
 
-const BASE_URL = `http://localhost:3030/data/inspections`;
+const BASE_URL = `${import.meta.env.VITE_API_URL}/data/inspections`;
 
 const getById = (inspectionId) => requester.get(`${BASE_URL}/${inspectionId}`);
 const getByHiveId = (hiveId) => {
