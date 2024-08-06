@@ -19,6 +19,7 @@ export default function Header() {
                                 <Nav.Link as={Link} to='/apiaries'>Apiaries</Nav.Link>
                                 <Nav.Link as={Link} to='/hives'>Hives</Nav.Link>
                                 <Nav.Link as={Link} to='/beeQueens'>BeeQueens</Nav.Link>
+                                <Nav.Link as={Link} to='/inspections'>Inspections</Nav.Link>
                             </>
                         }
                     </Nav>

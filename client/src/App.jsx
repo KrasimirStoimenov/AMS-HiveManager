@@ -32,6 +32,7 @@ import PrivateRoutes from './components/common/PrivateRoutes';
 import GuestRoutes from './components/common/GuestRoutes';
 import HiveList from './components/hive-list/HiveList';
 import ApiaryList from './components/apiary-list/ApiaryList';
+import InspectionList from './components/inspection-list/InspectionList';
 
 function App() {
     return (
@@ -52,6 +53,7 @@ function App() {
                         <Route path='/apiaries' element={<ApiaryList />} />
                         <Route path='/hives' element={<HiveList />} />
                         <Route path='/beeQueens' element={<BeeQueenList />} />
+                        <Route path='/inspections' element={<InspectionList />} />
                         <Route element={<HiveContextProvider />}>
                             <Route path='/hives/:hiveId/details' element={<HiveDetails />} />
                             <Route path='/hives/:hiveId/inspections' element={<HiveInspectionList />} />

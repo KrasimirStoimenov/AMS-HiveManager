@@ -1,6 +1,33 @@
 import { useEffect, useState } from "react";
 
+import { useAuthContext } from "../contexts/AuthContext";
+
 import inspectionsAPI from "../api/inspections-api";
+
+export const useGetAllInspections = () => {
+    const [inspections, setInspections] = useState([]);
+    const [isFetching, setIsFetching] = useState(true);
+    const { userId } = useAuthContext();
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const result = await inspectionsAPI.getAll(userId);
+                setInspections(Object.values(result));
+            } catch (error) {
+                toast.error(error.message);
+            } finally {
+                setIsFetching(false);
+            }
+
+        })();
+    }, []);
+
+    return {
+        inspections,
+        isFetching
+    };
+};
 
 export const useGetInspectionById = (inspectionId) => {
     const [inspection, setInspection] = useState({

@@ -24,13 +24,8 @@ export const useGetAllBeeQueens = () => {
         })();
     }, []);
 
-    const changeBeeQueens = (state) => {
-        setBeeQueens(state);
-    };
-
     return {
         beeQueens,
-        changeBeeQueens,
         isFetching
     };
 };
