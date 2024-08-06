@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useAuthContext } from "../contexts/AuthContext";
 
 import beeQueensAPI from "../api/beeQueens-api";
+import { toast } from "react-toastify";
 
 export const useGetAllBeeQueens = () => {
     const [beeQueens, setBeeQueens] = useState([]);
@@ -15,6 +16,7 @@ export const useGetAllBeeQueens = () => {
                 const result = await beeQueensAPI.getAll(userId);
                 setBeeQueens(Object.values(result));
             } catch (error) {
+                toast.error(error.message);
             } finally {
                 setIsFetching(false);
             }

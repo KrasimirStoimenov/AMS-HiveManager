@@ -4,12 +4,14 @@ import { Col, Row, Table, Container } from 'react-bootstrap';
 
 import BeeQueenListItem from './beeQueen-list-item/BeeQueenListItem';
 import Loading from '../loading/Loading';
+import { ToastContainer } from 'react-toastify';
 
 export default function BeeQueenList() {
     const { beeQueens, isFetching } = useGetAllBeeQueens();
 
     return (
         <Container>
+            <ToastContainer />
             <Row className='pb-3 pt-3'>
                 <Col className='text-start text-primary'>
                     <h2>Bee Queens List</h2>

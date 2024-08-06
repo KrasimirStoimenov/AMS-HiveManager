@@ -3,17 +3,23 @@ import { useEffect, useState } from "react";
 import { useHiveContext } from "../contexts/HiveContext";
 
 import hivesAPI from "../api/hives-api";
+import { useAuthContext } from "../contexts/AuthContext";
 
 export const useGetAllHives = () => {
     const [hives, setHives] = useState([]);
     const [isFetching, setIsFetching] = useState(true);
+    const { userId } = useAuthContext();
 
     useEffect(() => {
         (async () => {
-            const result = await hivesAPI.getAll();
-
-            setHives(Object.values(result));
-            setIsFetching(false);
+            try {
+                const result = await hivesAPI.getAll(userId);
+                setHives(Object.values(result));
+            } catch (error) {
+                toast.error(error.message);
+            } finally {
+                setIsFetching(false);
+            }
         })();
     }, []);
 

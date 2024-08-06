@@ -30,6 +30,7 @@ import HiveInspectionEdit from './components/hive-details/hive-inspection-list/h
 import HiveHarvestEdit from './components/hive-details/hive-harvest-list/hive-harvest-edit/HiveHarvestEdit';
 import PrivateRoutes from './components/common/PrivateRoutes';
 import GuestRoutes from './components/common/GuestRoutes';
+import HiveList from './components/hive-list/HiveList';
 
 function App() {
     return (
@@ -47,6 +48,7 @@ function App() {
                         <Route path='/logout' element={<Logout />} />
                         <Route path='/apiaries/add' element={<ApiaryAdd />} />
                         <Route path='/apiaries/:apiaryId/hives/add' element={<HiveAdd />} />
+                        <Route path='/hives' element={<HiveList />} />
                         <Route path='/beeQueens' element={<BeeQueenList />} />
                         <Route element={<HiveContextProvider />}>
                             <Route path='/hives/:hiveId/details' element={<HiveDetails />} />
