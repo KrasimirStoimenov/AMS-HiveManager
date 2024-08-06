@@ -16,6 +16,7 @@ export default function Header() {
                     <Nav className="me-auto">
                         {isAuthenticated &&
                             <>
+                                <Nav.Link as={Link} to='/apiaries'>Apiaries</Nav.Link>
                                 <Nav.Link as={Link} to='/hives'>Hives</Nav.Link>
                                 <Nav.Link as={Link} to='/beeQueens'>BeeQueens</Nav.Link>
                             </>

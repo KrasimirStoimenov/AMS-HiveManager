@@ -31,6 +31,7 @@ import HiveHarvestEdit from './components/hive-details/hive-harvest-list/hive-ha
 import PrivateRoutes from './components/common/PrivateRoutes';
 import GuestRoutes from './components/common/GuestRoutes';
 import HiveList from './components/hive-list/HiveList';
+import ApiaryList from './components/apiary-list/ApiaryList';
 
 function App() {
     return (
@@ -48,6 +49,7 @@ function App() {
                         <Route path='/logout' element={<Logout />} />
                         <Route path='/apiaries/add' element={<ApiaryAdd />} />
                         <Route path='/apiaries/:apiaryId/hives/add' element={<HiveAdd />} />
+                        <Route path='/apiaries' element={<ApiaryList />} />
                         <Route path='/hives' element={<HiveList />} />
                         <Route path='/beeQueens' element={<BeeQueenList />} />
                         <Route element={<HiveContextProvider />}>
