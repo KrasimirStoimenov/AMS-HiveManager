@@ -33,7 +33,7 @@ export default function HiveDetails() {
             await deleteHiveHandler(hiveId);
             navigate('/');
         } catch (error) {
-            toast.error('Something went wrong. Please try again later or contact support if the issue persists.');
+            toast.error(error.message);
         } finally {
             setIsDeleting(false);
             setShowDeleteById(null);

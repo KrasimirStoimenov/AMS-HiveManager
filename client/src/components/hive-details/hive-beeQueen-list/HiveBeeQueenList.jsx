@@ -28,7 +28,7 @@ export default function HiveBeeQueenList() {
             await deleteBeeQueenHandler(beeQueenId);
             changeBeeQueens(oldState => oldState.filter(beeQueen => beeQueen._id !== beeQueenId));
         } catch (error) {
-            toast.error('Something went wrong. Please try again later or contact support if the issue persists.');
+            toast.error(error.message);
         } finally {
             setIsDeleting(false);
             setShowDeleteById(null);

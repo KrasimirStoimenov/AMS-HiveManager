@@ -29,7 +29,7 @@ export default function HiveInspectionList() {
             await deleteInspectionHandler(inspectionId);
             changeInspections(oldState => oldState.filter(inspection => inspection._id !== inspectionId));
         } catch (error) {
-            toast.error('Something went wrong. Please try again later or contact support if the issue persists.');
+            toast.error(error.message);
         } finally {
             setIsDeleting(false);
             setShowDeleteById(null);

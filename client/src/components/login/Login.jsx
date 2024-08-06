@@ -24,7 +24,7 @@ export default function Login() {
             await login(values);
             navigate('/');
         } catch (error) {
-            toast.error('Something went wrong. Please try again later or contact support if the issue persists.');
+            toast.error(error.message);
         }
     };
 

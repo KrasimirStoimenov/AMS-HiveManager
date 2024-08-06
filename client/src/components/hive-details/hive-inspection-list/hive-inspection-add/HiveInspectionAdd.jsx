@@ -32,7 +32,7 @@ export default function HiveInspectionAdd() {
             await addInspectionHandler(values);
             navigate(`/hives/${hiveId}/inspections`);
         } catch (error) {
-            toast.error('Something went wrong. Please try again later or contact support if the issue persists.');
+            toast.error(error.message);
         } finally {
             setisAdding(false);
         };

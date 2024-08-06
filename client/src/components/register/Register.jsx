@@ -33,7 +33,7 @@ export default function Register() {
             await register(email, password);
             navigate('/');
         } catch (error) {
-            toast.error('Something went wrong. Please try again later or contact support if the issue persists.');
+            toast.error(error.message);
         }
     };
 

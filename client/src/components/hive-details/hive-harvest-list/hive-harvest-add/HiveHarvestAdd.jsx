@@ -31,7 +31,7 @@ export default function HiveHarvestAdd() {
             await addHarvestHandler(values);
             navigate(`/hives/${hiveId}/harvests`);
         } catch (error) {
-            toast.error('Something went wrong. Please try again later or contact support if the issue persists.');
+            toast.error(error.message);
         } finally {
             setisAdding(false);
         };

@@ -29,7 +29,7 @@ export default function HiveBeeQueenAdd() {
             await addBeeQueenHandler(values);
             navigate(`/hives/${hiveId}/beeQueens`);
         } catch (error) {
-            toast.error('Something went wrong. Please try again later or contact support if the issue persists.');
+            toast.error(error.message);
         } finally {
             setIsAdding(false);
         };

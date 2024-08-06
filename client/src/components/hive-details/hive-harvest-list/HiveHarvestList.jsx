@@ -29,7 +29,7 @@ export default function HiveHarvestList() {
             await deleteHarvestHandler(harvestId);
             changeHarvests(oldState => oldState.filter(harvest => harvest._id !== harvestId));
         } catch (error) {
-            toast.error('Something went wrong. Please try again later or contact support if the issue persists.');
+            toast.error(error.message);
         } finally {
             setIsDeleting(false);
             setShowDeleteById(null);

@@ -33,7 +33,7 @@ export default function HiveAdd() {
             const hive = await addHiveHandler(values);
             navigate(`/hives/${hive._id}/details`);
         } catch (error) {
-            toast.error('Something went wrong. Please try again later or contact support if the issue persists.');
+            toast.error(error.message);
         } finally {
             setIsAdding(false);
         };

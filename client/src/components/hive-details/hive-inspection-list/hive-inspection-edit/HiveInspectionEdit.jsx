@@ -24,7 +24,7 @@ export default function HiveInspectionEdit() {
             await updateInspectionHandler(inspectionId, values);
             navigate(`/hives/${inspection.hiveId}/inspections`);
         } catch (error) {
-            toast.error('Something went wrong. Please try again later or contact support if the issue persists.');
+            toast.error(error.message);
         } finally {
             setIsUpdating(false);
         };
