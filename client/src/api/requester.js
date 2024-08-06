@@ -11,8 +11,7 @@ async function requester(method, url, data) {
             throw new Error(error.message);
         }
 
-        if (response.status == 204
-            && response.headers.get('Content-Type') == null) {
+        if (response.status == 204) {
             return;
         }
 
