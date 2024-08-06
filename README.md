@@ -2,19 +2,29 @@
 
 Softuni ReactJS course final project which uses best practices and architecture for single page application (SPA).
 
-ApiaryManagementSystem (AMS) is a comprehensive tool designed to help beekeepers manage and monitor their apiaries effectively. This application allows you to track hive locations, log inspections, record honey production, and manage tasks and reminders.
+ApiaryManagementSystem (AMS) is a comprehensive tool designed to help beekeepers manage and monitor their apiaries effectively. This application allows you to track hive locations, manage bee queens for hive, log inspections, and record honey production.
 
+The project is deployed on Firebase. You can access it using the following link: https://ams-hive-manager.web.app/
+
+## Table of Contents
+
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [License](#license)
+  
 ## Features
 
 - **Hive Management**: Track the location and status of each hive.
+- **Bee Queen Management**: Manage bee queens for hive and their health status.
 - **Inspection Logs**: Record details of hive inspections and health status.
 - **Production Records**: Log honey production and harvest dates.
-- **Task Management**: Schedule and manage beekeeping tasks and reminders.
 - **User Authentication**: Secure login and user management.
 
 ## Technologies Used
 - **Frontend**: Vite React
 - **Backend**: [Softuni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server)
+- **Cloud Deployment**: Firebase
 - **Authentication**: Token-Based Authentication
 - **Styling**: CSS, Bootstrap, React-Bootstrap
   
@@ -65,3 +75,5 @@ To install and run AMS on your local machine, follow these steps:
      ```
       - **The app should now be running on http://localhost:5173.**
 
+## License
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/KrasimirStoimenov/AMS-HiveManager/blob/main/client/LICENSE) file for details.
