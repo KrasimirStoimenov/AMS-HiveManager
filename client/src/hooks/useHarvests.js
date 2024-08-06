@@ -1,6 +1,33 @@
 import { useEffect, useState } from "react";
 
+import { useAuthContext } from "../contexts/AuthContext";
+
 import harvestsAPI from "../api/harvests-api";
+
+export const useGetAllHarvests = () => {
+    const [harvests, setHarvests] = useState([]);
+    const [isFetching, setIsFetching] = useState(true);
+    const { userId } = useAuthContext();
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const result = await harvestsAPI.getAll(userId);
+                setHarvests(Object.values(result));
+            } catch (error) {
+                toast.error(error.message);
+            } finally {
+                setIsFetching(false);
+            }
+
+        })();
+    }, []);
+
+    return {
+        harvests,
+        isFetching
+    };
+};
 
 export const useGetHarvestById = (harvestId) => {
     const [harvest, setHarvest] = useState({

@@ -2,6 +2,15 @@ import requester from "./requester"
 
 const BASE_URL = `${import.meta.env.VITE_API_URL}/data/harvests`;
 
+const getAll = (userId) => {
+    const params = new URLSearchParams({
+        where: `_ownerId="${userId}"`,
+        load: `hive=hiveId:hives`
+    });
+
+    return requester.get(`${BASE_URL}?${params.toString()}`);
+};
+
 const getById = (harvestId) => requester.get(`${BASE_URL}/${harvestId}`);
 const getByHiveId = (hiveId) => {
     const params = new URLSearchParams({
@@ -24,6 +33,7 @@ const update = (harvestId, harvest) => requester.put(`${BASE_URL}/${harvestId}`,
 const remove = (harvestId) => requester.del(`${BASE_URL}/${harvestId}`);
 
 const harvestsAPI = {
+    getAll,
     getById,
     getByHiveId,
     getCountByHiveId,
