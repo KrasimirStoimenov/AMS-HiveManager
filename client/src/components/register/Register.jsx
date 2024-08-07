@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { useForm } from '../../hooks/useForm';
@@ -15,6 +16,7 @@ const initialFormValues = {
 export default function Register() {
     const navigate = useNavigate();
     const register = useRegister();
+    const [isSigningUp, setIsSigningUp] = useState(false);
 
     const registerHandler = async (values) => {
         const email = values.email;
@@ -30,10 +32,14 @@ export default function Register() {
         }
 
         try {
+            setIsSigningUp(true);
             await register(email, password);
             navigate('/');
         } catch (error) {
             toast.error(error.message);
+        }
+        finally {
+            setIsSigningUp(false);
         }
     };
 
@@ -55,6 +61,7 @@ export default function Register() {
                                             placeholder="Enter email"
                                             value={values.email}
                                             onChange={changeHandler}
+                                            disabled={isSigningUp}
                                         />
                                     </FloatingLabel>
                                 </Form.Group>
@@ -66,6 +73,7 @@ export default function Register() {
                                             placeholder="Password"
                                             value={values.password}
                                             onChange={changeHandler}
+                                            disabled={isSigningUp}
                                         />
                                     </FloatingLabel>
                                 </Form.Group>
@@ -77,10 +85,15 @@ export default function Register() {
                                             placeholder="Confirm Password"
                                             value={values['confirm-password']}
                                             onChange={changeHandler}
+                                            disabled={isSigningUp}
                                         />
                                     </FloatingLabel>
                                 </Form.Group>
-                                <Button variant="primary" type="submit" className="w-100 p-2">Sign Up</Button>
+                                <Button variant="primary" type="submit" className="w-100 p-2" disabled={isSigningUp}>
+                                    {isSigningUp
+                                        ? 'Signing up...'
+                                        : 'Sign Up'}
+                                </Button>
                             </Form>
                         </Card.Body>
                         <Card.Footer className="text-center">

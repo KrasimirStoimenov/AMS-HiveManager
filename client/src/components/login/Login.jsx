@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
 import { useLogin } from '../../hooks/useAuth';
@@ -14,6 +15,7 @@ const initialFormValues = {
 export default function Login() {
     const navigate = useNavigate();
     const login = useLogin();
+    const [isSigningIn, setIsSigningIn] = useState(false);
 
     const loginHandler = async (values) => {
         if (values.email == '' || values.password == '') {
@@ -21,10 +23,14 @@ export default function Login() {
         }
 
         try {
+            setIsSigningIn(true);
             await login(values);
             navigate('/');
         } catch (error) {
             toast.error(error.message);
+        }
+        finally {
+            setIsSigningIn(false);
         }
     };
 
@@ -46,6 +52,7 @@ export default function Login() {
                                             placeholder="Enter email"
                                             value={values.email}
                                             onChange={changeHandler}
+                                            disabled={isSigningIn}
                                         />
                                     </FloatingLabel>
                                 </Form.Group>
@@ -57,10 +64,15 @@ export default function Login() {
                                             placeholder="Password"
                                             value={values.password}
                                             onChange={changeHandler}
+                                            disabled={isSigningIn}
                                         />
                                     </FloatingLabel>
                                 </Form.Group>
-                                <Button variant="primary" type="submit" className="w-100 p-2">Sign In</Button>
+                                <Button variant="primary" type="submit" className="w-100 p-2" disabled={isSigningIn}>
+                                    {isSigningIn
+                                        ? 'Signing in...'
+                                        : 'Sign In'}
+                                </Button>
                             </Form>
                         </Card.Body>
                         <Card.Footer className="text-center">
