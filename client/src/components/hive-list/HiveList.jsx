@@ -1,7 +1,6 @@
 import { useGetAllHives } from '../../hooks/useHives';
 
 import { Col, Row, Table, Container } from 'react-bootstrap';
-import { ToastContainer } from 'react-toastify';
 
 import Loading from '../loading/Loading';
 import HiveListItem from './hive-list-item/HiveListItem';
@@ -11,7 +10,6 @@ export default function HiveList() {
 
     return (
         <Container>
-            <ToastContainer />
             <Row className='pb-3 pt-3'>
                 <Col className='text-start text-primary'>
                     <h2>Hives List</h2>

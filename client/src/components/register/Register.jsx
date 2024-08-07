@@ -4,7 +4,7 @@ import { useForm } from '../../hooks/useForm';
 import { useRegister } from '../../hooks/useAuth';
 
 import { Container, Row, Col, Card, Form, Button, FloatingLabel } from 'react-bootstrap';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const initialFormValues = {
     email: '',
@@ -41,7 +41,6 @@ export default function Register() {
 
     return (
         <Container>
-            <ToastContainer theme='colored' />
             <Row className="justify-content-center">
                 <Col md={6} lg={4}>
                     <Card className="shadow-sm">

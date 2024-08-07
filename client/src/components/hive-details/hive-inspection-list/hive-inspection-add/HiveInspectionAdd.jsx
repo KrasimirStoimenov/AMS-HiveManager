@@ -6,7 +6,7 @@ import { useAddInspection } from "../../../../hooks/useInspections";
 import { useHiveContext } from "../../../../contexts/HiveContext";
 
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import { dateTodayInitialFormValue } from "../../../../utils/dateUtils";
 
@@ -42,7 +42,6 @@ export default function HiveInspectionAdd() {
 
     return (
         <Form onSubmit={submitHandler}>
-            <ToastContainer theme='colored' />
             <fieldset>
                 <legend className="text-primary">Add Inspection</legend>
                 <Form.Group className="field" controlId="date">

@@ -6,7 +6,7 @@ import { useAddHarvest } from "../../../../hooks/useHarvests";
 import { useHiveContext } from "../../../../contexts/HiveContext";
 
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import { dateTodayInitialFormValue } from "../../../../utils/dateUtils";
 
@@ -41,7 +41,6 @@ export default function HiveHarvestAdd() {
 
     return (
         <Form onSubmit={submitHandler}>
-            <ToastContainer theme='colored' />
             <fieldset>
                 <legend className="text-primary">Add Harvest</legend>
                 <Form.Group className="field" controlId="date">

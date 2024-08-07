@@ -6,7 +6,7 @@ import { useAddBeeQueen } from '../../../../hooks/useBeeQueens';
 import { useHiveContext } from '../../../../contexts/HiveContext';
 
 import { Button, Col, Row, Form } from 'react-bootstrap';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 export default function HiveBeeQueenAdd() {
     const navigate = useNavigate();
@@ -39,7 +39,6 @@ export default function HiveBeeQueenAdd() {
 
     return (
         <Form onSubmit={submitHandler}>
-            <ToastContainer theme='colored' />
             <fieldset>
                 <legend className="text-primary">Add Bee Queen</legend>
                 <Form.Group className="field" controlId="year">

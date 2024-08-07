@@ -5,7 +5,7 @@ import { useForm } from "../../../../hooks/useForm";
 import { useGetHarvestById, useUpdateHarvest } from "../../../../hooks/useHarvests";
 
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import Loading from "../../../loading/Loading";
 
@@ -34,7 +34,6 @@ export default function HiveHarvestEdit() {
 
     return (
         <Form onSubmit={submitHandler}>
-            <ToastContainer theme='colored' />
             <fieldset>
                 <legend className="text-primary">Edit Harvest</legend>
                 <Form.Group className="field" controlId="date">

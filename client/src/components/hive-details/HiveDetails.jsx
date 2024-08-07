@@ -5,7 +5,7 @@ import { useDeleteHive, useGetHiveWithApiaryById } from '../../hooks/useHives';
 import { useGetBeeQueensByHiveId } from '../../hooks/useBeeQueens';
 
 import { Container, Row, Col, Card, Button, Image } from 'react-bootstrap';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import HiveDetailsLinks from './hive-details-links/HiveDetailsLinks';
 import Loading from '../loading/Loading';
@@ -51,7 +51,6 @@ export default function HiveDetails() {
             )}
 
             < Container className="my-5" >
-                <ToastContainer theme='colored' />
                 <Card>
                     <Card.Header as="h5" className='fw-bold'>Hive Details</Card.Header>
                     {isFetching

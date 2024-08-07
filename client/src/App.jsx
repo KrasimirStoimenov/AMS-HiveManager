@@ -34,10 +34,13 @@ import HiveList from './components/hive-list/HiveList';
 import ApiaryList from './components/apiary-list/ApiaryList';
 import InspectionList from './components/inspection-list/InspectionList';
 import HarvestList from './components/harvest-list/HarvestList';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
     return (
         <AuthContextProvider>
+            <ToastContainer theme='colored' />
+
             <Header />
 
             <Container>

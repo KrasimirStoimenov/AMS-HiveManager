@@ -5,7 +5,7 @@ import { useForm } from '../../../../hooks/useForm';
 import { useAddApiary } from '../../../../hooks/useApiaries';
 
 import { Button, Col, Row, Form } from 'react-bootstrap';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const initialFormValues = {
     name: '',
@@ -33,7 +33,6 @@ export default function ApiaryAdd() {
 
     return (
         <Form onSubmit={submitHandler}>
-            <ToastContainer theme='colored' />
             <fieldset>
                 <legend className="text-primary">Add Apiary</legend>
                 <Form.Group className="field" controlId="name">

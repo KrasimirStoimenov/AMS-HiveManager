@@ -6,7 +6,7 @@ import { useAddHive } from '../../hooks/useHives';
 import { useGetApiaryById } from '../../hooks/useApiaries';
 
 import { Button, Col, Row, Form } from 'react-bootstrap';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import Loading from '../loading/Loading';
 import { dateTodayInitialFormValue } from '../../utils/dateUtils';
@@ -43,7 +43,6 @@ export default function HiveAdd() {
 
     return (
         <Form onSubmit={submitHandler}>
-            <ToastContainer theme='colored' />
             <fieldset>
                 <legend className="text-primary">Add Hive</legend>
                 <Form.Group className="field" controlId="number">

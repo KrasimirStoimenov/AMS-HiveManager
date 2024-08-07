@@ -1,7 +1,6 @@
 import { useGetAllInspections } from '../../hooks/useInspections';
 
 import { Col, Row, Table, Container } from 'react-bootstrap';
-import { ToastContainer } from 'react-toastify';
 
 import Loading from '../loading/Loading';
 import InspectionListItem from './inspection-list-item/InspectionListItem';
@@ -11,7 +10,6 @@ export default function InspectionList() {
 
     return (
         <Container>
-            <ToastContainer />
             <Row className='pb-3 pt-3'>
                 <Col className='text-start text-primary'>
                     <h2>Inspections List</h2>

@@ -5,7 +5,7 @@ import { useDeleteBeeQueen, useGetBeeQueensByHiveId } from '../../../hooks/useBe
 import { useHiveContext } from '../../../contexts/HiveContext';
 
 import { Col, Row, Table, Container, Button } from 'react-bootstrap';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import Delete from '../../delete/Delete';
 import Loading from '../../loading/Loading';
@@ -45,7 +45,6 @@ export default function HiveBeeQueenList() {
                 />
             )}
             <Container>
-                <ToastContainer theme='colored' />
                 <Row className='pb-3 pt-3'>
                     <Col className='text-start text-primary'>
                         <h2>Bee Queens for hive: <Link to={`/hives/${hiveId}/details`} >{hiveNumber ? `№${hiveNumber}` : hiveId}</Link></h2>

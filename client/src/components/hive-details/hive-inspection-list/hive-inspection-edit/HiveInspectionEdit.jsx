@@ -5,7 +5,7 @@ import { useForm } from "../../../../hooks/useForm";
 import { useGetInspectionById, useUpdateInspection } from "../../../../hooks/useInspections";
 
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import Loading from "../../../loading/Loading";
 
@@ -34,7 +34,6 @@ export default function HiveInspectionEdit() {
 
     return (
         <Form onSubmit={submitHandler}>
-            <ToastContainer theme='colored' />
             <fieldset>
                 <legend className="text-primary">Edit Inspection</legend>
                 <Form.Group className="field" controlId="date">

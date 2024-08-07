@@ -5,7 +5,7 @@ import { useForm } from '../../../hooks/useForm';
 import { useGetHiveById, useUpdateHive } from '../../../hooks/useHives';
 
 import { Button, Col, Row, Form } from 'react-bootstrap';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import Loading from '../../loading/Loading';
 
@@ -34,7 +34,6 @@ export default function HiveEdit() {
 
     return (
         <Form onSubmit={submitHandler}>
-            <ToastContainer theme='colored' />
             <fieldset>
                 <legend className="text-primary">Edit Hive</legend>
                 <Form.Group className="field" controlId="number">
