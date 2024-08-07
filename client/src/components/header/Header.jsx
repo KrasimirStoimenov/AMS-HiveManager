@@ -5,7 +5,7 @@ import { useAuthContext } from '../../contexts/AuthContext';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 
 export default function Header() {
-    const { isAuthenticated } = useAuthContext();
+    const { email, isAuthenticated } = useAuthContext();
 
     return (
         <Navbar expand="lg" className="bg-body-tertiary p-2 mb-3">
@@ -27,6 +27,7 @@ export default function Header() {
                     {isAuthenticated
                         ? (
                             <Nav>
+                                <Nav.Link>Hello {email}!</Nav.Link>
                                 <Nav.Link as={Link} to='/logout'>Logout</Nav.Link>
                             </Nav>
                         )
